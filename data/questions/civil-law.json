@@ -1,0 +1,416 @@
+[
+  {
+    "id": "civil_001",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "制限行為能力者",
+    "format": "true_false",
+    "question": "未成年者が法定代理人の同意を得ずに行った法律行為は、未成年者本人のみが取り消すことができる。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "false",
+    "explanation": "民法第120条第1項は、行為能力の制限を理由とする取消しは「制限行為能力者又はその代理人、承継人若しくは同意をすることができる者」ができると規定する。本人だけでなく法定代理人も取消権者に含まれる。",
+    "point": "取消権者 = 制限行為能力者本人 + 法定代理人・承継人・同意権者。本人限定ではない。",
+    "commonMistake": "本人のみが取消できると誤解しやすい。法定代理人も取消可能。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第120条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第120条（取消権者）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["民法", "制限行為能力", "取消権者", "未成年者"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_002",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "錯誤",
+    "format": "true_false",
+    "question": "錯誤による意思表示の取消しは、善意でかつ過失がない第三者に対抗することができない。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "民法第95条第4項（2020年改正後）は、錯誤による意思表示の取消しは「善意でかつ過失がない第三者に対抗することができない」と規定している。これにより第三者保護が明文化された。",
+    "point": "錯誤取消しの対抗不可：善意＋無過失の第三者を保護。「善意のみ」では足りない。",
+    "commonMistake": "詐欺取消し（善意の第三者保護・過失不要）との区別に注意。錯誤は善意＋無過失が必要。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第95条第4項",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第95条（錯誤）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["民法", "錯誤", "第三者保護", "意思表示"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_003",
+    "questId": "civil_law",
+    "areaId": "real_rights",
+    "subject": "civil_law",
+    "topic": "物権",
+    "subtopic": "不動産物権変動",
+    "format": "true_false",
+    "question": "不動産に関する物権の得喪及び変更は、登記をしなければ第三者に対抗することができない。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "民法第177条は「不動産に関する物権の得喪及び変更は、不動産登記法その他の登記に関する法律の定めるところに従いその登記をしなければ、第三者に対抗することができない」と規定する。登記が対抗要件となる。",
+    "point": "不動産物権変動の対抗要件 = 登記（177条）。動産は引渡し（178条）と区別する。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第177条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第177条（不動産に関する物権の変動の対抗要件）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 1,
+    "tags": ["民法", "物権変動", "対抗要件", "登記"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_004",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "法定利率",
+    "format": "true_false",
+    "question": "2020年4月1日施行の改正民法により、法定利率は年5分から年3分に変更された。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "2020年4月1日施行の債権法改正（民法第404条）により、法定利率は従来の年5分（5%）から年3分（3%）に引き下げられた。また、3年ごとに見直される変動制が導入された。",
+    "point": "2020年改正で法定利率 5% → 3%。変動制（3年ごと見直し）も導入。",
+    "commonMistake": "改正前の5%を答えてしまう。現行法は3%（変動制あり）。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第404条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第404条（法定利率）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["民法", "法定利率", "債権法改正"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_005",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "債権譲渡",
+    "format": "true_false",
+    "question": "債権の譲渡は、当事者間では有効に成立するが、債務者その他の第三者に対抗するためには、譲渡人から債務者への通知または債務者の承諾が必要である。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "民法第467条第1項は、債権の譲渡は譲渡人が債務者に通知をし、または債務者が承諾をしなければ、債務者その他の第三者に対抗することができないと規定する。当事者間では通知・承諾なしに効力を生じる。",
+    "point": "債権譲渡の対抗要件 = 譲渡人からの通知 OR 債務者の承諾。第三者対抗には確定日付のある証書が必要（467条2項）。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第467条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第467条（債権の譲渡の対抗要件）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["民法", "債権譲渡", "対抗要件"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_006",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "不法行為の時効",
+    "format": "multiple_choice",
+    "question": "不法行為による損害賠償請求権の消滅時効として正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "損害及び加害者を知った時から3年（人身損害は5年）、行為の時から20年" },
+      { "id": "b", "text": "損害及び加害者を知った時から5年、行為の時から20年" },
+      { "id": "c", "text": "損害及び加害者を知った時から3年、行為の時から10年" },
+      { "id": "d", "text": "損害及び加害者を知った時から5年、行為の時から10年" }
+    ],
+    "answer": "a",
+    "explanation": "民法第724条は不法行為の消滅時効を「損害及び加害者を知った時から3年」「行為の時から20年」と規定する。また民法第724条の2（2020年改正）は、人の生命・身体侵害による損害賠償請求権の時効を「知った時から5年」とした。",
+    "point": "一般不法行為：知った時から3年・行為時から20年。人身損害：知った時から5年（724条の2）。",
+    "commonMistake": "人身損害の特則（5年）を見落としやすい。一般の不法行為と区別する。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第724条・第724条の2",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第724条（不法行為による損害賠償請求権の消滅時効）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["民法", "不法行為", "消滅時効"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_007",
+    "questId": "civil_law",
+    "areaId": "family",
+    "subject": "civil_law",
+    "topic": "親族",
+    "subtopic": "婚姻年齢",
+    "format": "true_false",
+    "question": "2022年4月1日施行の改正民法により、婚姻適齢は男女ともに18歳に統一された。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "民法第731条の改正（2022年4月1日施行）により、婚姻適齢が男性18歳・女性16歳から、男女ともに18歳に統一された。これは成年年齢の引き下げ（18歳への統一）と同時に行われた改正である。",
+    "point": "2022年改正後：婚姻適齢 = 男女ともに18歳。改正前の女性16歳は廃止。",
+    "commonMistake": "改正前の「男18歳・女16歳」を答えてしまう。現行法は男女とも18歳。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第731条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第731条（婚姻適齢）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["民法", "婚姻", "婚姻適齢", "改正"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_008",
+    "questId": "civil_law",
+    "areaId": "inheritance",
+    "subject": "civil_law",
+    "topic": "相続",
+    "subtopic": "法定相続分",
+    "format": "multiple_choice",
+    "question": "被相続人の配偶者と子が相続人である場合の法定相続分として正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "配偶者1/2、子1/2" },
+      { "id": "b", "text": "配偶者2/3、子1/3" },
+      { "id": "c", "text": "配偶者1/3、子2/3" },
+      { "id": "d", "text": "配偶者3/4、子1/4" }
+    ],
+    "answer": "a",
+    "explanation": "民法第900条第1号は、配偶者と子が相続人のときの法定相続分を、配偶者1/2・子1/2と規定している。子が複数いる場合は子の相続分（1/2）を等分する。",
+    "point": "配偶者＋子 → 配偶者1/2・子1/2。配偶者＋直系尊属 → 配偶者2/3・直系尊属1/3。配偶者＋兄弟姉妹 → 配偶者3/4・兄弟姉妹1/4。",
+    "commonMistake": "相続人の組み合わせによって相続分が変わる。三つのパターンを整理する。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第900条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第900条（法定相続分）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["民法", "相続", "法定相続分", "配偶者"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_009",
+    "questId": "civil_law",
+    "areaId": "inheritance",
+    "subject": "civil_law",
+    "topic": "相続",
+    "subtopic": "遺留分",
+    "format": "true_false",
+    "question": "直系尊属のみが相続人である場合、遺留分の割合は相続財産の3分の1である。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "民法第1042条第1項第1号は、直系尊属のみが相続人である場合の遺留分を「被相続人の財産の3分の1」と規定している。それ以外の場合（配偶者・子・兄弟姉妹）は原則「被相続人の財産の2分の1」（兄弟姉妹に遺留分なし）。",
+    "point": "遺留分：直系尊属のみ = 1/3。それ以外 = 1/2。兄弟姉妹には遺留分なし。",
+    "commonMistake": "すべて1/2と誤解しやすい。直系尊属のみの場合は例外的に1/3。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第1042条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第1042条（遺留分の帰属及びその割合）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["民法", "相続", "遺留分", "直系尊属"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_010",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "時効の更新",
+    "format": "multiple_choice",
+    "question": "消滅時効の「更新」事由として正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "仮差押え" },
+      { "id": "b", "text": "催告" },
+      { "id": "c", "text": "確定判決による権利の確定" },
+      { "id": "d", "text": "協議を行う旨の合意" }
+    ],
+    "answer": "c",
+    "explanation": "民法第147条第2項は、時効の「更新」（時効期間のリセット）事由として、裁判上の請求等による権利の確定（確定判決等）を挙げる。仮差押え・催告・協議合意は「完成猶予」にとどまり、更新事由ではない。",
+    "point": "更新 = 時効リセット（確定判決等）。完成猶予 = 一時停止（催告・仮差押え・協議合意等）。",
+    "commonMistake": "完成猶予と更新を混同しやすい。催告は猶予（6か月）のみで更新ではない。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "民法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
+        "lawName": "民法",
+        "article": "第147条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "民法 第147条（裁判上の請求等による時効の完成猶予及び更新）",
+        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["民法", "消滅時効", "時効の更新", "完成猶予"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  }
+]

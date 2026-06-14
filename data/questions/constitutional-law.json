@@ -1,0 +1,448 @@
+[
+  {
+    "id": "const_001",
+    "questId": "constitutional_law",
+    "areaId": "human_rights",
+    "subject": "constitutional_law",
+    "topic": "人権",
+    "subtopic": "幸福追求権",
+    "format": "true_false",
+    "question": "憲法第13条の幸福追求権は、個人の人格的生存に不可欠な利益の享受を求める権利として、プライバシー権の憲法上の根拠とされている。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "憲法第13条の幸福追求権は、個人の尊重・生命・自由・幸福追求の権利を保障する包括的人権規定である。判例・通説は、憲法に明文規定のない新しい人権（プライバシー権・自己決定権等）の根拠条文として13条を用いる。",
+    "point": "13条 = 包括的人権規定。プライバシー権・自己決定権等の根拠。明文のない人権はここから導く。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第13条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第13条（個人の尊重・幸福追求権）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["憲法", "幸福追求権", "プライバシー権", "13条"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_002",
+    "questId": "constitutional_law",
+    "areaId": "human_rights",
+    "subject": "constitutional_law",
+    "topic": "人権",
+    "subtopic": "法の下の平等",
+    "format": "multiple_choice",
+    "question": "憲法第14条の「法の下の平等」について、最高裁判所が採用している考え方として正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "絶対的平等説（一切の差別を禁ずる）" },
+      { "id": "b", "text": "相対的平等説（合理的な差別は許容される）" },
+      { "id": "c", "text": "形式的平等説（法律の適用における平等のみを保障する）" },
+      { "id": "d", "text": "結果平等説（結果の平等を保障する）" }
+    ],
+    "answer": "b",
+    "explanation": "最高裁判所は相対的平等説を採用しており、合理的な理由に基づく差別的取扱いは許容されるとしている。性別・人種等による差別は禁止されるが、事柄の性質に応じた合理的区別は平等原則に反しない。",
+    "point": "最高裁 = 相対的平等説。合理的な区別はOK。不合理な差別がNG。",
+    "commonMistake": "一切の差別が禁じられると誤解しやすい。合理的区別は許容される。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第14条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第14条（法の下の平等）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["憲法", "平等原則", "14条", "相対的平等"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_003",
+    "questId": "constitutional_law",
+    "areaId": "human_rights",
+    "subject": "constitutional_law",
+    "topic": "人権",
+    "subtopic": "検閲の禁止",
+    "format": "true_false",
+    "question": "憲法第21条第2項の「検閲」は、公権力が外に発表される思想の内容を事前に審査し、不適当と認める場合に発表を禁止することをいい、絶対的に禁止される。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "最高裁大法廷判決（昭和59年12月12日・税関検査事件）は、検閲を「行政権が主体となって、思想内容等の表現物を対象とし、その全部又は一部の発表の禁止を目的として、対象とされる一定の表現物につき網羅的一般的に、発表前にその内容を審査した上、不適当と認めるものの発表を禁止すること」と定義し、絶対的に禁止されるとした。",
+    "point": "検閲の定義：発表前・行政権・網羅的審査・禁止目的。21条2項は絶対的禁止（例外なし）。",
+    "sources": [
+      {
+        "type": "case",
+        "title": "税関検査事件（最大判昭和59年12月12日）",
+        "organization": "最高裁判所",
+        "caseName": "税関検査違憲訴訟",
+        "decisionDate": "1984-12-12",
+        "checkedAt": "2026-06-14"
+      },
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第21条第2項",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第21条（表現の自由・通信の秘密）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      },
+      {
+        "type": "case",
+        "title": "最大判昭和59年12月12日（税関検査事件）",
+        "description": "検閲の定義と絶対的禁止を確立した判例"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["憲法", "表現の自由", "検閲", "21条", "税関検査事件"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_004",
+    "questId": "constitutional_law",
+    "areaId": "human_rights",
+    "subject": "constitutional_law",
+    "topic": "人権",
+    "subtopic": "職業選択の自由",
+    "format": "multiple_choice",
+    "question": "職業選択の自由に対する規制について、最高裁判所が用いる審査基準として正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "すべての規制に最も厳格な審査を行う" },
+      { "id": "b", "text": "消極目的規制には厳格な合理性の基準、積極目的規制には明白性の基準を適用する" },
+      { "id": "c", "text": "立法裁量を全面的に尊重し、一切審査しない" },
+      { "id": "d", "text": "規制目的にかかわらず、常に比例原則のみで判断する" }
+    ],
+    "answer": "b",
+    "explanation": "最高裁大法廷判決（昭和50年4月30日・薬事法違憲判決）は、職業選択の自由への規制について、消極目的規制（危険防止・秩序維持）には「厳格な合理性の基準」、積極目的規制（社会政策・経済政策）には「明白性の基準（明白に不合理でない限り合憲）」を適用するとした。",
+    "point": "薬事法判決の2分法：消極目的 = 厳格な合理性。積極目的 = 明白性の基準。",
+    "commonMistake": "目的の違いで審査基準が変わることを見落としやすい。",
+    "sources": [
+      {
+        "type": "case",
+        "title": "薬事法距離制限違憲判決（最大判昭和50年4月30日）",
+        "organization": "最高裁判所",
+        "caseName": "薬事法違憲訴訟",
+        "decisionDate": "1975-04-30",
+        "checkedAt": "2026-06-14"
+      },
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第22条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第22条（職業選択の自由）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      },
+      {
+        "type": "case",
+        "title": "最大判昭和50年4月30日（薬事法違憲判決）",
+        "description": "職業規制の二分論を確立した重要判例"
+      }
+    ],
+    "difficulty": 4,
+    "tags": ["憲法", "職業選択の自由", "22条", "薬事法判決", "違憲審査基準"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_005",
+    "questId": "constitutional_law",
+    "areaId": "human_rights",
+    "subject": "constitutional_law",
+    "topic": "人権",
+    "subtopic": "財産権",
+    "format": "true_false",
+    "question": "憲法第29条第2項により、財産権の内容は公共の福祉に適合するように法律で定められる。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "憲法第29条第2項は「財産権の内容は、公共の福祉に適合するやうに、法律でこれを定める」と規定している。財産権は保障されつつも、公共の福祉による制約を受け得る権利であり、その内容は法律によって形成される。",
+    "point": "財産権 = 保障されるが法律で内容形成可能（29条2項）。損失補償は3項（正当な補償）。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第29条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第29条（財産権）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["憲法", "財産権", "29条", "公共の福祉"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_006",
+    "questId": "constitutional_law",
+    "areaId": "governance",
+    "subject": "constitutional_law",
+    "topic": "統治",
+    "subtopic": "国会の地位",
+    "format": "multiple_choice",
+    "question": "憲法第41条の「国会は、国の唯一の立法機関である」の意味として正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "国会中心立法の原則と国会単独立法の原則の両方を意味する" },
+      { "id": "b", "text": "行政機関による委任立法を完全に禁止する" },
+      { "id": "c", "text": "条約締結には国会の承認が不要であることを意味する" },
+      { "id": "d", "text": "地方公共団体が条例を制定できないことを意味する" }
+    ],
+    "answer": "a",
+    "explanation": "「唯一の立法機関」は、①国会中心立法の原則（立法は原則として国会がなす）と②国会単独立法の原則（国会以外の機関の参与なしに立法できる）を意味する。委任立法・条例・議院規則等は例外として認められる。",
+    "point": "唯一の立法機関 = 国会中心立法の原則 ＋ 国会単独立法の原則。委任立法・条例は例外として許容。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第41条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第41条（国会の地位・立法権）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["憲法", "国会", "41条", "唯一の立法機関"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_007",
+    "questId": "constitutional_law",
+    "areaId": "governance",
+    "subject": "constitutional_law",
+    "topic": "統治",
+    "subtopic": "衆議院の解散",
+    "format": "true_false",
+    "question": "内閣は、衆議院で不信任の決議案を可決し、または信任の決議案を否決したときは、10日以内に衆議院が解散されない限り、総辞職をしなければならない。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "憲法第69条は「内閣は、衆議院で不信任の決議案を可決し、又は信任の決議案を否決したときは、10日以内に衆議院が解散されない限り、総辞職をしなければならない」と規定している。解散か総辞職かを選択できる。",
+    "point": "69条解散：不信任決議後10日以内に解散 OR 総辞職の二択。7条解散（天皇の国事行為）とは別。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第69条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第69条（内閣不信任決議の効果）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 2,
+    "tags": ["憲法", "内閣", "衆議院解散", "69条", "不信任決議"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_008",
+    "questId": "constitutional_law",
+    "areaId": "governance",
+    "subject": "constitutional_law",
+    "topic": "統治",
+    "subtopic": "内閣の連帯責任",
+    "format": "multiple_choice",
+    "question": "内閣が行政権の行使について国会に対し連帯して責任を負うことを定めた憲法の条文はどれか。",
+    "choices": [
+      { "id": "a", "text": "第66条第3項" },
+      { "id": "b", "text": "第68条第1項" },
+      { "id": "c", "text": "第70条" },
+      { "id": "d", "text": "第72条" }
+    ],
+    "answer": "a",
+    "explanation": "憲法第66条第3項は「内閣は、行政権の行使について、国会に対し連帯して責任を負ふ」と規定し、議院内閣制の基本原則たる連帯責任を明文化している。68条は国務大臣の任命、70条は内閣総辞職、72条は内閣総理大臣の職務を定める。",
+    "point": "内閣の国会への連帯責任 = 66条3項。議院内閣制の核心規定。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第66条第3項",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第66条（内閣の組織・連帯責任）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["憲法", "内閣", "連帯責任", "66条", "議院内閣制"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_009",
+    "questId": "constitutional_law",
+    "areaId": "governance",
+    "subject": "constitutional_law",
+    "topic": "統治",
+    "subtopic": "裁判官の独立",
+    "format": "true_false",
+    "question": "憲法第76条第3項は、すべての裁判官はその良心に従い独立してその職権を行い、この憲法及び法律にのみ拘束されると規定している。",
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
+    "answer": "true",
+    "explanation": "憲法第76条第3項は「すべて裁判官は、その良心に従ひ独立してその職権を行ひ、この憲法及び法律にのみ拘束される」と規定している。裁判官は上司の命令・世論・政治的圧力に拘束されず、憲法と法律にのみ従う。",
+    "point": "司法権の独立 = 裁判官は憲法・法律にのみ拘束（76条3項）。命令・規則・処分への審査権も76条1項。",
+    "sources": [
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第76条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第76条（司法権・裁判所）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 1,
+    "tags": ["憲法", "司法権", "裁判官の独立", "76条"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "const_010",
+    "questId": "constitutional_law",
+    "areaId": "important_cases",
+    "subject": "constitutional_law",
+    "topic": "重要判例",
+    "subtopic": "違憲審査制",
+    "format": "multiple_choice",
+    "question": "日本の違憲審査制について正しいものはどれか。",
+    "choices": [
+      { "id": "a", "text": "付随的違憲審査制を採用しており、具体的な事件を通じて法令の違憲審査を行う" },
+      { "id": "b", "text": "抽象的違憲審査制を採用しており、具体的な事件なしに法令の合憲性を審査できる" },
+      { "id": "c", "text": "最高裁判所のみが違憲審査権を持ち、下級裁判所には違憲審査権がない" },
+      { "id": "d", "text": "違憲判決が確定すると、当該法律は自動的に廃止される" }
+    ],
+    "answer": "a",
+    "explanation": "日本は付随的違憲審査制（具体的規範統制）を採用しており、具体的な事件の解決に必要な範囲で違憲審査を行う。下級裁判所も違憲審査権を持つ（最大判昭和25年2月1日）。最高裁は終審裁判所として最終的な憲法判断を行う（81条）。",
+    "point": "日本 = 付随的違憲審査制（具体的事件が必要）。抽象的違憲審査制（ドイツ等）とは異なる。",
+    "commonMistake": "最高裁のみが違憲審査権を持つと誤解しやすい。下級裁判所も審査権あり（最高裁が終審）。",
+    "sources": [
+      {
+        "type": "case",
+        "title": "最大判昭和25年2月1日",
+        "organization": "最高裁判所",
+        "decisionDate": "1950-02-01",
+        "checkedAt": "2026-06-14"
+      },
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第81条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "日本国憲法 第81条（法令審査権と最高裁判所）",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION"
+      }
+    ],
+    "difficulty": 3,
+    "tags": ["憲法", "違憲審査", "付随的違憲審査制", "81条"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  }
+]

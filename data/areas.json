@@ -1,0 +1,100 @@
+[
+  {
+    "id": "administrative_law_general",
+    "questId": "administrative_law",
+    "title": "行政法総論",
+    "description": "行政法の基本原則・行政行為・行政裁量",
+    "order": 1
+  },
+  {
+    "id": "administrative_procedure_act",
+    "questId": "administrative_law",
+    "title": "行政手続法",
+    "description": "申請・審査基準・処分基準・聴聞・弁明",
+    "order": 2
+  },
+  {
+    "id": "administrative_appeals_act",
+    "questId": "administrative_law",
+    "title": "行政不服審査法",
+    "description": "審査請求・再調査・再審査",
+    "order": 3
+  },
+  {
+    "id": "administrative_litigation_act",
+    "questId": "administrative_law",
+    "title": "行政事件訴訟法",
+    "description": "取消訴訟・無効確認訴訟・不作為違法確認訴訟",
+    "order": 4
+  },
+  {
+    "id": "state_compensation_act",
+    "questId": "administrative_law",
+    "title": "国家賠償法",
+    "description": "公権力行使による損害賠償・営造物の瑕疵",
+    "order": 5
+  },
+  {
+    "id": "local_autonomy_act",
+    "questId": "administrative_law",
+    "title": "地方自治法",
+    "description": "地方公共団体の種類・組織・権限",
+    "order": 6
+  },
+  {
+    "id": "general_provisions",
+    "questId": "civil_law",
+    "title": "総則",
+    "description": "人・法人・代理・時効・意思表示",
+    "order": 1
+  },
+  {
+    "id": "real_rights",
+    "questId": "civil_law",
+    "title": "物権",
+    "description": "所有権・用益物権・担保物権・物権変動",
+    "order": 2
+  },
+  {
+    "id": "obligations",
+    "questId": "civil_law",
+    "title": "債権",
+    "description": "契約・不当利得・不法行為・債権総論",
+    "order": 3
+  },
+  {
+    "id": "family",
+    "questId": "civil_law",
+    "title": "親族",
+    "description": "婚姻・離婚・親子・後見",
+    "order": 4
+  },
+  {
+    "id": "inheritance",
+    "questId": "civil_law",
+    "title": "相続",
+    "description": "相続人・相続分・遺言・遺留分",
+    "order": 5
+  },
+  {
+    "id": "human_rights",
+    "questId": "constitutional_law",
+    "title": "人権",
+    "description": "基本的人権の保障・各種人権規定",
+    "order": 1
+  },
+  {
+    "id": "governance",
+    "questId": "constitutional_law",
+    "title": "統治",
+    "description": "国会・内閣・裁判所・地方自治",
+    "order": 2
+  },
+  {
+    "id": "important_cases",
+    "questId": "constitutional_law",
+    "title": "重要判例",
+    "description": "違憲審査・主要最高裁判例",
+    "order": 3
+  }
+]

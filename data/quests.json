@@ -1,0 +1,23 @@
+[
+  {
+    "id": "administrative_law",
+    "title": "行政法クエスト",
+    "subject": "administrative_law",
+    "description": "行政手続法・行政不服審査法・行政事件訴訟法・国家賠償法・地方自治法を攻略する",
+    "order": 1
+  },
+  {
+    "id": "civil_law",
+    "title": "民法クエスト",
+    "subject": "civil_law",
+    "description": "総則・物権・債権・親族・相続を攻略する",
+    "order": 2
+  },
+  {
+    "id": "constitutional_law",
+    "title": "憲法クエスト",
+    "subject": "constitutional_law",
+    "description": "人権・統治・重要判例を攻略する",
+    "order": 3
+  }
+]
