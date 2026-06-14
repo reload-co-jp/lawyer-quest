@@ -14,32 +14,33 @@ export const RetryClient: FC = () => {
   useEffect(() => {
     const wrongs = getWrongQuestions()
     const ids = wrongs.map((w) => w.questionId)
-    const qs = getQuestionsByIds(ids)
-    setQuestions(shuffle(qs))
+    setQuestions(shuffle(getQuestionsByIds(ids)))
   }, [])
 
   if (questions === null) return null
 
   if (questions.length === 0) {
     return (
-      <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center", padding: "4rem 1rem" }}>
-        <p style={{ fontSize: "3rem", marginBottom: "1rem" }}>🎉</p>
-        <h2 style={{ color: "#e2e8f0", marginBottom: ".5rem" }}>再挑戦リストは空です</h2>
-        <p style={{ color: "#94a3b8", marginBottom: "2rem" }}>
+      <div style={{ maxWidth: "480px", margin: "4rem auto", textAlign: "center", padding: "0 1rem" }}>
+        <p style={{ fontSize: "2rem", marginBottom: "1rem" }}>🎉</p>
+        <h2 style={{ color: "var(--text-1)", fontWeight: 700, marginBottom: ".5rem", fontSize: "1.125rem" }}>
+          再挑戦リストは空です
+        </h2>
+        <p style={{ color: "var(--text-2)", marginBottom: "2rem", fontSize: ".875rem" }}>
           間違えた問題がないか、すべて攻略済みです。
         </p>
         <Link
           href="/quests"
           style={{
-            padding: ".875rem 2rem",
-            background: "#4f46e5",
-            borderRadius: ".75rem",
+            padding: ".5rem 1.125rem",
+            background: "var(--accent-btn)",
             color: "#fff",
             textDecoration: "none",
-            fontWeight: 700,
+            fontWeight: 600,
+            fontSize: ".875rem",
           }}
         >
-          クエストに挑戦する
+          クエストに挑戦する →
         </Link>
       </div>
     )
@@ -49,16 +50,18 @@ export const RetryClient: FC = () => {
     <div>
       <div
         style={{
-          textAlign: "center",
-          padding: ".75rem",
-          background: "#1a1a3e",
-          borderBottom: "2px solid #ef4444",
-          marginBottom: "1rem",
-          borderRadius: ".5rem",
+          padding: ".625rem 1rem",
+          background: "var(--surface)",
+          borderBottom: "1px solid rgba(248,113,113,0.2)",
+          marginBottom: "1.5rem",
+          display: "flex",
+          alignItems: "center",
+          gap: ".625rem",
         }}
       >
-        <p style={{ margin: 0, fontWeight: 700, color: "#ef4444" }}>
-          ⚔ 再挑戦クエスト（{questions.length}問）
+        <div style={{ width: "5px", height: "5px", background: "var(--error)" }} />
+        <p style={{ margin: 0, fontWeight: 600, color: "var(--error)", fontSize: ".875rem" }}>
+          再挑戦クエスト — {questions.length}問
         </p>
       </div>
       <ChallengeClient questions={questions} questId="random" isRetry={true} />

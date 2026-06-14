@@ -1,11 +1,46 @@
-* {
+*, *::before, *::after {
   box-sizing: border-box;
-  font-family: sans-serif;
   margin: 0;
+  padding: 0;
 }
 
 :root {
-  background: #333;
-  color: #f0f0f0;
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #161616;
+  --surface-3: #1c1c1c;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-2: rgba(255, 255, 255, 0.12);
+  --text-1: #f1f1f0;
+  --text-2: #8a8a8a;
+  --text-3: #4a4a4a;
+  --accent: #00b8cc;
+  --accent-hover: #00d0e8;
+  --accent-btn: #007a8a;
+  --accent-btn-hover: #008fa0;
+  --admin: #009fc4;
+  --civil: #00c97a;
+  --const: #9b44e0;
+  --success: #00c97a;
+  --error: #e0325a;
+  --warning: #d4a800;
+  --radius-sm: 0px;
+  --radius: 0px;
+  --radius-lg: 0px;
+
   color-scheme: dark;
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: "Kaisei Tokumin", Georgia, serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
 }

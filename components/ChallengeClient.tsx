@@ -6,8 +6,7 @@ import type { Question } from "types/question"
 import type { QuestId } from "types/quest"
 import { ChoiceList } from "components/ChoiceList"
 import { ExplanationBox } from "components/ExplanationBox"
-import { recordAnswer } from "lib/storage"
-import { removeWrongQuestion } from "lib/storage"
+import { recordAnswer, removeWrongQuestion } from "lib/storage"
 import { getAreaById } from "lib/quests"
 
 type Props = {
@@ -26,56 +25,61 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
 
   const current = questions[currentIndex]
   const area = current ? getAreaById(current.areaId) : null
-  const progress = `${currentIndex + 1} / ${questions.length}`
 
   if (!current || finished) {
     const correct = results.filter((r) => r.isCorrect).length
     const total = results.length
+    const pct = total > 0 ? Math.round((correct / total) * 100) : 0
     return (
-      <div style={{ maxWidth: "640px", margin: "0 auto", padding: "2rem 1rem", textAlign: "center" }}>
+      <div style={{ maxWidth: "480px", margin: "3rem auto", padding: "0 1rem" }}>
         <div
           style={{
-            background: "#1a1a3e",
-            border: "1px solid #2a2a5a",
-            borderRadius: "1rem",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius-lg)",
             padding: "2rem",
+            textAlign: "center",
           }}
         >
-          <p style={{ fontSize: "2rem", marginBottom: ".5rem" }}>🏆</p>
-          <h2 style={{ color: "#e2e8f0", margin: "0 0 1rem" }}>クエスト完了！</h2>
-          <p style={{ fontSize: "2.5rem", fontWeight: 700, color: "#818cf8", margin: "0 0 .5rem" }}>
-            {correct} / {total}
+          <p style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏆</p>
+          <h2 style={{ color: "var(--text-1)", fontWeight: 700, marginBottom: ".5rem", fontSize: "1.125rem" }}>
+            クエスト完了
+          </h2>
+          <p style={{ fontSize: "3rem", fontWeight: 700, color: "var(--accent)", letterSpacing: "-.03em", margin: ".5rem 0 .25rem" }}>
+            {pct}<span style={{ fontSize: "1.25rem" }}>%</span>
           </p>
-          <p style={{ color: "#94a3b8", margin: "0 0 2rem" }}>
-            正答率: {total > 0 ? Math.round((correct / total) * 100) : 0}%
+          <p style={{ fontSize: ".875rem", color: "var(--text-2)", marginBottom: "2rem" }}>
+            {correct} / {total} 問正解
           </p>
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: ".5rem", justifyContent: "center", flexWrap: "wrap" }}>
             <Link
               href="/quests"
               style={{
-                padding: ".75rem 1.5rem",
+                padding: ".5rem 1rem",
                 background: "transparent",
-                border: "1px solid #4f46e5",
-                borderRadius: ".625rem",
-                color: "#818cf8",
+                border: "1px solid var(--border-2)",
+                borderRadius: "var(--radius-sm)",
+                color: "var(--text-2)",
                 textDecoration: "none",
-                fontWeight: 600,
+                fontSize: ".875rem",
+                fontWeight: 500,
               }}
             >
-              クエスト一覧へ
+              クエスト一覧
             </Link>
             <Link
               href="/progress"
               style={{
-                padding: ".75rem 1.5rem",
-                background: "#4f46e5",
-                borderRadius: ".625rem",
+                padding: ".5rem 1rem",
+                background: "var(--accent-btn)",
+                borderRadius: "var(--radius-sm)",
                 color: "#fff",
                 textDecoration: "none",
+                fontSize: ".875rem",
                 fontWeight: 600,
               }}
             >
-              攻略率を確認
+              攻略率を確認 →
             </Link>
           </div>
         </div>
@@ -92,7 +96,6 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
     if (!selectedAnswer || revealed) return
     const isCorrect = selectedAnswer === current.answer
     setRevealed(true)
-
     recordAnswer({
       questionId: current.id,
       questId: questId === "random" ? current.questId : questId,
@@ -101,7 +104,6 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
       isCorrect,
       answeredAt: new Date().toISOString(),
     })
-
     setResults((prev) => [...prev, { questionId: current.id, isCorrect }])
   }
 
@@ -121,36 +123,53 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
     handleNext()
   }
 
+  const progress = ((currentIndex + 1) / questions.length) * 100
+
   return (
-    <div style={{ maxWidth: "640px", margin: "0 auto", padding: "1rem" }}>
-      <div style={{ marginBottom: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 1rem" }}>
+      <div style={{ marginBottom: "1.25rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Link
           href={questId === "random" ? "/quests" : `/quests/${questId}`}
-          style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}
+          style={{ fontSize: ".8125rem", color: "var(--text-2)", textDecoration: "none" }}
         >
           ← 戻る
         </Link>
-        <span style={{ fontSize: ".875rem", color: "#94a3b8" }}>{progress}</span>
+        <span style={{ fontSize: ".8125rem", color: "var(--text-3)", fontVariantNumeric: "tabular-nums" }}>
+          {currentIndex + 1} / {questions.length}
+        </span>
       </div>
 
       <div
         style={{
-          background: "#1a1a3e",
-          border: "1px solid #2a2a5a",
-          borderRadius: ".75rem",
+          height: "2px",
+          background: "var(--border)",
+          borderRadius: "1px",
+          marginBottom: "1.5rem",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ height: "100%", width: `${progress}%`, background: "var(--accent)", borderRadius: "1px" }} />
+      </div>
+
+      <div
+        style={{
+          background: "var(--surface)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius)",
           padding: "1.25rem",
           marginBottom: "1rem",
         }}
       >
-        <div style={{ marginBottom: ".75rem", display: "flex", gap: ".5rem", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: ".375rem", flexWrap: "wrap", marginBottom: ".875rem" }}>
           {area && (
             <span
               style={{
-                fontSize: ".75rem",
-                padding: ".25rem .625rem",
-                background: "#0f0f23",
-                borderRadius: "999px",
-                color: "#94a3b8",
+                fontSize: ".6875rem",
+                padding: ".2rem .5rem",
+                background: "var(--surface-2)",
+                borderRadius: "99px",
+                color: "var(--text-2)",
+                border: "1px solid var(--border)",
               }}
             >
               {area.title}
@@ -158,29 +177,31 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           )}
           <span
             style={{
-              fontSize: ".75rem",
-              padding: ".25rem .625rem",
-              background: "#0f0f23",
-              borderRadius: "999px",
-              color: "#94a3b8",
+              fontSize: ".6875rem",
+              padding: ".2rem .5rem",
+              background: "var(--surface-2)",
+              borderRadius: "99px",
+              color: "var(--text-2)",
+              border: "1px solid var(--border)",
             }}
           >
-            難易度: {"★".repeat(current.difficulty)}{"☆".repeat(5 - current.difficulty)}
+            {"★".repeat(current.difficulty)}{"☆".repeat(5 - current.difficulty)}
           </span>
           <span
             style={{
-              fontSize: ".75rem",
-              padding: ".25rem .625rem",
-              background: "#0f0f23",
-              borderRadius: "999px",
-              color: "#94a3b8",
+              fontSize: ".6875rem",
+              padding: ".2rem .5rem",
+              background: "var(--surface-2)",
+              borderRadius: "99px",
+              color: "var(--text-2)",
+              border: "1px solid var(--border)",
             }}
           >
-            {current.format === "true_false" ? "○×問題" : "4択問題"}
+            {current.format === "true_false" ? "○×" : "4択"}
           </span>
         </div>
 
-        <p style={{ fontSize: "1rem", color: "#e2e8f0", lineHeight: 1.7, margin: 0 }}>
+        <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, margin: 0 }}>
           {current.question}
         </p>
       </div>
@@ -198,62 +219,58 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           onClick={handleReveal}
           disabled={!selectedAnswer}
           style={{
-            marginTop: "1rem",
+            marginTop: ".875rem",
             width: "100%",
-            padding: ".875rem",
-            background: selectedAnswer ? "#4f46e5" : "#2a2a5a",
-            border: "none",
-            borderRadius: ".625rem",
-            color: selectedAnswer ? "#fff" : "#64748b",
-            fontSize: "1rem",
+            padding: ".75rem",
+            background: selectedAnswer ? "var(--accent-btn)" : "var(--surface-2)",
+            border: "1px solid " + (selectedAnswer ? "var(--accent-btn)" : "var(--border)"),
+            borderRadius: "var(--radius-sm)",
+            color: selectedAnswer ? "#fff" : "var(--text-3)",
+            fontSize: ".9375rem",
             fontWeight: 600,
             cursor: selectedAnswer ? "pointer" : "not-allowed",
+            letterSpacing: "-.01em",
           }}
         >
           解答する
         </button>
       )}
 
-      {revealed && (
-        <ExplanationBox
-          question={current}
-          selectedAnswer={selectedAnswer!}
-          isCorrect={selectedAnswer === current.answer}
-        />
-      )}
+      {revealed && <ExplanationBox question={current} selectedAnswer={selectedAnswer!} isCorrect={selectedAnswer === current.answer} />}
 
       {revealed && (
-        <div style={{ marginTop: "1rem", display: "flex", gap: ".75rem" }}>
+        <div style={{ marginTop: ".875rem", display: "flex", gap: ".5rem" }}>
           {isRetry && !mastered.includes(current.id) && (
             <button
               onClick={handleMastered}
               style={{
                 flex: 1,
-                padding: ".875rem",
+                padding: ".75rem",
                 background: "transparent",
-                border: "1px solid #22c55e",
-                borderRadius: ".625rem",
-                color: "#22c55e",
-                fontSize: ".875rem",
+                border: "1px solid rgba(74,222,128,0.3)",
+                borderRadius: "var(--radius-sm)",
+                color: "var(--success)",
+                fontSize: ".8125rem",
                 fontWeight: 600,
                 cursor: "pointer",
               }}
             >
-              ✓ 攻略済みにする
+              ✓ 攻略済み
             </button>
           )}
           <button
             onClick={handleNext}
             style={{
               flex: 2,
-              padding: ".875rem",
-              background: "#4f46e5",
+              padding: ".75rem",
+              background: "var(--accent-btn)",
               border: "none",
-              borderRadius: ".625rem",
+              borderRadius: "var(--radius-sm)",
               color: "#fff",
-              fontSize: "1rem",
+              fontSize: ".9375rem",
               fontWeight: 600,
               cursor: "pointer",
+              letterSpacing: "-.01em",
             }}
           >
             {currentIndex + 1 >= questions.length ? "結果を見る" : "次の問題 →"}

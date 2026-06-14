@@ -7,69 +7,55 @@ export function generateStaticParams() {
 }
 
 const SUBJECT_COLOR: Record<string, string> = {
-  administrative_law: "#60a5fa",
-  civil_law: "#34d399",
-  constitutional_law: "#a78bfa",
+  administrative_law: "var(--admin)",
+  civil_law: "var(--civil)",
+  constitutional_law: "var(--const)",
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ articleId: string }> }) {
   const { articleId } = await params
   const result = getArticleContent(articleId)
-  if (!result) return <p style={{ color: "#ef4444" }}>記事が見つかりません。</p>
+  if (!result) return <p style={{ color: "var(--error)" }}>記事が見つかりません。</p>
 
   const { meta, html } = result
-  const color = SUBJECT_COLOR[meta.subject] ?? "#818cf8"
+  const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
 
   return (
-    <div style={{ maxWidth: "760px", margin: "0 auto" }}>
-      <div style={{ marginBottom: "1.5rem" }}>
-        <Link
-          href="/articles"
-          style={{ fontSize: ".8125rem", color: "#64748b", textDecoration: "none" }}
-        >
-          ← 記事一覧
+    <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+      <div style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: ".5rem" }}>
+        <Link href="/articles" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
+          記事
         </Link>
-        <p
-          style={{
-            fontSize: ".75rem",
-            color,
-            fontWeight: 700,
-            margin: ".75rem 0 .25rem",
-            textTransform: "uppercase",
-            letterSpacing: ".05em",
-          }}
-        >
-          {meta.subjectLabel}
-        </p>
+        <span style={{ color: "var(--text-3)", fontSize: ".8125rem" }}>/</span>
+        <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>{meta.subjectLabel}</span>
       </div>
 
-      <article
-        className="prose"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
 
       <div
         style={{
           marginTop: "2.5rem",
-          paddingTop: "1.5rem",
-          borderTop: "1px solid #2a2a5a",
+          paddingTop: "1.25rem",
+          borderTop: "1px solid var(--border)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          gap: "1rem",
+          flexWrap: "wrap",
         }}
       >
-        <Link href="/articles" style={{ fontSize: ".875rem", color: "#818cf8", textDecoration: "none" }}>
-          ← 記事一覧に戻る
+        <Link href="/articles" style={{ fontSize: ".875rem", color: "var(--text-2)", textDecoration: "none" }}>
+          ← 記事一覧
         </Link>
         <Link
           href={`/challenge/${meta.subject}`}
           style={{
-            fontSize: ".875rem",
-            fontWeight: 700,
-            color: "#0f0f23",
-            background: color,
-            padding: ".5rem 1rem",
-            borderRadius: ".375rem",
+            padding: ".4375rem .875rem",
+            background: "var(--accent-btn)",
+            borderRadius: "var(--radius-sm)",
+            color: "#fff",
+            fontSize: ".8125rem",
+            fontWeight: 600,
             textDecoration: "none",
           }}
         >

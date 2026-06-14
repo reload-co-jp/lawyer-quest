@@ -10,8 +10,7 @@ export const RandomChallengeClient: FC = () => {
   const [questions, setQuestions] = useState<Question[] | null>(null)
 
   useEffect(() => {
-    const all = getAllQuestions()
-    setQuestions(shuffle(all).slice(0, 10))
+    setQuestions(shuffle(getAllQuestions()).slice(0, 10))
   }, [])
 
   if (!questions) return null
@@ -20,15 +19,19 @@ export const RandomChallengeClient: FC = () => {
     <div>
       <div
         style={{
-          textAlign: "center",
-          padding: ".75rem",
-          background: "#1a1a3e",
-          borderBottom: "2px solid #f59e0b",
-          marginBottom: "1rem",
-          borderRadius: ".5rem",
+          padding: ".625rem 1rem",
+          background: "var(--surface)",
+          borderBottom: "1px solid rgba(251,191,36,0.2)",
+          marginBottom: "1.5rem",
+          display: "flex",
+          alignItems: "center",
+          gap: ".625rem",
         }}
       >
-        <p style={{ margin: 0, fontWeight: 700, color: "#f59e0b" }}>🎲 ランダムチャレンジ（10問）</p>
+        <div style={{ width: "5px", height: "5px", background: "var(--warning)" }} />
+        <p style={{ margin: 0, fontWeight: 600, color: "var(--warning)", fontSize: ".875rem" }}>
+          ランダムチャレンジ — 10問
+        </p>
       </div>
       <ChallengeClient questions={questions} questId="random" />
     </div>

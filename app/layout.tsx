@@ -1,64 +1,90 @@
 import Link from "next/link"
+import { Kaisei_Tokumin } from "next/font/google"
+import { HeaderNav } from "components/HeaderNav"
 import "./reset.css"
 
+const kaisei = Kaisei_Tokumin({ weight: ["400", "700"], subsets: ["latin"] })
+
+const BASE_URL = "https://lawyer-quest.vercel.app"
+
 export const metadata = {
-  title: "Lawyer Quest",
-  description: "法律を、冒険のように攻略する。行政書士試験対策サイト。",
+  title: {
+    default: "Lawyer Quest",
+    template: "%s | Lawyer Quest",
+  },
+  description: "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
+  metadataBase: new URL(BASE_URL),
+  openGraph: {
+    type: "website",
+    siteName: "Lawyer Quest",
+    title: "Lawyer Quest — 行政書士試験対策",
+    description: "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
+    url: BASE_URL,
+    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Lawyer Quest" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lawyer Quest — 行政書士試験対策",
+    description: "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
+    images: ["/og.svg"],
+  },
 }
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="ja">
-      <body style={{ background: "#0f0f23", color: "#e2e8f0", fontFamily: "system-ui, sans-serif" }}>
+    <html lang="ja" className={kaisei.className}>
+      <body>
         <header
           style={{
-            backgroundColor: "#0d0d1f",
-            borderBottom: "1px solid #2a2a5a",
-            padding: ".75rem 1rem",
+            position: "sticky",
+            top: 0,
+            zIndex: 50,
+            height: "44px",
+            backgroundColor: "rgba(10,10,10,0.85)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            borderBottom: "1px solid var(--border)",
+            display: "flex",
+            alignItems: "center",
+            padding: "0 1.25rem",
           }}
         >
           <div
             style={{
-              maxWidth: "1200px",
+              maxWidth: "1100px",
+              width: "100%",
               margin: "0 auto",
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
+              gap: "2rem",
             }}
           >
             <Link
               href="/"
-              style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: ".5rem" }}
+              style={{
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                gap: ".375rem",
+                flexShrink: 0,
+              }}
             >
-              <span style={{ fontSize: "1.25rem", fontWeight: 800, color: "#818cf8", letterSpacing: "-.02em" }}>
-                ⚖️ Lawyer Quest
+              <span style={{ fontSize: "1rem", fontWeight: 700, color: "var(--text-1)", letterSpacing: "-.02em" }}>
+                Lawyer Quest
               </span>
             </Link>
-            <nav style={{ display: "flex", gap: "1.25rem" }}>
-              <Link href="/articles" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
-                記事
-              </Link>
-              <Link href="/quests" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
-                クエスト
-              </Link>
-              <Link href="/challenge/random" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
-                ランダム
-              </Link>
-              <Link href="/retry" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
-                再挑戦
-              </Link>
-              <Link href="/progress" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
-                攻略率
-              </Link>
-            </nav>
+
+            <div style={{ width: "1px", height: "16px", background: "var(--border-2)", flexShrink: 0 }} />
+
+            <HeaderNav />
           </div>
         </header>
 
         <main
           style={{
-            minHeight: "calc(100dvh - 5rem)",
-            padding: "1.5rem 1rem",
-            maxWidth: "1200px",
+            minHeight: "calc(100dvh - 44px - 48px)",
+            padding: "2rem 1.25rem",
+            maxWidth: "1100px",
             margin: "0 auto",
           }}
         >
@@ -67,14 +93,15 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
         <footer
           style={{
-            backgroundColor: "#0d0d1f",
-            borderTop: "1px solid #2a2a5a",
-            padding: "1rem",
-            textAlign: "center",
+            height: "48px",
+            borderTop: "1px solid var(--border)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <p style={{ fontSize: ".75rem", color: "#64748b", margin: 0 }}>
-            &copy; Lawyer Quest — 行政書士試験対策サイト。法律相談ではありません。
+          <p style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
+            Lawyer Quest — 行政書士試験対策。法律相談ではありません。
           </p>
         </footer>
       </body>
