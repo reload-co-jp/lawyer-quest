@@ -112,7 +112,7 @@ function createEmptyProgress(): UserProgress {
     questProgress: {
       administrative_law: {
         questId: "administrative_law",
-        totalQuestions: 10,
+        totalQuestions: 30,
         answeredQuestions: 0,
         correctAnswers: 0,
         wrongAnswers: 0,
@@ -121,7 +121,7 @@ function createEmptyProgress(): UserProgress {
       },
       civil_law: {
         questId: "civil_law",
-        totalQuestions: 10,
+        totalQuestions: 30,
         answeredQuestions: 0,
         correctAnswers: 0,
         wrongAnswers: 0,
@@ -130,7 +130,7 @@ function createEmptyProgress(): UserProgress {
       },
       constitutional_law: {
         questId: "constitutional_law",
-        totalQuestions: 10,
+        totalQuestions: 30,
         answeredQuestions: 0,
         correctAnswers: 0,
         wrongAnswers: 0,

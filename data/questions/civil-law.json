@@ -8,34 +8,14 @@
     "subtopic": "制限行為能力者",
     "format": "true_false",
     "question": "未成年者が法定代理人の同意を得ずに行った法律行為は、未成年者本人のみが取り消すことができる。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "false",
     "explanation": "民法第120条第1項は、行為能力の制限を理由とする取消しは「制限行為能力者又はその代理人、承継人若しくは同意をすることができる者」ができると規定する。本人だけでなく法定代理人も取消権者に含まれる。",
     "point": "取消権者 = 制限行為能力者本人 + 法定代理人・承継人・同意権者。本人限定ではない。",
     "commonMistake": "本人のみが取消できると誤解しやすい。法定代理人も取消可能。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第120条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第120条（取消権者）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第120条", "checkedAt": "2026-06-14" }],
     "difficulty": 2,
-    "tags": ["民法", "制限行為能力", "取消権者", "未成年者"],
+    "tags": ["民法", "制限行為能力", "取消権者"],
     "legalAsOf": "2026-04-01",
     "createdAt": "2026-06-14",
     "updatedAt": "2026-06-14"
@@ -49,34 +29,14 @@
     "subtopic": "錯誤",
     "format": "true_false",
     "question": "錯誤による意思表示の取消しは、善意でかつ過失がない第三者に対抗することができない。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "true",
-    "explanation": "民法第95条第4項（2020年改正後）は、錯誤による意思表示の取消しは「善意でかつ過失がない第三者に対抗することができない」と規定している。これにより第三者保護が明文化された。",
-    "point": "錯誤取消しの対抗不可：善意＋無過失の第三者を保護。「善意のみ」では足りない。",
-    "commonMistake": "詐欺取消し（善意の第三者保護・過失不要）との区別に注意。錯誤は善意＋無過失が必要。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第95条第4項",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第95条（錯誤）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "explanation": "民法第95条第4項（2020年改正後）は、錯誤による意思表示の取消しは「善意でかつ過失がない第三者に対抗することができない」と規定している。",
+    "point": "錯誤取消しの対抗不可：善意＋無過失の第三者を保護。詐欺取消し（善意のみで保護）より要件が厳しい。",
+    "commonMistake": "詐欺取消し（善意の第三者保護・過失不要）との区別。錯誤は善意＋無過失が必要。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第95条第4項", "checkedAt": "2026-06-14" }],
     "difficulty": 3,
-    "tags": ["民法", "錯誤", "第三者保護", "意思表示"],
+    "tags": ["民法", "錯誤", "第三者保護"],
     "legalAsOf": "2026-04-01",
     "createdAt": "2026-06-14",
     "updatedAt": "2026-06-14"
@@ -90,31 +50,11 @@
     "subtopic": "不動産物権変動",
     "format": "true_false",
     "question": "不動産に関する物権の得喪及び変更は、登記をしなければ第三者に対抗することができない。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "true",
-    "explanation": "民法第177条は「不動産に関する物権の得喪及び変更は、不動産登記法その他の登記に関する法律の定めるところに従いその登記をしなければ、第三者に対抗することができない」と規定する。登記が対抗要件となる。",
+    "explanation": "民法第177条は「不動産に関する物権の得喪及び変更は、不動産登記法その他の登記に関する法律の定めるところに従いその登記をしなければ、第三者に対抗することができない」と規定する。",
     "point": "不動産物権変動の対抗要件 = 登記（177条）。動産は引渡し（178条）と区別する。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第177条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第177条（不動産に関する物権の変動の対抗要件）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第177条", "checkedAt": "2026-06-14" }],
     "difficulty": 1,
     "tags": ["民法", "物権変動", "対抗要件", "登記"],
     "legalAsOf": "2026-04-01",
@@ -130,32 +70,12 @@
     "subtopic": "法定利率",
     "format": "true_false",
     "question": "2020年4月1日施行の改正民法により、法定利率は年5分から年3分に変更された。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "true",
     "explanation": "2020年4月1日施行の債権法改正（民法第404条）により、法定利率は従来の年5分（5%）から年3分（3%）に引き下げられた。また、3年ごとに見直される変動制が導入された。",
     "point": "2020年改正で法定利率 5% → 3%。変動制（3年ごと見直し）も導入。",
     "commonMistake": "改正前の5%を答えてしまう。現行法は3%（変動制あり）。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第404条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第404条（法定利率）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第404条", "checkedAt": "2026-06-14" }],
     "difficulty": 2,
     "tags": ["民法", "法定利率", "債権法改正"],
     "legalAsOf": "2026-04-01",
@@ -171,31 +91,11 @@
     "subtopic": "債権譲渡",
     "format": "true_false",
     "question": "債権の譲渡は、当事者間では有効に成立するが、債務者その他の第三者に対抗するためには、譲渡人から債務者への通知または債務者の承諾が必要である。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "true",
-    "explanation": "民法第467条第1項は、債権の譲渡は譲渡人が債務者に通知をし、または債務者が承諾をしなければ、債務者その他の第三者に対抗することができないと規定する。当事者間では通知・承諾なしに効力を生じる。",
+    "explanation": "民法第467条第1項は、債権の譲渡は譲渡人が債務者に通知をし、または債務者が承諾をしなければ、債務者その他の第三者に対抗することができないと規定する。",
     "point": "債権譲渡の対抗要件 = 譲渡人からの通知 OR 債務者の承諾。第三者対抗には確定日付のある証書が必要（467条2項）。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第467条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第467条（債権の譲渡の対抗要件）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第467条", "checkedAt": "2026-06-14" }],
     "difficulty": 2,
     "tags": ["民法", "債権譲渡", "対抗要件"],
     "legalAsOf": "2026-04-01",
@@ -221,24 +121,7 @@
     "explanation": "民法第724条は不法行為の消滅時効を「損害及び加害者を知った時から3年」「行為の時から20年」と規定する。また民法第724条の2（2020年改正）は、人の生命・身体侵害による損害賠償請求権の時効を「知った時から5年」とした。",
     "point": "一般不法行為：知った時から3年・行為時から20年。人身損害：知った時から5年（724条の2）。",
     "commonMistake": "人身損害の特則（5年）を見落としやすい。一般の不法行為と区別する。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第724条・第724条の2",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第724条（不法行為による損害賠償請求権の消滅時効）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第724条・第724条の2", "checkedAt": "2026-06-14" }],
     "difficulty": 3,
     "tags": ["民法", "不法行為", "消滅時効"],
     "legalAsOf": "2026-04-01",
@@ -254,34 +137,14 @@
     "subtopic": "婚姻年齢",
     "format": "true_false",
     "question": "2022年4月1日施行の改正民法により、婚姻適齢は男女ともに18歳に統一された。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "true",
-    "explanation": "民法第731条の改正（2022年4月1日施行）により、婚姻適齢が男性18歳・女性16歳から、男女ともに18歳に統一された。これは成年年齢の引き下げ（18歳への統一）と同時に行われた改正である。",
+    "explanation": "民法第731条の改正（2022年4月1日施行）により、婚姻適齢が男性18歳・女性16歳から、男女ともに18歳に統一された。成年年齢の引き下げ（18歳への統一）と同時に行われた改正である。",
     "point": "2022年改正後：婚姻適齢 = 男女ともに18歳。改正前の女性16歳は廃止。",
     "commonMistake": "改正前の「男18歳・女16歳」を答えてしまう。現行法は男女とも18歳。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第731条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第731条（婚姻適齢）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第731条", "checkedAt": "2026-06-14" }],
     "difficulty": 2,
-    "tags": ["民法", "婚姻", "婚姻適齢", "改正"],
+    "tags": ["民法", "婚姻", "婚姻適齢"],
     "legalAsOf": "2026-04-01",
     "createdAt": "2026-06-14",
     "updatedAt": "2026-06-14"
@@ -304,27 +167,9 @@
     "answer": "a",
     "explanation": "民法第900条第1号は、配偶者と子が相続人のときの法定相続分を、配偶者1/2・子1/2と規定している。子が複数いる場合は子の相続分（1/2）を等分する。",
     "point": "配偶者＋子 → 配偶者1/2・子1/2。配偶者＋直系尊属 → 配偶者2/3・直系尊属1/3。配偶者＋兄弟姉妹 → 配偶者3/4・兄弟姉妹1/4。",
-    "commonMistake": "相続人の組み合わせによって相続分が変わる。三つのパターンを整理する。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第900条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第900条（法定相続分）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第900条", "checkedAt": "2026-06-14" }],
     "difficulty": 2,
-    "tags": ["民法", "相続", "法定相続分", "配偶者"],
+    "tags": ["民法", "相続", "法定相続分"],
     "legalAsOf": "2026-04-01",
     "createdAt": "2026-06-14",
     "updatedAt": "2026-06-14"
@@ -338,34 +183,14 @@
     "subtopic": "遺留分",
     "format": "true_false",
     "question": "直系尊属のみが相続人である場合、遺留分の割合は相続財産の3分の1である。",
-    "choices": [
-      { "id": "true", "text": "正しい" },
-      { "id": "false", "text": "誤り" }
-    ],
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
     "answer": "true",
-    "explanation": "民法第1042条第1項第1号は、直系尊属のみが相続人である場合の遺留分を「被相続人の財産の3分の1」と規定している。それ以外の場合（配偶者・子・兄弟姉妹）は原則「被相続人の財産の2分の1」（兄弟姉妹に遺留分なし）。",
+    "explanation": "民法第1042条第1項第1号は、直系尊属のみが相続人である場合の遺留分を「被相続人の財産の3分の1」と規定している。それ以外の場合は原則「被相続人の財産の2分の1」（兄弟姉妹に遺留分なし）。",
     "point": "遺留分：直系尊属のみ = 1/3。それ以外 = 1/2。兄弟姉妹には遺留分なし。",
     "commonMistake": "すべて1/2と誤解しやすい。直系尊属のみの場合は例外的に1/3。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第1042条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第1042条（遺留分の帰属及びその割合）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第1042条", "checkedAt": "2026-06-14" }],
     "difficulty": 3,
-    "tags": ["民法", "相続", "遺留分", "直系尊属"],
+    "tags": ["民法", "相続", "遺留分"],
     "legalAsOf": "2026-04-01",
     "createdAt": "2026-06-14",
     "updatedAt": "2026-06-14"
@@ -386,29 +211,428 @@
       { "id": "d", "text": "協議を行う旨の合意" }
     ],
     "answer": "c",
-    "explanation": "民法第147条第2項は、時効の「更新」（時効期間のリセット）事由として、裁判上の請求等による権利の確定（確定判決等）を挙げる。仮差押え・催告・協議合意は「完成猶予」にとどまり、更新事由ではない。",
+    "explanation": "民法第147条第2項は、時効の「更新」事由として、裁判上の請求等による権利の確定（確定判決等）を挙げる。仮差押え・催告・協議合意は「完成猶予」にとどまり、更新事由ではない。",
     "point": "更新 = 時効リセット（確定判決等）。完成猶予 = 一時停止（催告・仮差押え・協議合意等）。",
-    "commonMistake": "完成猶予と更新を混同しやすい。催告は猶予（6か月）のみで更新ではない。",
-    "sources": [
-      {
-        "type": "law",
-        "title": "民法",
-        "organization": "e-Gov法令検索",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089",
-        "lawName": "民法",
-        "article": "第147条",
-        "checkedAt": "2026-06-14"
-      }
-    ],
-    "lawLinks": [
-      {
-        "type": "law",
-        "title": "民法 第147条（裁判上の請求等による時効の完成猶予及び更新）",
-        "url": "https://laws.e-gov.go.jp/law/129AC0000000089"
-      }
-    ],
+    "commonMistake": "催告は猶予（6か月）のみで更新ではない。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第147条", "checkedAt": "2026-06-14" }],
     "difficulty": 3,
-    "tags": ["民法", "消滅時効", "時効の更新", "完成猶予"],
+    "tags": ["民法", "消滅時効", "時効の更新"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_011",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "無権代理",
+    "format": "true_false",
+    "question": "無権代理人がした行為は、本人が追認しない限り、本人に対してその効力を生じない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第113条第1項は「代理権を有しない者が他人の代理人としてした契約は、本人がその追認をしなければ、本人に対してその効力を生じない」と規定している。ただし、表見代理が成立する場合は本人に効力が生じる。",
+    "point": "無権代理 = 本人の追認がなければ本人に効力なし（113条1項）。相手方は催告権・取消権を持つ（114条・115条）。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第113条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "無権代理", "追認"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_012",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "消滅時効期間",
+    "format": "true_false",
+    "question": "2020年4月1日施行の改正民法により、債権の一般的な消滅時効期間は、権利を行使することができることを知った時から5年、権利を行使することができる時から10年とされた。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第166条第1項（2020年改正後）は、債権の消滅時効期間について、①権利を行使することができることを知った時から5年、②権利を行使することができる時から10年、のいずれか早い方の経過により消滅すると規定している。",
+    "point": "改正後の消滅時効：①主観的起算点（知った時）から5年 or ②客観的起算点（行使できる時）から10年。いずれか早い方。",
+    "commonMistake": "改正前は原則10年（1本）だったが、改正後は5年と10年の二重の期間がある。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第166条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "消滅時効", "期間", "債権法改正"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_013",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "連帯保証",
+    "format": "true_false",
+    "question": "連帯保証人は、主たる債務者と連帯して債務を負担するため、催告の抗弁権及び検索の抗弁権を有しない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第454条は「連帯保証人は、第四百五十二条及び第四百五十三条の権利を有しない」と規定し、連帯保証人には催告の抗弁権（まず主債務者に請求せよ）も検索の抗弁権（まず主債務者の財産を執行せよ）も認められない。",
+    "point": "連帯保証 = 催告の抗弁権なし・検索の抗弁権なし。通常の保証（単純保証）との大きな違い。",
+    "commonMistake": "通常の保証（単純保証）と連帯保証の違いを混同しやすい。連帯保証は抗弁権なし。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第454条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "連帯保証", "催告の抗弁権", "検索の抗弁権"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_014",
+    "questId": "civil_law",
+    "areaId": "real_rights",
+    "subject": "civil_law",
+    "topic": "物権",
+    "subtopic": "抵当権",
+    "format": "true_false",
+    "question": "抵当権は、目的物の占有を抵当権者に移転せずに設定することができる非占有担保物権である。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第369条第1項は抵当権を「債務者又は第三者が占有を移転しないで債務の担保に供した不動産について」のものと規定している。設定者は目的不動産を使用・収益しながら担保として提供できる。",
+    "point": "抵当権 = 非占有担保（占有移転不要）。質権（占有担保）と区別する。",
+    "commonMistake": "質権（占有担保）と混同しやすい。抵当権は占有移転なしに設定できる。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第369条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "抵当権", "担保物権"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_015",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "賃貸借の存続期間",
+    "format": "true_false",
+    "question": "民法上の賃貸借の存続期間は、最長50年を超えることができない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第604条第1項（2020年改正後）は「賃貸借の存続期間は、50年を超えることができない」と規定している。改正前は20年が上限であったが、2020年の債権法改正により50年に延長された。",
+    "point": "賃貸借の最長期間：改正前20年 → 改正後50年（604条1項）。50年を超える期間を定めた場合は50年に短縮される。",
+    "commonMistake": "改正前の20年を答えてしまう。2020年改正後は50年。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第604条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "賃貸借", "存続期間", "債権法改正"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_016",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "使用者責任",
+    "format": "true_false",
+    "question": "使用者は、被用者がその事業の執行について第三者に損害を加えた場合、使用者が被用者の選任及びその事業の監督について相当の注意をしたことを証明すれば、賠償責任を免れる。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第715条第1項但書は「使用者が被用者の選任及びその事業の監督について相当の注意をしたとき、又は相当の注意をしても損害が生ずべきであったときは、この限りでない」と規定している。ただし、実務上この免責が認められることは極めて稀である。",
+    "point": "使用者責任（715条）は過失推定責任。使用者が選任・監督に相当の注意を証明すれば免責可能（ただし実務では難しい）。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第715条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "使用者責任", "不法行為"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_017",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "相殺と時効",
+    "format": "true_false",
+    "question": "時効によって消滅した債権がその消滅以前に相殺適状にあった場合には、その債権者は相殺をすることができる。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第508条は「時効によって消滅した債権がその消滅以前に相殺に適するようになっていた場合には、その債権者は、相殺をすることができる」と規定している。相殺への期待保護を目的とした規定である。",
+    "point": "時効消滅後の相殺：「消滅前に相殺適状だった」なら消滅後も相殺可能（508条）。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第508条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "相殺", "消滅時効"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_018",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "催告解除",
+    "format": "true_false",
+    "question": "当事者の一方が債務を履行しない場合、相手方は相当の期間を定めて履行を催告し、その期間内に履行がないときは契約を解除することができる。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第541条本文は「当事者の一方がその債務を履行しない場合において、相手方が相当の期間を定めてその履行の催告をし、その期間内に履行がないときは、相手方は、契約の解除をすることができる」と規定している。ただし、不履行が軽微な場合は解除できない（同条但書）。",
+    "point": "催告解除の流れ：相当期間の定め → 催告 → 期間内不履行 → 解除可能。軽微な不履行は解除不可（改正後）。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第541条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "契約の解除", "催告解除"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_019",
+    "questId": "civil_law",
+    "areaId": "family",
+    "subject": "civil_law",
+    "topic": "親族",
+    "subtopic": "親権",
+    "format": "true_false",
+    "question": "父母が婚姻中は、父母が共同して親権を行使する。ただし、父母の一方が親権を行うことができないときは、他の一方が単独で行う。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第818条第3項は「親権は、父母の婚姻中は、父母が共同して行う。ただし、父母の一方が親権を行うことができないときは、他の一方が行う」と規定している。婚姻中は共同親権が原則である。",
+    "point": "婚姻中 = 共同親権（818条3項）。父母の一方が行えない場合は他方が単独で行使。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第818条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "親権", "共同親権"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_020",
+    "questId": "civil_law",
+    "areaId": "inheritance",
+    "subject": "civil_law",
+    "topic": "相続",
+    "subtopic": "自筆証書遺言",
+    "format": "true_false",
+    "question": "自筆証書遺言は、遺言者がその全文、日付及び氏名を自書し、これに印を押さなければならない。ただし、財産目録については自書でなくてもよい。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第968条第1項は自筆証書遺言について「遺言者が、その全文、日付及び氏名を自書し、これに印を押さなければならない」と規定する。2019年改正（同条2項）で、財産目録については自書でなくてもよい（ただし毎頁に署名・押印が必要）とされた。",
+    "point": "自筆証書遺言：本文・日付・氏名は自書必須＋押印。財産目録は2019年改正で自書不要（毎頁署名押印は必要）。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第968条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "遺言", "自筆証書遺言"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_021",
+    "questId": "civil_law",
+    "areaId": "inheritance",
+    "subject": "civil_law",
+    "topic": "相続",
+    "subtopic": "相続欠格",
+    "format": "true_false",
+    "question": "相続人となるべき者が、詐欺または強迫によって被相続人に遺言をさせ、または遺言の取消しもしくは変更を妨害した場合は、相続の欠格事由に当たり相続権を失う。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第891条第5号は、詐欺・強迫によって被相続人に遺言をさせたこと、または取消し・変更を妨害したことを相続欠格事由として規定している。相続欠格は当然に相続権を失わせる効果を持つ（宥恕制度なし）。",
+    "point": "相続欠格（891条）= 法律上当然に相続権喪失。廃除（893条）= 家裁の審判が必要。",
+    "commonMistake": "相続欠格と廃除（893条）を混同しやすい。欠格は自動的喪失、廃除は家裁手続が必要。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第891条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "相続欠格", "相続"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_022",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "第三者弁済",
+    "format": "true_false",
+    "question": "弁済について正当な利益を有しない第三者は、債務者の意思に反して弁済することができない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第474条第2項は「弁済をするについて正当な利益を有する者でない第三者は、債務者の意思に反して弁済をすることができない」と規定している。正当な利益を有する者（連帯債務者、保証人等）は債務者の意思に反しても弁済できる。",
+    "point": "正当利益なき第三者 = 債務者の意思に反した弁済不可（474条2項）。正当利益あり = 債務者の意思に反しても弁済可能。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第474条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "弁済", "第三者弁済"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_023",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "不当利得",
+    "format": "true_false",
+    "question": "法律上の原因なく他人の財産または労務によって利益を受け、そのために他人に損失を及ぼした者は、その利益の存する限度においてこれを返還する義務を負う。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第703条は不当利得の返還義務を規定している。善意の受益者は「利益の存する限度（現存利益）」で返還すれば足りる。悪意の受益者はその利息を付して返還し、損害があれば損害賠償もしなければならない（704条）。",
+    "point": "不当利得（703条）：善意受益者 = 現存利益の返還。悪意受益者（704条）= 全額＋利息＋損害賠償。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第703条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "不当利得"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_024",
+    "questId": "civil_law",
+    "areaId": "real_rights",
+    "subject": "civil_law",
+    "topic": "物権",
+    "subtopic": "動産質権",
+    "format": "true_false",
+    "question": "動産質権者は、継続して質物を占有しなければ、その質権をもって第三者に対抗することができない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第352条は「動産質権者は、継続して質物を占有しなければ、その質権をもって第三者に対抗することができない」と規定している。動産質権は継続的占有が対抗要件となる。",
+    "point": "動産質権の対抗要件 = 継続的占有（352条）。占有を失えば第三者に対抗不可。不動産質権は登記が対抗要件（361条）。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第352条", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "質権", "動産質権", "対抗要件"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_025",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "法人の権利能力",
+    "format": "true_false",
+    "question": "法人は、法令の規定に従い、定款その他の基本約款で定められた目的の範囲内において、権利を有し、義務を負う。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第34条は「法人は、法令の規定に従い、定款その他の基本約款で定められた目的の範囲内において、権利を有し、義務を負う」と規定している。法人の権利能力は目的の範囲内に限定される（目的範囲外行為は無効）。",
+    "point": "法人の権利能力 = 目的の範囲内（34条）。目的の範囲外の行為は無効。ただし判例は「目的の範囲」を広く解釈する傾向あり。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第34条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "法人", "権利能力", "目的の範囲"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_026",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "連帯債務の絶対効",
+    "format": "multiple_choice",
+    "question": "連帯債務者の一人について生じた事由が他の連帯債務者にも効力が及ぶ（絶対的効力を有する）事由として、民法に規定されているものはどれか。",
+    "choices": [
+      { "id": "a", "text": "更改・相殺・混同" },
+      { "id": "b", "text": "弁済・相殺・免除・時効の完成" },
+      { "id": "c", "text": "弁済のみ" },
+      { "id": "d", "text": "請求・時効の完成・免除" }
+    ],
+    "answer": "a",
+    "explanation": "民法第438条（更改）、第439条（相殺）、第440条（混同）が絶対的効力事由として規定されている。2020年改正により、免除・請求・時効の完成は相対効（他の連帯債務者に効力が及ばない）に改められた（441条）。",
+    "point": "絶対効（改正後）：更改（438）・相殺（439）・混同（440）の3つのみ。免除・請求・時効は相対効に変更（2020年改正）。",
+    "commonMistake": "改正前は請求・時効・免除も絶対効だったが、2020年改正で相対効に変更された。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第438条〜第441条", "checkedAt": "2026-06-14" }],
+    "difficulty": 4,
+    "tags": ["民法", "連帯債務", "絶対効", "相対効", "債権法改正"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_027",
+    "questId": "civil_law",
+    "areaId": "family",
+    "subject": "civil_law",
+    "topic": "親族",
+    "subtopic": "後見と不動産処分",
+    "format": "true_false",
+    "question": "成年後見人が成年被後見人に代わって、被後見人が居住の用に供する建物やその敷地について売却・賃貸・抵当権設定等の処分を行うには、家庭裁判所の許可を得なければならない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第859条の3は「成年後見人は、成年被後見人に代わって、その居住の用に供する建物又はその敷地について、売却、賃貸、賃貸借の解除又は抵当権の設定その他これらに準ずる処分をするには、家庭裁判所の許可を得なければならない」と規定している。",
+    "point": "居住用不動産の処分 = 家裁の許可が必須（859条の3）。許可なしの処分は無効。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第859条の3", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "成年後見", "居住用不動産"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_028",
+    "questId": "civil_law",
+    "areaId": "inheritance",
+    "subject": "civil_law",
+    "topic": "相続",
+    "subtopic": "遺産分割の遡及効",
+    "format": "true_false",
+    "question": "遺産分割は、相続開始の時にさかのぼってその効力を生ずる。ただし、第三者の権利を害することはできない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第909条は「遺産の分割は、相続開始の時にさかのぼってその効力を生ずる。ただし、第三者の権利を害することはできない」と規定している。遡及効があるため、各相続人は相続開始時から自己の取得した財産を取得したものとみなされる。",
+    "point": "遺産分割の遡及効（909条）：相続開始時に遡って効力発生。ただし第三者の権利は保護される。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第909条", "checkedAt": "2026-06-14" }],
+    "difficulty": 2,
+    "tags": ["民法", "相続", "遺産分割", "遡及効"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_029",
+    "questId": "civil_law",
+    "areaId": "general_provisions",
+    "subject": "civil_law",
+    "topic": "民法総則",
+    "subtopic": "表見代理",
+    "format": "multiple_choice",
+    "question": "表見代理が成立するための要件として、代理権授与表示による表見代理（民法109条1項）の場合に必要なものはどれか。",
+    "choices": [
+      { "id": "a", "text": "本人が第三者に対して代理権を与えた旨を表示し、かつ相手方が善意無過失であること" },
+      { "id": "b", "text": "代理人が本人の意思に基づかずに勝手に行動したこと" },
+      { "id": "c", "text": "本人が追認を拒絶したこと" },
+      { "id": "d", "text": "相手方が代理権の不存在を知っていたこと" }
+    ],
+    "answer": "a",
+    "explanation": "民法第109条第1項は、本人が第三者に対して他人に代理権を与えた旨を表示した場合において、その他人が表示された代理権の範囲内において第三者と法律行為をしたときは本人にその責任が生じると規定する。ただし、第三者が代理権なしを知り又は知ることができたときはこの限りでない（同条但書：善意無過失が必要）。",
+    "point": "代理権授与表示の表見代理（109条）：①本人の表示 ②その表示の範囲内の行為 ③相手方が善意無過失。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第109条", "checkedAt": "2026-06-14" }],
+    "difficulty": 4,
+    "tags": ["民法", "表見代理", "代理権授与表示"],
+    "legalAsOf": "2026-04-01",
+    "createdAt": "2026-06-14",
+    "updatedAt": "2026-06-14"
+  },
+  {
+    "id": "civil_030",
+    "questId": "civil_law",
+    "areaId": "obligations",
+    "subject": "civil_law",
+    "topic": "債権",
+    "subtopic": "定型約款",
+    "format": "true_false",
+    "question": "定型約款準備者は、定型取引の合意前または合意後相当の期間内に請求があった場合には、遅滞なく、合理的な方法によりその定型約款の内容を示さなければならない。",
+    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "answer": "true",
+    "explanation": "民法第548条の3第1項は「定型取引を行い、又は行おうとする定型約款準備者は、定型取引合意の前又は定型取引合意の後相当の期間内に相手方から請求があった場合には、遅滞なく、合理的な方法によりその定型約款の内容を示さなければならない」と規定している。",
+    "point": "定型約款の開示義務（548条の3）：合意前または合意後相当期間内の請求に対して遅滞なく開示が必要。",
+    "sources": [{ "type": "law", "title": "民法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/129AC0000000089", "lawName": "民法", "article": "第548条の3", "checkedAt": "2026-06-14" }],
+    "difficulty": 3,
+    "tags": ["民法", "定型約款", "債権法改正"],
     "legalAsOf": "2026-04-01",
     "createdAt": "2026-06-14",
     "updatedAt": "2026-06-14"
