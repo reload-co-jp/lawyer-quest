@@ -1,7 +1,11 @@
 import Link from "next/link"
+import Script from "next/script"
 import { Kaisei_Tokumin } from "next/font/google"
 import { HeaderNav } from "components/HeaderNav"
 import "./reset.css"
+
+const GA_ID = "G-1PYPBQGLTQ"
+const isProd = process.env.NODE_ENV === "production"
 
 const kaisei = Kaisei_Tokumin({ weight: ["400", "700"], subsets: ["latin"] })
 
@@ -57,6 +61,20 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {isProd && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}');
+            `}</Script>
+          </>
+        )}
         <header
           style={{
             position: "sticky",
