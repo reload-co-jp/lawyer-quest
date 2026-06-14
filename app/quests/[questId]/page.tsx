@@ -2,6 +2,8 @@ import type { FC } from "react"
 import { notFound } from "next/navigation"
 import { getAllQuests } from "lib/quests"
 
+const BASE_URL = "http://lawyer-quest.reload.co.jp"
+
 export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
 }
@@ -28,8 +30,23 @@ const Page: FC<Props> = async ({ params }) => {
   const questions = getQuestionsByQuestId(quest.id)
   const color = SUBJECT_COLOR[quest.id] ?? "var(--accent)"
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: quest.title,
+    description: quest.description,
+    inLanguage: "ja",
+    url: `${BASE_URL}/quests/${quest.id}`,
+    educationalLevel: "professional",
+    teaches: quest.title,
+    numberOfItems: questions.length,
+    isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
+    publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
+  }
+
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: ".5rem" }}>
         <Link href="/quests" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
           クエスト

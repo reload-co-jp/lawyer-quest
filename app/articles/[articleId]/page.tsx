@@ -2,6 +2,8 @@ import Link from "next/link"
 import { getAllArticles, getArticleContent } from "lib/articles"
 import "../prose.css"
 
+const BASE_URL = "http://lawyer-quest.reload.co.jp"
+
 export function generateStaticParams() {
   return getAllArticles().map((a) => ({ articleId: a.id }))
 }
@@ -20,8 +22,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
   const { meta, html } = result
   const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: meta.title,
+    inLanguage: "ja",
+    url: `${BASE_URL}/articles/${meta.id}`,
+    isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
+    about: { "@type": "Thing", name: meta.subjectLabel },
+    publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
+  }
+
   return (
     <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: ".5rem" }}>
         <Link href="/articles" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
           記事

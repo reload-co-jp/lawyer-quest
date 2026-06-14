@@ -6,6 +6,8 @@ import { getAreaById, getQuestById } from "lib/quests"
 import { SourceList } from "components/SourceList"
 import { LawLinkList } from "components/LawLinkList"
 
+const BASE_URL = "http://lawyer-quest.reload.co.jp"
+
 export function generateStaticParams() {
   return getAllQuestions().map((q) => ({ questionId: q.id }))
 }
@@ -27,8 +29,28 @@ const Page: FC<Props> = async ({ params }) => {
   const quest = getQuestById(question.questId)
   const color = quest ? (SUBJECT_COLOR[quest.id] ?? "var(--accent)") : "var(--accent)"
 
+  const correctChoice = question.choices.find((c) => c.id === question.answer)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    name: question.question,
+    inLanguage: "ja",
+    url: `${BASE_URL}/questions/${question.id}`,
+    educationalLevel: "professional",
+    about: quest ? { "@type": "Thing", name: quest.title } : undefined,
+    hasPart: {
+      "@type": "Question",
+      name: question.question,
+      acceptedAnswer: correctChoice
+        ? { "@type": "Answer", text: correctChoice.text, comment: question.explanation }
+        : undefined,
+    },
+    isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
+  }
+
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ marginBottom: "1.25rem" }}>
         <Link href="/wrong" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
           ← 戻る

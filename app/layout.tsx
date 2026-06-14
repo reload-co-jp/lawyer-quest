@@ -30,10 +30,33 @@ export const metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Lawyer Quest",
+  url: BASE_URL,
+  description: "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
+  inLanguage: "ja",
+  publisher: {
+    "@type": "Organization",
+    name: "Lawyer Quest",
+    url: BASE_URL,
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${BASE_URL}/articles`,
+    "query-input": "required name=search_term_string",
+  },
+}
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ja" className={kaisei.className}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <header
           style={{
             position: "sticky",
