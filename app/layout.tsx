@@ -35,6 +35,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               </span>
             </Link>
             <nav style={{ display: "flex", gap: "1.25rem" }}>
+              <Link href="/articles" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
+                記事
+              </Link>
               <Link href="/quests" style={{ fontSize: ".875rem", color: "#94a3b8", textDecoration: "none" }}>
                 クエスト
               </Link>
