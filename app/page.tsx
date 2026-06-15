@@ -184,6 +184,7 @@ const Page: FC = () => {
             padding: ".875rem 1rem",
             background: "var(--surface)",
             textDecoration: "none",
+            borderBottom: "1px solid var(--border)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
@@ -191,6 +192,27 @@ const Page: FC = () => {
             <div>
               <p style={{ margin: 0, fontWeight: 600, fontSize: ".9375rem", color: "var(--text-1)" }}>再挑戦クエスト</p>
               <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--text-2)" }}>間違えた問題をもう一度解く</p>
+            </div>
+          </div>
+          <span style={{ color: "var(--text-3)", fontSize: ".875rem" }}>→</span>
+        </Link>
+
+        <Link
+          href="/exam-guide"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: ".875rem 1rem",
+            background: "var(--surface)",
+            textDecoration: "none",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+            <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--text-3)", flexShrink: 0 }} />
+            <div>
+              <p style={{ margin: 0, fontWeight: 600, fontSize: ".9375rem", color: "var(--text-1)" }}>試験ガイド</p>
+              <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--text-2)" }}>試験概要・科目・合格基準・申込み方法</p>
             </div>
           </div>
           <span style={{ color: "var(--text-3)", fontSize: ".875rem" }}>→</span>

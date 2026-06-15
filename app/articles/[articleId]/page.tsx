@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { getAllArticles, getArticleContent } from "lib/articles"
+import { getRelatedQuestions } from "lib/questions"
 import "../prose.css"
 
 const BASE_URL = "http://lawyer-quest.reload.co.jp"
@@ -21,6 +22,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
 
   const { meta, html } = result
   const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
+  const relatedQuestions = getRelatedQuestions(articleId)
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -45,6 +47,50 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
       </div>
 
       <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
+
+      {relatedQuestions.length > 0 && (
+        <div
+          style={{
+            marginTop: "2rem",
+            padding: "1.25rem",
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderLeft: `2px solid ${color}`,
+          }}
+        >
+          <p style={{ fontSize: ".75rem", color: "var(--text-3)", fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", marginBottom: ".875rem" }}>
+            この記事に関連する問題
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+            {relatedQuestions.map((q) => (
+              <Link
+                key={q.id}
+                href={`/questions/${q.id}`}
+                style={{
+                  padding: ".625rem .75rem",
+                  background: "var(--surface-2)",
+                  border: "1px solid var(--border)",
+                  color: "var(--text-2)",
+                  textDecoration: "none",
+                  fontSize: ".8125rem",
+                  lineHeight: 1.5,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: ".5rem",
+                }}
+              >
+                <span style={{ flexShrink: 0, color: "var(--text-3)", fontVariantNumeric: "tabular-nums" }}>
+                  {"★".repeat(q.difficulty)}
+                </span>
+                <span style={{ flex: 1 }}>
+                  {q.question.length > 70 ? q.question.slice(0, 70) + "…" : q.question}
+                </span>
+                <span style={{ flexShrink: 0, color: "var(--text-3)", fontSize: ".6875rem" }}>→</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div
         style={{
