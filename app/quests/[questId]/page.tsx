@@ -109,24 +109,47 @@ const Page: FC<Props> = async ({ params }) => {
         </div>
       </div>
 
-      <Link
-        href={`/challenge/${quest.id}`}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: ".625rem 1.25rem",
-          background: "var(--accent-btn)",
-          borderRadius: "var(--radius-sm)",
-          color: "#fff",
-          textDecoration: "none",
-          fontWeight: 600,
-          fontSize: ".9375rem",
-          letterSpacing: "-.01em",
-        }}
-      >
-        チャレンジ開始 →
-      </Link>
+      <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
+        <Link
+          href={`/challenge/${quest.id}`}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: ".625rem 1.25rem",
+            background: "var(--accent-btn)",
+            borderRadius: "var(--radius-sm)",
+            color: "#fff",
+            textDecoration: "none",
+            fontWeight: 600,
+            fontSize: ".9375rem",
+            letterSpacing: "-.01em",
+          }}
+        >
+          チャレンジ開始 →
+        </Link>
+        {quest.id === "past_exam" && (
+          <Link
+            href="/exam"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: ".625rem 1.25rem",
+              background: "transparent",
+              border: "1px solid var(--past)",
+              borderRadius: "var(--radius-sm)",
+              color: "var(--past)",
+              textDecoration: "none",
+              fontWeight: 600,
+              fontSize: ".9375rem",
+              letterSpacing: "-.01em",
+            }}
+          >
+            模擬試験モード →
+          </Link>
+        )}
+      </div>
     </div>
   )
 }
