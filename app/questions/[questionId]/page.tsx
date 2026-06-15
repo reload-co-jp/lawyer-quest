@@ -81,6 +81,11 @@ const Page: FC<Props> = async ({ params }) => {
           <span style={{ fontSize: ".6875rem", padding: ".15rem .5rem", background: "var(--surface-2)", color: "var(--text-2)", border: "1px solid var(--border)" }}>
             {"★".repeat(question.difficulty)}{"☆".repeat(5 - question.difficulty)}
           </span>
+          {question.examYear && (
+            <span style={{ fontSize: ".6875rem", padding: ".15rem .5rem", background: "var(--surface-2)", color: "var(--text-2)", border: "1px solid var(--border)" }}>
+              {question.examYear}年度
+            </span>
+          )}
         </div>
 
         <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, marginBottom: "1.25rem", fontWeight: 400 }}>

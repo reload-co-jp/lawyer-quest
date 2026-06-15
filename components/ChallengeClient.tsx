@@ -199,6 +199,20 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           >
             {current.format === "true_false" ? "○×" : "4択"}
           </span>
+          {current.examYear && (
+            <span
+              style={{
+                fontSize: ".6875rem",
+                padding: ".2rem .5rem",
+                background: "var(--surface-2)",
+                borderRadius: "99px",
+                color: "var(--text-2)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              {current.examYear}年度
+            </span>
+          )}
         </div>
 
         <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, margin: 0 }}>

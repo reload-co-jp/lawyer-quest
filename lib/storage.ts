@@ -139,7 +139,7 @@ function createEmptyProgress(): UserProgress {
       },
       past_exam: {
         questId: "past_exam",
-        totalQuestions: 60,
+        totalQuestions: 90,
         answeredQuestions: 0,
         correctAnswers: 0,
         wrongAnswers: 0,
