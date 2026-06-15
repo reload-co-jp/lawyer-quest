@@ -11,6 +11,7 @@ const SUBJECT_COLOR: Record<string, string> = {
   administrative_law: "var(--admin)",
   civil_law: "var(--civil)",
   constitutional_law: "var(--const)",
+  past_exam: "var(--past)",
 }
 
 export const WrongClient: FC = () => {

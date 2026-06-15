@@ -137,6 +137,15 @@ function createEmptyProgress(): UserProgress {
         completionRate: 0,
         accuracyRate: 0,
       },
+      past_exam: {
+        questId: "past_exam",
+        totalQuestions: 60,
+        answeredQuestions: 0,
+        correctAnswers: 0,
+        wrongAnswers: 0,
+        completionRate: 0,
+        accuracyRate: 0,
+      },
     },
     wrongQuestionIds: [],
   }

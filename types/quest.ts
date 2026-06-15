@@ -2,11 +2,13 @@ export type QuestId =
   | "administrative_law"
   | "civil_law"
   | "constitutional_law"
+  | "past_exam"
 
 export type Subject =
   | "administrative_law"
   | "civil_law"
   | "constitutional_law"
+  | "past_exam"
 
 export type Quest = {
   id: QuestId

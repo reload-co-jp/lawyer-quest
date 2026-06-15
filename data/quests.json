@@ -19,5 +19,12 @@
     "subject": "constitutional_law",
     "description": "人権・統治・重要判例を攻略する",
     "order": 3
+  },
+  {
+    "id": "past_exam",
+    "title": "過去問クエスト",
+    "subject": "past_exam",
+    "description": "行政書士試験の過去問（行政法・民法・憲法）で実戦力を鍛える",
+    "order": 4
   }
 ]

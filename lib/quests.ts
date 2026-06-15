@@ -28,4 +28,5 @@ export const QUEST_COLORS: Record<QuestId, string> = {
   administrative_law: "#3b82f6",
   civil_law: "#10b981",
   constitutional_law: "#8b5cf6",
+  past_exam: "#d97706",
 }
