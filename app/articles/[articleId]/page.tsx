@@ -1,12 +1,30 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { getAllArticles, getArticleContent } from "lib/articles"
 import { getRelatedQuestions } from "lib/questions"
 import "../prose.css"
 
-const BASE_URL = "http://lawyer-quest.reload.co.jp"
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 export function generateStaticParams() {
   return getAllArticles().map((a) => ({ articleId: a.id }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ articleId: string }> }): Promise<Metadata> {
+  const { articleId } = await params
+  const result = getArticleContent(articleId)
+  if (!result) return {}
+  const { meta } = result
+  return {
+    title: meta.title,
+    description: `行政書士試験対策 — ${meta.subjectLabel}「${meta.title}」。条文・判例解説付き。`,
+    alternates: { canonical: `${BASE_URL}/articles/${meta.id}` },
+    openGraph: {
+      title: `${meta.title} | Lawyer Quest`,
+      description: `行政書士試験対策 — ${meta.subjectLabel}「${meta.title}」。条文・判例解説付き。`,
+      url: `${BASE_URL}/articles/${meta.id}`,
+    },
+  }
 }
 
 const SUBJECT_COLOR: Record<string, string> = {
@@ -24,16 +42,27 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
   const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
   const relatedQuestions = getRelatedQuestions(articleId)
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: meta.title,
-    inLanguage: "ja",
-    url: `${BASE_URL}/articles/${meta.id}`,
-    isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
-    about: { "@type": "Thing", name: meta.subjectLabel },
-    publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
-  }
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: meta.title,
+      inLanguage: "ja",
+      url: `${BASE_URL}/articles/${meta.id}`,
+      isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
+      about: { "@type": "Thing", name: meta.subjectLabel },
+      publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
+        { "@type": "ListItem", position: 2, name: "学習記事", item: `${BASE_URL}/articles` },
+        { "@type": "ListItem", position: 3, name: meta.title, item: `${BASE_URL}/articles/${meta.id}` },
+      ],
+    },
+  ]
 
   return (
     <div style={{ maxWidth: "720px", margin: "0 auto" }}>

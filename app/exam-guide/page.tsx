@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "行政書士試験の概要・試験科目・合格基準・申込み方法・試験日程を解説。受験資格は不問。法令等244点＋一般知識等56点の計300点満点。",
 }
 
-const BASE_URL = "http://lawyer-quest.reload.co.jp"
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 const jsonLd = {
   "@context": "https://schema.org",

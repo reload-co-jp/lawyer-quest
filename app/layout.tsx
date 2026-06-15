@@ -9,7 +9,7 @@ const isProd = process.env.NODE_ENV === "production"
 
 const kaisei = Kaisei_Tokumin({ weight: ["400", "700"], subsets: ["latin"] })
 
-const BASE_URL = "http://lawyer-quest.reload.co.jp"
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 export const metadata = {
   title: {

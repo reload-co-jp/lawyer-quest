@@ -1,11 +1,28 @@
 import type { FC } from "react"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getAllQuests } from "lib/quests"
 
-const BASE_URL = "http://lawyer-quest.reload.co.jp"
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ questId: string }> }): Promise<Metadata> {
+  const { questId } = await params
+  const quest = (getAllQuests() as { id: string; title: string; description: string }[]).find((q) => q.id === questId)
+  if (!quest) return {}
+  return {
+    title: quest.title,
+    description: `行政書士試験対策 — ${quest.title}。${quest.description}`,
+    alternates: { canonical: `${BASE_URL}/quests/${quest.id}` },
+    openGraph: {
+      title: `${quest.title} | Lawyer Quest`,
+      description: `行政書士試験対策 — ${quest.title}。${quest.description}`,
+      url: `${BASE_URL}/quests/${quest.id}`,
+    },
+  }
 }
 
 import Link from "next/link"
@@ -31,19 +48,30 @@ const Page: FC<Props> = async ({ params }) => {
   const questions = getQuestionsByQuestId(quest.id)
   const color = SUBJECT_COLOR[quest.id] ?? "var(--accent)"
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LearningResource",
-    name: quest.title,
-    description: quest.description,
-    inLanguage: "ja",
-    url: `${BASE_URL}/quests/${quest.id}`,
-    educationalLevel: "professional",
-    teaches: quest.title,
-    numberOfItems: questions.length,
-    isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
-    publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
-  }
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      name: quest.title,
+      description: quest.description,
+      inLanguage: "ja",
+      url: `${BASE_URL}/quests/${quest.id}`,
+      educationalLevel: "professional",
+      teaches: quest.title,
+      numberOfItems: questions.length,
+      isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
+      publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
+        { "@type": "ListItem", position: 2, name: "クエスト一覧", item: `${BASE_URL}/quests` },
+        { "@type": "ListItem", position: 3, name: quest.title, item: `${BASE_URL}/quests/${quest.id}` },
+      ],
+    },
+  ]
 
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto" }}>

@@ -1,12 +1,31 @@
 import type { FC } from "react"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import type { QuestId } from "types/quest"
 import { getQuestById, getAllQuests } from "lib/quests"
 import { getQuestionsByQuestId } from "lib/questions"
 import { ChallengeClient } from "components/ChallengeClient"
 
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
+
 export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ questId: string }> }): Promise<Metadata> {
+  const { questId } = await params
+  const quest = getQuestById(questId as QuestId)
+  if (!quest) return {}
+  return {
+    title: `${quest.title} チャレンジ`,
+    description: `行政書士試験対策 — ${quest.title}の問題演習。${quest.description}`,
+    alternates: { canonical: `${BASE_URL}/challenge/${quest.id}` },
+    openGraph: {
+      title: `${quest.title} チャレンジ | Lawyer Quest`,
+      description: `行政書士試験対策 — ${quest.title}の問題演習。${quest.description}`,
+      url: `${BASE_URL}/challenge/${quest.id}`,
+    },
+  }
 }
 
 const SUBJECT_COLOR: Record<string, string> = {

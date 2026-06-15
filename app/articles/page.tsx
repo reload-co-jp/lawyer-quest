@@ -1,5 +1,11 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { getAllArticles, type ArticleMeta, type ArticleSubject } from "lib/articles"
+
+export const metadata: Metadata = {
+  title: "学習記事",
+  description: "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。条文・判例引用付き。",
+}
 
 const SUBJECT_CONFIG: Record<ArticleSubject, { label: string; color: string }> = {
   administrative_law: { label: "行政法", color: "var(--admin)" },

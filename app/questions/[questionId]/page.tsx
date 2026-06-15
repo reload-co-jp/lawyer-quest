@@ -1,4 +1,5 @@
 import type { FC } from "react"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { getQuestionById, getAllQuestions } from "lib/questions"
@@ -6,10 +7,28 @@ import { getAreaById, getQuestById } from "lib/quests"
 import { SourceList } from "components/SourceList"
 import { LawLinkList } from "components/LawLinkList"
 
-const BASE_URL = "http://lawyer-quest.reload.co.jp"
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 export function generateStaticParams() {
   return getAllQuestions().map((q) => ({ questionId: q.id }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ questionId: string }> }): Promise<Metadata> {
+  const { questionId } = await params
+  const question = getQuestionById(questionId)
+  if (!question) return {}
+  const quest = getQuestById(question.questId)
+  const title = question.question.length > 60 ? question.question.slice(0, 60) + "…" : question.question
+  return {
+    title,
+    description: `行政書士試験${quest ? ` ${quest.title}` : ""}の演習問題。解説・判例引用付き。`,
+    alternates: { canonical: `${BASE_URL}/questions/${question.id}` },
+    openGraph: {
+      title: `${title} | Lawyer Quest`,
+      description: `行政書士試験${quest ? ` ${quest.title}` : ""}の演習問題。解説・判例引用付き。`,
+      url: `${BASE_URL}/questions/${question.id}`,
+    },
+  }
 }
 
 const SUBJECT_COLOR: Record<string, string> = {
@@ -31,23 +50,34 @@ const Page: FC<Props> = async ({ params }) => {
   const color = quest ? (SUBJECT_COLOR[quest.id] ?? "var(--accent)") : "var(--accent)"
 
   const correctChoice = question.choices.find((c) => c.id === question.answer)
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Quiz",
-    name: question.question,
-    inLanguage: "ja",
-    url: `${BASE_URL}/questions/${question.id}`,
-    educationalLevel: "professional",
-    about: quest ? { "@type": "Thing", name: quest.title } : undefined,
-    hasPart: {
-      "@type": "Question",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
       name: question.question,
-      acceptedAnswer: correctChoice
-        ? { "@type": "Answer", text: correctChoice.text, comment: question.explanation }
-        : undefined,
+      inLanguage: "ja",
+      url: `${BASE_URL}/questions/${question.id}`,
+      educationalLevel: "professional",
+      about: quest ? { "@type": "Thing", name: quest.title } : undefined,
+      hasPart: {
+        "@type": "Question",
+        name: question.question,
+        acceptedAnswer: correctChoice
+          ? { "@type": "Answer", text: correctChoice.text, comment: question.explanation }
+          : undefined,
+      },
+      isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
     },
-    isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
+        ...(quest ? [{ "@type": "ListItem", position: 2, name: quest.title, item: `${BASE_URL}/quests/${quest.id}` }] : []),
+        { "@type": "ListItem", position: quest ? 3 : 2, name: "問題", item: `${BASE_URL}/questions/${question.id}` },
+      ],
+    },
+  ]
 
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto" }}>
