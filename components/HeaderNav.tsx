@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 
 const NAV_LINKS = [
+  { href: "/study-guide", label: "勉強ガイド" },
   { href: "/articles", label: "記事" },
   { href: "/quests", label: "クエスト" },
   { href: "/challenge/random", label: "ランダム" },

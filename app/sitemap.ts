@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/quests`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/articles`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/exam-guide`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/study-guide`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/exam`, changeFrequency: "monthly", priority: 0.7 },
     ...quests,
     ...articles,
