@@ -41,12 +41,12 @@ const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, chil
 )
 
 const SUBJECT_COLORS: Record<string, string> = {
-  憲法: "var(--const)",
-  民法: "var(--civil)",
-  行政法: "var(--admin)",
-  商法・会社法: "var(--text-3)",
-  基礎法学: "var(--text-3)",
-  一般知識等: "var(--past)",
+  "憲法": "var(--const)",
+  "民法": "var(--civil)",
+  "行政法": "var(--admin)",
+  "商法・会社法": "var(--text-3)",
+  "基礎法学": "var(--text-3)",
+  "一般知識等": "var(--past)",
 }
 
 const SUBJECTS = [
