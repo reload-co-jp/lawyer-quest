@@ -10,6 +10,7 @@ export const ProgressClient: FC = () => {
   const [progress, setProgress] = useState<UserProgress | null | undefined>(undefined)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage読込はクライアント専用、初回マウント後のみ実行
     setProgress(getUserProgress())
   }, [])
 

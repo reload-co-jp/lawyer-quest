@@ -5,13 +5,11 @@ import { LawLinkList } from "components/LawLinkList"
 
 type Props = {
   question: Question
-  selectedAnswer: string
   isCorrect: boolean
 }
 
-export const ExplanationBox: FC<Props> = ({ question, selectedAnswer, isCorrect }) => {
+export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
   const correctChoice = question.choices.find((c) => c.id === question.answer)
-  const selectedChoice = question.choices.find((c) => c.id === selectedAnswer)
 
   return (
     <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: ".75rem" }}>

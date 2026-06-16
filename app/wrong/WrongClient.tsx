@@ -18,6 +18,7 @@ export const WrongClient: FC = () => {
   const [wrongs, setWrongs] = useState<WrongQuestion[]>([])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage読込はクライアント専用、初回マウント後のみ実行
     setWrongs(getWrongQuestions().sort((a, b) => b.wrongCount - a.wrongCount))
   }, [])
 

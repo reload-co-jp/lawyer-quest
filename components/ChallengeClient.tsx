@@ -250,7 +250,7 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
         </button>
       )}
 
-      {revealed && <ExplanationBox question={current} selectedAnswer={selectedAnswer!} isCorrect={selectedAnswer === current.answer} />}
+      {revealed && <ExplanationBox question={current} isCorrect={selectedAnswer === current.answer} />}
 
       {revealed && (
         <div style={{ marginTop: ".875rem", display: "flex", gap: ".5rem" }}>

@@ -1,6 +1,6 @@
 import type { FC } from "react"
 import Link from "next/link"
-import { getAllQuests, QUEST_COLORS } from "lib/quests"
+import { getAllQuests } from "lib/quests"
 import { getAllArticles } from "lib/articles"
 
 const SUBJECT_VAR: Record<string, string> = {

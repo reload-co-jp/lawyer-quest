@@ -14,6 +14,7 @@ export const RetryClient: FC = () => {
   useEffect(() => {
     const wrongs = getWrongQuestions()
     const ids = wrongs.map((w) => w.questionId)
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- localStorage読込はクライアント専用、初回マウント後のみ実行
     setQuestions(shuffle(getQuestionsByIds(ids)))
   }, [])
 

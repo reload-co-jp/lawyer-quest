@@ -4,7 +4,6 @@ import { FC, useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import type { Question } from "types/question"
 import { shuffle } from "lib/shuffle"
-import { SourceList } from "components/SourceList"
 
 type ExamCount = 20 | 40 | 60
 
@@ -424,8 +423,6 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
         {questions.map((q, i) => {
           const isCorrect = answers[q.id] === q.answer
           const isOpen = reviewIndex === i
-          const selectedChoice = q.choices.find((c) => c.id === answers[q.id])
-          const correctChoice = q.choices.find((c) => c.id === q.answer)
 
           return (
             <div

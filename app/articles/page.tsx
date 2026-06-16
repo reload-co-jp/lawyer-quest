@@ -13,30 +13,6 @@ const SUBJECT_CONFIG: Record<ArticleSubject, { label: string; color: string }> =
   constitutional_law: { label: "憲法", color: "var(--const)" },
 }
 
-function ArticleCard({ article }: { article: ArticleMeta }) {
-  const cfg = SUBJECT_CONFIG[article.subject]
-  return (
-    <Link href={`/articles/${article.id}`} style={{ textDecoration: "none", display: "block" }}>
-      <div
-        style={{
-          background: "var(--surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "var(--radius)",
-          padding: ".875rem 1rem",
-          display: "flex",
-          alignItems: "center",
-          gap: ".75rem",
-        }}
-      >
-        <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: cfg.color, flexShrink: 0 }} />
-        <p style={{ fontSize: ".9375rem", fontWeight: 500, color: "var(--text-1)", margin: 0 }}>
-          {article.title}
-        </p>
-      </div>
-    </Link>
-  )
-}
-
 export default function ArticlesPage() {
   const articles = getAllArticles()
 

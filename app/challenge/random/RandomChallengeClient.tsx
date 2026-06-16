@@ -10,6 +10,7 @@ export const RandomChallengeClient: FC = () => {
   const [questions, setQuestions] = useState<Question[] | null>(null)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- クライアント専用ランダム生成、初回マウント後のみ実行
     setQuestions(shuffle(getAllQuestions()).slice(0, 10))
   }, [])
 
