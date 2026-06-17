@@ -253,6 +253,19 @@ const Page: FC = () => {
             </div>
           ))}
         </div>
+
+        <div style={{ marginTop: "1rem" }}>
+          <Link
+            href="/general-knowledge"
+            style={{
+              fontSize: ".8125rem",
+              color: "var(--accent)",
+              textDecoration: "none",
+            }}
+          >
+            一般知識等（基礎知識）科目の対策はこちら →
+          </Link>
+        </div>
       </Section>
 
       {/* 合格基準 */}

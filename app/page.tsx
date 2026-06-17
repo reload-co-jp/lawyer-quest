@@ -228,6 +228,7 @@ const Page: FC = () => {
             padding: ".875rem 1rem",
             background: "var(--surface)",
             textDecoration: "none",
+            borderBottom: "1px solid var(--border)",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
@@ -235,6 +236,49 @@ const Page: FC = () => {
             <div>
               <p style={{ margin: 0, fontWeight: 600, fontSize: ".9375rem", color: "var(--text-1)" }}>法律初心者向け勉強ガイド</p>
               <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--text-2)" }}>勉強する範囲・意義・難易度をやさしく解説</p>
+            </div>
+          </div>
+          <span style={{ color: "var(--text-3)", fontSize: ".875rem" }}>→</span>
+        </Link>
+
+        <Link
+          href="/basics"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: ".875rem 1rem",
+            background: "var(--surface)",
+            textDecoration: "none",
+            borderBottom: "1px solid var(--border)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+            <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--accent)", flexShrink: 0 }} />
+            <div>
+              <p style={{ margin: 0, fontWeight: 600, fontSize: ".9375rem", color: "var(--text-1)" }}>法律ゼロから入門</p>
+              <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--text-2)" }}>条文の読み方・法律用語を勉強ガイドより手前から解説</p>
+            </div>
+          </div>
+          <span style={{ color: "var(--text-3)", fontSize: ".875rem" }}>→</span>
+        </Link>
+
+        <Link
+          href="/general-knowledge"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: ".875rem 1rem",
+            background: "var(--surface)",
+            textDecoration: "none",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: ".75rem" }}>
+            <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--past)", flexShrink: 0 }} />
+            <div>
+              <p style={{ margin: 0, fontWeight: 600, fontSize: ".9375rem", color: "var(--text-1)" }}>基礎知識科目 対策ガイド</p>
+              <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--text-2)" }}>足切り基準・分野別の対策方法を解説</p>
             </div>
           </div>
           <span style={{ color: "var(--text-3)", fontSize: ".875rem" }}>→</span>

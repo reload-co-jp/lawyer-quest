@@ -114,6 +114,11 @@ const Page: FC = () => {
         <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.65 }}>
           法律を勉強したことがない人向けに、行政書士試験で何を学ぶのか・なぜ学ぶ意味があるのか・どれくらい難しいのかをまとめた。
         </p>
+        <p style={{ fontSize: ".8125rem", marginTop: ".5rem" }}>
+          <Link href="/basics" style={{ color: "var(--accent)", textDecoration: "none" }}>
+            条文の読み方や法律用語にまだ馴染みがない場合は、もっと手前から学べる「法律ゼロから入門」へ →
+          </Link>
+        </p>
       </div>
 
       {/* なぜ法律を学ぶ意味があるのか */}
@@ -201,7 +206,7 @@ const Page: FC = () => {
           ))}
         </div>
 
-        <div style={{ marginTop: "1rem" }}>
+        <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: ".375rem" }}>
           <Link
             href="/exam-guide"
             style={{
@@ -211,6 +216,16 @@ const Page: FC = () => {
             }}
           >
             配点・合格基準の詳細は試験ガイドへ →
+          </Link>
+          <Link
+            href="/general-knowledge"
+            style={{
+              fontSize: ".8125rem",
+              color: "var(--accent)",
+              textDecoration: "none",
+            }}
+          >
+            一般知識等（基礎知識）科目の対策はこちら →
           </Link>
         </div>
       </Section>
