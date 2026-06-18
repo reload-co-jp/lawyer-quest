@@ -1,10 +1,15 @@
 import type { QuestId, Subject } from "./quest"
 
-export type QuestionFormat = "true_false" | "multiple_choice"
+export type QuestionFormat = "true_false" | "multiple_choice" | "fill_blank"
 
 export type Choice = {
   id: string
   text: string
+}
+
+export type Blank = {
+  id: string
+  answer: string
 }
 
 export type QuestionSource = {
@@ -37,6 +42,7 @@ export type Question = {
   question: string
   choices: Choice[]
   answer: string
+  blanks?: Blank[]
   explanation: string
   point?: string
   commonMistake?: string

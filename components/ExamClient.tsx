@@ -4,6 +4,7 @@ import { FC, useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import type { Question } from "types/question"
 import { shuffle } from "lib/shuffle"
+import { FillBlankAnswer } from "components/FillBlankAnswer"
 
 type ExamCount = 20 | 40 | 60
 
@@ -28,6 +29,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
   const [count, setCount] = useState<ExamCount>(40)
   const [questions, setQuestions] = useState<Question[]>([])
   const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [blankAnswers, setBlankAnswers] = useState<Record<string, Record<string, string>>>({})
   const [currentIndex, setCurrentIndex] = useState(0)
   const [elapsed, setElapsed] = useState(0)
   const [reviewIndex, setReviewIndex] = useState<number | null>(null)
@@ -43,6 +45,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
     const selected = shuffle(allQuestions).slice(0, count)
     setQuestions(selected)
     setAnswers({})
+    setBlankAnswers({})
     setCurrentIndex(0)
     setElapsed(0)
     setPhase("answering")
@@ -53,12 +56,26 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
     setAnswers((prev) => ({ ...prev, [questionId]: choiceId }))
   }
 
+  const selectBlankAnswer = (questionId: string, blankId: string, choiceId: string) => {
+    setBlankAnswers((prev) => ({ ...prev, [questionId]: { ...prev[questionId], [blankId]: choiceId } }))
+  }
+
+  const isQuestionAnswered = (q: Question): boolean =>
+    q.format === "fill_blank"
+      ? (q.blanks?.every((b) => blankAnswers[q.id]?.[b.id]) ?? false)
+      : answers[q.id] !== undefined
+
+  const isQuestionCorrect = (q: Question): boolean =>
+    q.format === "fill_blank"
+      ? (q.blanks?.every((b) => blankAnswers[q.id]?.[b.id] === b.answer) ?? false)
+      : answers[q.id] === q.answer
+
   const submitExam = () => {
     if (timerRef.current) clearInterval(timerRef.current)
     setPhase("results")
   }
 
-  const answeredCount = Object.keys(answers).length
+  const answeredCount = questions.filter(isQuestionAnswered).length
   const allAnswered = answeredCount === questions.length
 
   if (phase === "setup") {
@@ -237,7 +254,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
               </span>
             )}
             <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--text-3)", border: "1px solid var(--border)" }}>
-              {current.format === "true_false" ? "○×" : "4択"}
+              {current.format === "true_false" ? "○×" : current.format === "fill_blank" ? "穴埋め" : "4択"}
             </span>
           </div>
           <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, margin: 0 }}>
@@ -246,37 +263,49 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
         </div>
 
         {/* 選択肢 */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "1rem" }}>
-          {current.choices.map((choice) => {
-            const isSelected = selectedAnswer === choice.id
-            return (
-              <button
-                key={choice.id}
-                onClick={() => selectAnswer(current.id, choice.id)}
-                style={{
-                  padding: ".75rem 1rem",
-                  background: isSelected ? "rgba(217,119,6,0.12)" : "var(--surface)",
-                  border: `1px solid ${isSelected ? "var(--past)" : "var(--border)"}`,
-                  color: isSelected ? "var(--past)" : "var(--text-1)",
-                  fontSize: ".875rem",
-                  textAlign: "left",
-                  cursor: "pointer",
-                  borderRadius: "var(--radius-sm)",
-                  display: "flex",
-                  gap: ".75rem",
-                  alignItems: "flex-start",
-                  lineHeight: 1.6,
-                  fontWeight: isSelected ? 600 : 400,
-                }}
-              >
-                <span style={{ flexShrink: 0, fontWeight: 700, color: isSelected ? "var(--past)" : "var(--text-3)", minWidth: "1.25rem" }}>
-                  {choice.id.toUpperCase()}
-                </span>
-                <span>{choice.text}</span>
-              </button>
-            )
-          })}
-        </div>
+        {current.format === "fill_blank" ? (
+          <div style={{ marginBottom: "1rem" }}>
+            <FillBlankAnswer
+              blanks={current.blanks ?? []}
+              choices={current.choices}
+              selectedAnswers={blankAnswers[current.id] ?? {}}
+              onSelect={(blankId, choiceId) => selectBlankAnswer(current.id, blankId, choiceId)}
+              revealed={false}
+            />
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "1rem" }}>
+            {current.choices.map((choice) => {
+              const isSelected = selectedAnswer === choice.id
+              return (
+                <button
+                  key={choice.id}
+                  onClick={() => selectAnswer(current.id, choice.id)}
+                  style={{
+                    padding: ".75rem 1rem",
+                    background: isSelected ? "rgba(217,119,6,0.12)" : "var(--surface)",
+                    border: `1px solid ${isSelected ? "var(--past)" : "var(--border)"}`,
+                    color: isSelected ? "var(--past)" : "var(--text-1)",
+                    fontSize: ".875rem",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    borderRadius: "var(--radius-sm)",
+                    display: "flex",
+                    gap: ".75rem",
+                    alignItems: "flex-start",
+                    lineHeight: 1.6,
+                    fontWeight: isSelected ? 600 : 400,
+                  }}
+                >
+                  <span style={{ flexShrink: 0, fontWeight: 700, color: isSelected ? "var(--past)" : "var(--text-3)", minWidth: "1.25rem" }}>
+                    {choice.id.toUpperCase()}
+                  </span>
+                  <span>{choice.text}</span>
+                </button>
+              )
+            })}
+          </div>
+        )}
 
         {/* ナビゲーションボタン */}
         <div style={{ display: "flex", gap: ".5rem", marginBottom: ".75rem" }}>
@@ -337,7 +366,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
   }
 
   // results phase
-  const correct = questions.filter((q) => answers[q.id] === q.answer).length
+  const correct = questions.filter(isQuestionCorrect).length
   const total = questions.length
   const pct = Math.round((correct / total) * 100)
 
@@ -346,7 +375,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
     const area = AREA_LABEL[q.areaId] ?? "その他"
     if (!areaStats[area]) areaStats[area] = { correct: 0, total: 0 }
     areaStats[area].total += 1
-    if (answers[q.id] === q.answer) areaStats[area].correct += 1
+    if (isQuestionCorrect(q)) areaStats[area].correct += 1
   }
 
   return (
@@ -421,7 +450,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
       </p>
       <div style={{ display: "flex", flexDirection: "column", gap: ".5rem", marginBottom: "1.5rem" }}>
         {questions.map((q, i) => {
-          const isCorrect = answers[q.id] === q.answer
+          const isCorrect = isQuestionCorrect(q)
           const isOpen = reviewIndex === i
 
           return (
@@ -466,30 +495,40 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
                   </p>
 
                   <div style={{ marginBottom: ".875rem" }}>
-                    {q.choices.map((choice) => {
-                      const isAnswer = choice.id === q.answer
-                      const isSelected = choice.id === answers[q.id]
-                      return (
-                        <div
-                          key={choice.id}
-                          style={{
-                            padding: ".5rem .75rem",
-                            marginBottom: "3px",
-                            background: isAnswer ? "rgba(74,222,128,0.06)" : isSelected ? "rgba(239,68,68,0.06)" : "var(--surface-2)",
-                            border: `1px solid ${isAnswer ? "rgba(74,222,128,0.25)" : isSelected ? "rgba(239,68,68,0.25)" : "var(--border)"}`,
-                            fontSize: ".8125rem",
-                            color: isAnswer ? "var(--success)" : isSelected ? "var(--error)" : "var(--text-2)",
-                            display: "flex",
-                            gap: ".5rem",
-                          }}
-                        >
-                          <span style={{ fontWeight: 700, flexShrink: 0 }}>{choice.id.toUpperCase()}.</span>
-                          <span>{choice.text}</span>
-                          {isAnswer && <span style={{ marginLeft: "auto", flexShrink: 0 }}>✓ 正解</span>}
-                          {isSelected && !isAnswer && <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--error)" }}>あなたの回答</span>}
-                        </div>
-                      )
-                    })}
+                    {q.format === "fill_blank" ? (
+                      <FillBlankAnswer
+                        blanks={q.blanks ?? []}
+                        choices={q.choices}
+                        selectedAnswers={blankAnswers[q.id] ?? {}}
+                        onSelect={() => {}}
+                        revealed
+                      />
+                    ) : (
+                      q.choices.map((choice) => {
+                        const isAnswer = choice.id === q.answer
+                        const isSelected = choice.id === answers[q.id]
+                        return (
+                          <div
+                            key={choice.id}
+                            style={{
+                              padding: ".5rem .75rem",
+                              marginBottom: "3px",
+                              background: isAnswer ? "rgba(74,222,128,0.06)" : isSelected ? "rgba(239,68,68,0.06)" : "var(--surface-2)",
+                              border: `1px solid ${isAnswer ? "rgba(74,222,128,0.25)" : isSelected ? "rgba(239,68,68,0.25)" : "var(--border)"}`,
+                              fontSize: ".8125rem",
+                              color: isAnswer ? "var(--success)" : isSelected ? "var(--error)" : "var(--text-2)",
+                              display: "flex",
+                              gap: ".5rem",
+                            }}
+                          >
+                            <span style={{ fontWeight: 700, flexShrink: 0 }}>{choice.id.toUpperCase()}.</span>
+                            <span>{choice.text}</span>
+                            {isAnswer && <span style={{ marginLeft: "auto", flexShrink: 0 }}>✓ 正解</span>}
+                            {isSelected && !isAnswer && <span style={{ marginLeft: "auto", flexShrink: 0, color: "var(--error)" }}>あなたの回答</span>}
+                          </div>
+                        )
+                      })
+                    )}
                   </div>
 
                   <div style={{ padding: ".75rem", background: "var(--surface-2)", borderLeft: "2px solid var(--accent)", marginBottom: ".5rem" }}>

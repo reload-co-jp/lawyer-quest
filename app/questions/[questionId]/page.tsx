@@ -124,25 +124,50 @@ const Page: FC<Props> = async ({ params }) => {
 
         <div style={{ marginBottom: "1.25rem" }}>
           <p style={{ fontSize: ".6875rem", color: "var(--text-3)", marginBottom: ".5rem", fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase" }}>選択肢</p>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1px" }}>
-            {question.choices.map((choice) => (
-              <li
-                key={choice.id}
-                style={{
-                  padding: ".625rem .875rem",
-                  background: choice.id === question.answer ? "rgba(74,222,128,0.06)" : "var(--surface-2)",
-                  border: `1px solid ${choice.id === question.answer ? "rgba(74,222,128,0.25)" : "var(--border)"}`,
-                  fontSize: ".875rem",
-                  color: choice.id === question.answer ? "var(--success)" : "var(--text-2)",
-                  display: "flex",
-                  gap: ".5rem",
-                }}
-              >
-                {choice.id === question.answer && <span style={{ fontWeight: 700 }}>✓</span>}
-                <span>{choice.text}</span>
-              </li>
-            ))}
-          </ul>
+          {question.format === "fill_blank" && question.blanks ? (
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1px" }}>
+              {question.blanks.map((blank) => {
+                const choice = question.choices.find((c) => c.id === blank.answer)
+                return (
+                  <li
+                    key={blank.id}
+                    style={{
+                      padding: ".625rem .875rem",
+                      background: "rgba(74,222,128,0.06)",
+                      border: "1px solid rgba(74,222,128,0.25)",
+                      fontSize: ".875rem",
+                      color: "var(--success)",
+                      display: "flex",
+                      gap: ".5rem",
+                    }}
+                  >
+                    <span style={{ fontWeight: 700 }}>［{blank.id}］</span>
+                    <span>{choice?.text}</span>
+                  </li>
+                )
+              })}
+            </ul>
+          ) : (
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1px" }}>
+              {question.choices.map((choice) => (
+                <li
+                  key={choice.id}
+                  style={{
+                    padding: ".625rem .875rem",
+                    background: choice.id === question.answer ? "rgba(74,222,128,0.06)" : "var(--surface-2)",
+                    border: `1px solid ${choice.id === question.answer ? "rgba(74,222,128,0.25)" : "var(--border)"}`,
+                    fontSize: ".875rem",
+                    color: choice.id === question.answer ? "var(--success)" : "var(--text-2)",
+                    display: "flex",
+                    gap: ".5rem",
+                  }}
+                >
+                  {choice.id === question.answer && <span style={{ fontWeight: 700 }}>✓</span>}
+                  <span>{choice.text}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div style={{ marginBottom: "1rem" }}>

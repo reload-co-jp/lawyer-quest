@@ -10,6 +10,7 @@ type Props = {
 
 export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
   const correctChoice = question.choices.find((c) => c.id === question.answer)
+  const isFillBlank = question.format === "fill_blank"
 
   return (
     <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: ".75rem" }}>
@@ -29,10 +30,22 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
           <p style={{ fontWeight: 700, color: isCorrect ? "var(--success)" : "var(--error)", fontSize: ".9375rem", margin: 0 }}>
             {isCorrect ? "正解" : "不正解"}
           </p>
-          {!isCorrect && (
+          {!isCorrect && !isFillBlank && (
             <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: ".25rem 0 0" }}>
               正解: {correctChoice?.text}
             </p>
+          )}
+          {!isCorrect && isFillBlank && question.blanks && (
+            <div style={{ margin: ".25rem 0 0" }}>
+              {question.blanks.map((b) => {
+                const choice = question.choices.find((c) => c.id === b.answer)
+                return (
+                  <p key={b.id} style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: 0 }}>
+                    ［{b.id}］: {choice?.text}
+                  </p>
+                )
+              })}
+            </div>
           )}
         </div>
       </div>

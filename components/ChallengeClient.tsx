@@ -5,6 +5,7 @@ import Link from "next/link"
 import type { Question } from "types/question"
 import type { QuestId } from "types/quest"
 import { ChoiceList } from "components/ChoiceList"
+import { FillBlankAnswer } from "components/FillBlankAnswer"
 import { ExplanationBox } from "components/ExplanationBox"
 import { recordAnswer, removeWrongQuestion } from "lib/storage"
 import { getAreaById } from "lib/quests"
@@ -18,6 +19,7 @@ type Props = {
 export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+  const [blankAnswers, setBlankAnswers] = useState<Record<string, string>>({})
   const [revealed, setRevealed] = useState(false)
   const [results, setResults] = useState<{ questionId: string; isCorrect: boolean }[]>([])
   const [finished, setFinished] = useState(false)
@@ -25,6 +27,13 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
 
   const current = questions[currentIndex]
   const area = current ? getAreaById(current.areaId) : null
+  const isFillBlank = current?.format === "fill_blank"
+  const isAnswerComplete = isFillBlank
+    ? (current?.blanks?.every((b) => blankAnswers[b.id]) ?? false)
+    : !!selectedAnswer
+  const isCorrect = isFillBlank
+    ? (current?.blanks?.every((b) => blankAnswers[b.id] === b.answer) ?? false)
+    : selectedAnswer === current?.answer
 
   if (!current || finished) {
     const correct = results.filter((r) => r.isCorrect).length
@@ -92,15 +101,19 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
     setSelectedAnswer(choiceId)
   }
 
+  const handleBlankSelect = (blankId: string, choiceId: string) => {
+    if (revealed) return
+    setBlankAnswers((prev) => ({ ...prev, [blankId]: choiceId }))
+  }
+
   const handleReveal = () => {
-    if (!selectedAnswer || revealed) return
-    const isCorrect = selectedAnswer === current.answer
+    if (!isAnswerComplete || revealed) return
     setRevealed(true)
     recordAnswer({
       questionId: current.id,
       questId: questId === "random" ? current.questId : questId,
       areaId: current.areaId,
-      selectedAnswer,
+      selectedAnswer: isFillBlank ? JSON.stringify(blankAnswers) : (selectedAnswer as string),
       isCorrect,
       answeredAt: new Date().toISOString(),
     })
@@ -113,6 +126,7 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
     } else {
       setCurrentIndex((i) => i + 1)
       setSelectedAnswer(null)
+      setBlankAnswers({})
       setRevealed(false)
     }
   }
@@ -197,7 +211,7 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
               border: "1px solid var(--border)",
             }}
           >
-            {current.format === "true_false" ? "○×" : "4択"}
+            {current.format === "true_false" ? "○×" : current.format === "fill_blank" ? "穴埋め" : "4択"}
           </span>
           {current.examYear && (
             <span
@@ -220,29 +234,39 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
         </p>
       </div>
 
-      <ChoiceList
-        choices={current.choices}
-        selectedAnswer={selectedAnswer}
-        correctAnswer={current.answer}
-        onSelect={handleSelect}
-        revealed={revealed}
-      />
+      {isFillBlank ? (
+        <FillBlankAnswer
+          blanks={current.blanks ?? []}
+          choices={current.choices}
+          selectedAnswers={blankAnswers}
+          onSelect={handleBlankSelect}
+          revealed={revealed}
+        />
+      ) : (
+        <ChoiceList
+          choices={current.choices}
+          selectedAnswer={selectedAnswer}
+          correctAnswer={current.answer}
+          onSelect={handleSelect}
+          revealed={revealed}
+        />
+      )}
 
       {!revealed && (
         <button
           onClick={handleReveal}
-          disabled={!selectedAnswer}
+          disabled={!isAnswerComplete}
           style={{
             marginTop: ".875rem",
             width: "100%",
             padding: ".75rem",
-            background: selectedAnswer ? "var(--accent-btn)" : "var(--surface-2)",
-            border: "1px solid " + (selectedAnswer ? "var(--accent-btn)" : "var(--border)"),
+            background: isAnswerComplete ? "var(--accent-btn)" : "var(--surface-2)",
+            border: "1px solid " + (isAnswerComplete ? "var(--accent-btn)" : "var(--border)"),
             borderRadius: "var(--radius-sm)",
-            color: selectedAnswer ? "#fff" : "var(--text-3)",
+            color: isAnswerComplete ? "#fff" : "var(--text-3)",
             fontSize: ".9375rem",
             fontWeight: 600,
-            cursor: selectedAnswer ? "pointer" : "not-allowed",
+            cursor: isAnswerComplete ? "pointer" : "not-allowed",
             letterSpacing: "-.01em",
           }}
         >
@@ -250,7 +274,7 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
         </button>
       )}
 
-      {revealed && <ExplanationBox question={current} isCorrect={selectedAnswer === current.answer} />}
+      {revealed && <ExplanationBox question={current} isCorrect={isCorrect} />}
 
       {revealed && (
         <div style={{ marginTop: ".875rem", display: "flex", gap: ".5rem" }}>
