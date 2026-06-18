@@ -45,3 +45,20 @@ button {
 a {
   color: inherit;
 }
+
+.hero-pixel {
+  position: relative;
+  background-image: radial-gradient(var(--border-2) 1px, transparent 1px);
+  background-size: 12px 12px;
+  background-position: -1px -1px;
+}
+
+.pixel-btn {
+  box-shadow: 3px 3px 0 #000;
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+
+.pixel-btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 #000;
+}

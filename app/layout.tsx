@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Script from "next/script"
-import { Kaisei_Tokumin } from "next/font/google"
+import { Kaisei_Tokumin, DotGothic16 } from "next/font/google"
 import { HeaderNav } from "components/HeaderNav"
 import "./reset.css"
 
@@ -8,6 +8,7 @@ const GA_ID = "G-1PYPBQGLTQ"
 const isProd = process.env.NODE_ENV === "production"
 
 const kaisei = Kaisei_Tokumin({ weight: ["400", "700"], subsets: ["latin"] })
+const dotGothic = DotGothic16({ weight: "400", subsets: ["latin"], variable: "--font-pixel" })
 
 const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
@@ -55,7 +56,7 @@ const jsonLd = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="ja" className={kaisei.className}>
+    <html lang="ja" className={`${kaisei.className} ${dotGothic.variable}`}>
       <body>
         <script
           type="application/ld+json"
