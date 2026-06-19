@@ -2,13 +2,21 @@ import type { FC } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "行政書士試験 ガイド | Lawyer Quest",
-  description:
-    "行政書士試験の概要・試験科目・合格基準・申込み方法・試験日程を解説。受験資格は不問。法令等244点＋一般知識等56点の計300点満点。",
-}
-
 const BASE_URL = "https://lawyer-quest.reload.co.jp"
+const TITLE = "行政書士試験 ガイド"
+const DESCRIPTION =
+  "行政書士試験の概要・試験科目・合格基準・申込み方法・試験日程を解説。受験資格は不問。法令等244点＋一般知識等56点の計300点満点。"
+
+export const metadata: Metadata = {
+  title: `${TITLE} | Lawyer Quest`,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/exam-guide` },
+  openGraph: {
+    title: `${TITLE} | Lawyer Quest`,
+    description: DESCRIPTION,
+    url: `${BASE_URL}/exam-guide`,
+  },
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

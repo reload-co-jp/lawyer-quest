@@ -24,6 +24,7 @@ export const metadata = {
   description:
     "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
   metadataBase: new URL(BASE_URL),
+  alternates: { canonical: BASE_URL },
   openGraph: {
     type: "website",
     siteName: "Lawyer Quest",

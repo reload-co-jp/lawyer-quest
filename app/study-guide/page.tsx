@@ -2,13 +2,21 @@ import type { FC } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "法律初心者向け 行政書士勉強ガイド | Lawyer Quest",
-  description:
-    "法律を勉強したことがない人向けに、行政書士試験で学ぶ範囲・勉強する意義・難易度をやさしく解説。憲法・民法・行政法の学習順序や合格までの目安時間も紹介。",
-}
-
 const BASE_URL = "https://lawyer-quest.reload.co.jp"
+const TITLE = "法律初心者向け 行政書士勉強ガイド"
+const DESCRIPTION =
+  "法律を勉強したことがない人向けに、行政書士試験で学ぶ範囲・勉強する意義・難易度をやさしく解説。憲法・民法・行政法の学習順序や合格までの目安時間も紹介。"
+
+export const metadata: Metadata = {
+  title: `${TITLE} | Lawyer Quest`,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/study-guide` },
+  openGraph: {
+    title: `${TITLE} | Lawyer Quest`,
+    description: DESCRIPTION,
+    url: `${BASE_URL}/study-guide`,
+  },
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

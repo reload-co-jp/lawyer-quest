@@ -47,6 +47,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     { url: `${BASE_URL}/exam`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/mock-exam`, changeFrequency: "monthly", priority: 0.7 },
+    {
+      url: `${BASE_URL}/challenge/random`,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    ...getAllQuests().map((q) => ({
+      url: `${BASE_URL}/challenge/${q.id}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
     ...quests,
     ...articles,
     ...questions,

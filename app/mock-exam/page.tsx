@@ -3,10 +3,20 @@ import type { Metadata } from "next"
 import { getAllQuestions } from "lib/questions"
 import { ExamClient } from "components/ExamClient"
 
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
+const TITLE = "模擬テスト"
+const DESCRIPTION =
+  "行政法・民法・憲法を本番試験相当の比率で出題する20問の模擬テスト。"
+
 export const metadata: Metadata = {
-  title: "模擬テスト | Lawyer Quest",
-  description:
-    "行政法・民法・憲法を本番試験相当の比率で出題する20問の模擬テスト。",
+  title: `${TITLE} | Lawyer Quest`,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/mock-exam` },
+  openGraph: {
+    title: `${TITLE} | Lawyer Quest`,
+    description: DESCRIPTION,
+    url: `${BASE_URL}/mock-exam`,
+  },
 }
 
 const Page: FC = () => {

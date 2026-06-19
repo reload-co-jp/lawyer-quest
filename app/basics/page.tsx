@@ -2,13 +2,21 @@ import type { FC } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "法律ゼロから入門",
-  description:
-    "法律用語を一度も見たことがない人向けに、条文の読み方・法令の種類・要件と効果・裁判所のしくみをやさしく解説。行政書士の勉強を始める前の準備ページ。",
-}
-
 const BASE_URL = "https://lawyer-quest.reload.co.jp"
+const TITLE = "法律ゼロから入門"
+const DESCRIPTION =
+  "法律用語を一度も見たことがない人向けに、条文の読み方・法令の種類・要件と効果・裁判所のしくみをやさしく解説。行政書士の勉強を始める前の準備ページ。"
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/basics` },
+  openGraph: {
+    title: `${TITLE} | Lawyer Quest`,
+    description: DESCRIPTION,
+    url: `${BASE_URL}/basics`,
+  },
+}
 
 const jsonLd = {
   "@context": "https://schema.org",

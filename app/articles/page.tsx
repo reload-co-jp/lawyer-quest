@@ -6,10 +6,20 @@ import {
   type ArticleSubject,
 } from "lib/articles"
 
+const BASE_URL = "https://lawyer-quest.reload.co.jp"
+const TITLE = "学習記事"
+const DESCRIPTION =
+  "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。条文・判例引用付き。"
+
 export const metadata: Metadata = {
-  title: "学習記事",
-  description:
-    "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。条文・判例引用付き。",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/articles` },
+  openGraph: {
+    title: `${TITLE} | Lawyer Quest`,
+    description: DESCRIPTION,
+    url: `${BASE_URL}/articles`,
+  },
 }
 
 const SUBJECT_CONFIG: Record<ArticleSubject, { label: string; color: string }> =

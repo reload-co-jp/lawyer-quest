@@ -2,13 +2,21 @@ import type { FC } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
-export const metadata: Metadata = {
-  title: "基礎知識科目 対策ガイド",
-  description:
-    "行政書士試験「基礎知識」科目（政治・経済・社会、情報通信・個人情報保護、文章理解、行政書士法等）の出題範囲・足切り基準・分野別の対策方法を解説。",
-}
-
 const BASE_URL = "https://lawyer-quest.reload.co.jp"
+const TITLE = "基礎知識科目 対策ガイド"
+const DESCRIPTION =
+  "行政書士試験「基礎知識」科目（政治・経済・社会、情報通信・個人情報保護、文章理解、行政書士法等）の出題範囲・足切り基準・分野別の対策方法を解説。"
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${BASE_URL}/general-knowledge` },
+  openGraph: {
+    title: `${TITLE} | Lawyer Quest`,
+    description: DESCRIPTION,
+    url: `${BASE_URL}/general-knowledge`,
+  },
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
