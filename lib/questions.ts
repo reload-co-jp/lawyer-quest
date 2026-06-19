@@ -4,6 +4,7 @@ import adminLawQuestions from "data/questions/administrative-law.json"
 import civilLawQuestions from "data/questions/civil-law.json"
 import constitutionalLawQuestions from "data/questions/constitutional-law.json"
 import pastExamQuestions from "data/questions/past-exam.json"
+import { shuffle } from "lib/shuffle"
 
 const allQuestions: Question[] = [
   ...(adminLawQuestions as Question[]),
@@ -71,6 +72,42 @@ const ARTICLE_TAGS: Record<string, string[]> = {
   "const-10-cabinet": ["内閣", "議院内閣制", "69条", "内閣総理大臣"],
   "const-11-diet": ["国会", "衆議院の優越", "会期", "国会議員"],
   "const-12-judicial-review": ["違憲審査制", "81条", "付随的審査制", "統治行為"],
+}
+
+type Field = "行政法" | "民法" | "憲法"
+
+const SUBJECT_FIELD: Partial<Record<Question["subject"], Field>> = {
+  administrative_law: "行政法",
+  civil_law: "民法",
+  constitutional_law: "憲法",
+}
+
+const PAST_EXAM_AREA_FIELD: Record<string, Field> = {
+  past_exam_admin: "行政法",
+  past_exam_civil: "民法",
+  past_exam_const: "憲法",
+}
+
+export function getFieldLabel(q: Question): Field | undefined {
+  return SUBJECT_FIELD[q.subject] ?? PAST_EXAM_AREA_FIELD[q.areaId]
+}
+
+// 行政書士試験本番の科目別出題比率（行政法19:民法9:憲法5）を20問にスケールした構成
+const MOCK_EXAM_FIELD_COUNTS: { field: Field; count: number }[] = [
+  { field: "行政法", count: 12 },
+  { field: "民法", count: 5 },
+  { field: "憲法", count: 3 },
+]
+
+export function buildBalancedMockExam(): Question[] {
+  const byField: Record<Field, Question[]> = { 行政法: [], 民法: [], 憲法: [] }
+  for (const q of allQuestions) {
+    const field = getFieldLabel(q)
+    if (field) byField[field].push(q)
+  }
+
+  const selected = MOCK_EXAM_FIELD_COUNTS.flatMap(({ field, count }) => shuffle(byField[field]).slice(0, count))
+  return shuffle(selected)
 }
 
 export function getRelatedQuestions(articleId: string, limit = 5): Question[] {

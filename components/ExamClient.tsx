@@ -4,19 +4,29 @@ import { FC, useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import type { Question } from "types/question"
 import { shuffle } from "lib/shuffle"
+import { getFieldLabel, buildBalancedMockExam } from "lib/questions"
 import { FillBlankAnswer } from "components/FillBlankAnswer"
 
 type ExamCount = 20 | 40 | 60
 
 type Phase = "setup" | "answering" | "results"
 
-type Props = { allQuestions: Question[] }
-
-const AREA_LABEL: Record<string, string> = {
-  past_exam_admin: "行政法",
-  past_exam_civil: "民法",
-  past_exam_const: "憲法",
+type Props = {
+  allQuestions: Question[]
+  examCounts?: ExamCount[]
+  variant?: "random" | "balanced"
+  layout?: "paged" | "all-in-one"
+  title?: string
+  description?: string
+  poolNote?: string[]
 }
+
+const DEFAULT_POOL_NOTE = [
+  "過去問200問からランダム出題",
+  "解答中は正誤フィードバックなし",
+  "未回答のまま次の問題に進める",
+  "経過時間を計測（制限なし）",
+]
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)
@@ -24,9 +34,17 @@ function formatTime(seconds: number): string {
   return `${m}分${s.toString().padStart(2, "0")}秒`
 }
 
-export const ExamClient: FC<Props> = ({ allQuestions }) => {
+export const ExamClient: FC<Props> = ({
+  allQuestions,
+  examCounts = [20, 40, 60],
+  variant = "random",
+  layout = "paged",
+  title = "過去問 模擬試験",
+  description = "全問解答後にまとめて採点。解説は結果画面で確認できる。",
+  poolNote = DEFAULT_POOL_NOTE,
+}) => {
   const [phase, setPhase] = useState<Phase>("setup")
-  const [count, setCount] = useState<ExamCount>(40)
+  const [count, setCount] = useState<ExamCount>(examCounts[0])
   const [questions, setQuestions] = useState<Question[]>([])
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [blankAnswers, setBlankAnswers] = useState<Record<string, Record<string, string>>>({})
@@ -42,7 +60,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
   }, [])
 
   const startExam = () => {
-    const selected = shuffle(allQuestions).slice(0, count)
+    const selected = variant === "balanced" ? buildBalancedMockExam() : shuffle(allQuestions).slice(0, count)
     setQuestions(selected)
     setAnswers({})
     setBlankAnswers({})
@@ -78,6 +96,86 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
   const answeredCount = questions.filter(isQuestionAnswered).length
   const allAnswered = answeredCount === questions.length
 
+  const renderQuestionBody = (q: Question) => {
+    const selectedAnswer = answers[q.id]
+    return (
+      <>
+        <div
+          style={{
+            background: "var(--surface)",
+            border: "1px solid var(--border)",
+            borderLeft: "2px solid var(--past)",
+            padding: "1.25rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <div style={{ display: "flex", gap: ".375rem", flexWrap: "wrap", marginBottom: ".875rem" }}>
+            {getFieldLabel(q) && (
+              <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--past)", border: "1px solid rgba(217,119,6,0.3)" }}>
+                {getFieldLabel(q)}
+              </span>
+            )}
+            {q.examYear && (
+              <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--text-3)", border: "1px solid var(--border)" }}>
+                {q.examYear}年度
+              </span>
+            )}
+            <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--text-3)", border: "1px solid var(--border)" }}>
+              {q.format === "true_false" ? "○×" : q.format === "fill_blank" ? "穴埋め" : "4択"}
+            </span>
+          </div>
+          <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, margin: 0 }}>
+            {q.question}
+          </p>
+        </div>
+
+        {q.format === "fill_blank" ? (
+          <div style={{ marginBottom: "1rem" }}>
+            <FillBlankAnswer
+              blanks={q.blanks ?? []}
+              choices={q.choices}
+              selectedAnswers={blankAnswers[q.id] ?? {}}
+              onSelect={(blankId, choiceId) => selectBlankAnswer(q.id, blankId, choiceId)}
+              revealed={false}
+            />
+          </div>
+        ) : (
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "1rem" }}>
+            {q.choices.map((choice) => {
+              const isSelected = selectedAnswer === choice.id
+              return (
+                <button
+                  key={choice.id}
+                  onClick={() => selectAnswer(q.id, choice.id)}
+                  style={{
+                    padding: ".75rem 1rem",
+                    background: isSelected ? "rgba(217,119,6,0.12)" : "var(--surface)",
+                    border: `1px solid ${isSelected ? "var(--past)" : "var(--border)"}`,
+                    color: isSelected ? "var(--past)" : "var(--text-1)",
+                    fontSize: ".875rem",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    borderRadius: "var(--radius-sm)",
+                    display: "flex",
+                    gap: ".75rem",
+                    alignItems: "flex-start",
+                    lineHeight: 1.6,
+                    fontWeight: isSelected ? 600 : 400,
+                  }}
+                >
+                  <span style={{ flexShrink: 0, fontWeight: 700, color: isSelected ? "var(--past)" : "var(--text-3)", minWidth: "1.25rem" }}>
+                    {choice.id.toUpperCase()}
+                  </span>
+                  <span>{choice.text}</span>
+                </button>
+              )
+            })}
+          </div>
+        )}
+      </>
+    )
+  }
+
   if (phase === "setup") {
     return (
       <div style={{ maxWidth: "480px", margin: "0 auto", padding: "0 1rem" }}>
@@ -87,52 +185,54 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
           </Link>
         </div>
         <h1 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--text-1)", marginBottom: ".375rem" }}>
-          過去問 模擬試験
+          {title}
         </h1>
         <p style={{ fontSize: ".875rem", color: "var(--text-3)", marginBottom: "2rem" }}>
-          全問解答後にまとめて採点。解説は結果画面で確認できる。
+          {description}
         </p>
 
-        <div
-          style={{
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            padding: "1.5rem",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <p style={{ fontSize: ".75rem", color: "var(--text-3)", fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", marginBottom: "1rem" }}>
-            問題数を選択
-          </p>
-          <div style={{ display: "flex", gap: ".75rem" }}>
-            {([20, 40, 60] as ExamCount[]).map((n) => (
-              <button
-                key={n}
-                onClick={() => setCount(n)}
-                style={{
-                  flex: 1,
-                  padding: ".875rem .5rem",
-                  background: count === n ? "var(--past)" : "var(--surface-2)",
-                  border: `1px solid ${count === n ? "var(--past)" : "var(--border)"}`,
-                  color: count === n ? "#fff" : "var(--text-2)",
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  borderRadius: "var(--radius-sm)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: ".25rem",
-                }}
-              >
-                <span>{n}問</span>
-                <span style={{ fontSize: ".6875rem", fontWeight: 400, opacity: .8 }}>
-                  {n === 60 ? "本番相当" : n === 40 ? "標準" : "ショート"}
-                </span>
-              </button>
-            ))}
+        {examCounts.length > 1 && (
+          <div
+            style={{
+              background: "var(--surface)",
+              border: "1px solid var(--border)",
+              padding: "1.5rem",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <p style={{ fontSize: ".75rem", color: "var(--text-3)", fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", marginBottom: "1rem" }}>
+              問題数を選択
+            </p>
+            <div style={{ display: "flex", gap: ".75rem" }}>
+              {examCounts.map((n) => (
+                <button
+                  key={n}
+                  onClick={() => setCount(n)}
+                  style={{
+                    flex: 1,
+                    padding: ".875rem .5rem",
+                    background: count === n ? "var(--past)" : "var(--surface-2)",
+                    border: `1px solid ${count === n ? "var(--past)" : "var(--border)"}`,
+                    color: count === n ? "#fff" : "var(--text-2)",
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    borderRadius: "var(--radius-sm)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: ".25rem",
+                  }}
+                >
+                  <span>{n}問</span>
+                  <span style={{ fontSize: ".6875rem", fontWeight: 400, opacity: .8 }}>
+                    {n === 60 ? "本番相当" : n === 40 ? "標準" : "ショート"}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div
           style={{
@@ -145,10 +245,9 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
             lineHeight: 1.75,
           }}
         >
-          <p style={{ margin: 0 }}>・ 過去問200問からランダム出題</p>
-          <p style={{ margin: 0 }}>・ 解答中は正誤フィードバックなし</p>
-          <p style={{ margin: 0 }}>・ 未回答のまま次の問題に進める</p>
-          <p style={{ margin: 0 }}>・ 経過時間を計測（制限なし）</p>
+          {poolNote.map((note) => (
+            <p key={note} style={{ margin: 0 }}>・ {note}</p>
+          ))}
         </div>
 
         <button
@@ -172,9 +271,54 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
     )
   }
 
+  if (phase === "answering" && layout === "all-in-one") {
+    return (
+      <div style={{ maxWidth: "640px", margin: "0 auto", padding: "0 1rem 2rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
+          <span style={{ fontSize: ".8125rem", color: "var(--text-3)", fontVariantNumeric: "tabular-nums" }}>
+            ⏱ {formatTime(elapsed)}
+          </span>
+          <span style={{ fontSize: ".8125rem", color: "var(--text-3)" }}>
+            回答済: {answeredCount}/{questions.length}
+          </span>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {questions.map((q, i) => (
+            <div key={q.id}>
+              <p style={{ fontSize: ".75rem", color: "var(--text-3)", fontWeight: 600, letterSpacing: ".04em", marginBottom: ".5rem" }}>
+                問{i + 1}
+              </p>
+              {renderQuestionBody(q)}
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={submitExam}
+          disabled={!allAnswered}
+          style={{
+            width: "100%",
+            padding: ".875rem",
+            background: allAnswered ? "var(--past)" : "var(--surface-2)",
+            border: `1px solid ${allAnswered ? "var(--past)" : "var(--border)"}`,
+            color: allAnswered ? "#fff" : "var(--text-3)",
+            fontSize: ".9375rem",
+            fontWeight: 700,
+            cursor: allAnswered ? "pointer" : "not-allowed",
+            borderRadius: "var(--radius-sm)",
+            letterSpacing: "-.01em",
+            marginTop: "1.5rem",
+          }}
+        >
+          {allAnswered ? "採点する →" : `残り ${questions.length - answeredCount} 問未回答`}
+        </button>
+      </div>
+    )
+  }
+
   if (phase === "answering") {
     const current = questions[currentIndex]
-    const selectedAnswer = answers[current.id]
 
     return (
       <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 1rem" }}>
@@ -232,80 +376,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
           })}
         </div>
 
-        {/* 問題カード */}
-        <div
-          style={{
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            borderLeft: "2px solid var(--past)",
-            padding: "1.25rem",
-            marginBottom: "1rem",
-          }}
-        >
-          <div style={{ display: "flex", gap: ".375rem", flexWrap: "wrap", marginBottom: ".875rem" }}>
-            {current.areaId && AREA_LABEL[current.areaId] && (
-              <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--past)", border: "1px solid rgba(217,119,6,0.3)" }}>
-                {AREA_LABEL[current.areaId]}
-              </span>
-            )}
-            {current.examYear && (
-              <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--text-3)", border: "1px solid var(--border)" }}>
-                {current.examYear}年度
-              </span>
-            )}
-            <span style={{ fontSize: ".6875rem", padding: ".2rem .5rem", background: "var(--surface-2)", borderRadius: "99px", color: "var(--text-3)", border: "1px solid var(--border)" }}>
-              {current.format === "true_false" ? "○×" : current.format === "fill_blank" ? "穴埋め" : "4択"}
-            </span>
-          </div>
-          <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, margin: 0 }}>
-            {current.question}
-          </p>
-        </div>
-
-        {/* 選択肢 */}
-        {current.format === "fill_blank" ? (
-          <div style={{ marginBottom: "1rem" }}>
-            <FillBlankAnswer
-              blanks={current.blanks ?? []}
-              choices={current.choices}
-              selectedAnswers={blankAnswers[current.id] ?? {}}
-              onSelect={(blankId, choiceId) => selectBlankAnswer(current.id, blankId, choiceId)}
-              revealed={false}
-            />
-          </div>
-        ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginBottom: "1rem" }}>
-            {current.choices.map((choice) => {
-              const isSelected = selectedAnswer === choice.id
-              return (
-                <button
-                  key={choice.id}
-                  onClick={() => selectAnswer(current.id, choice.id)}
-                  style={{
-                    padding: ".75rem 1rem",
-                    background: isSelected ? "rgba(217,119,6,0.12)" : "var(--surface)",
-                    border: `1px solid ${isSelected ? "var(--past)" : "var(--border)"}`,
-                    color: isSelected ? "var(--past)" : "var(--text-1)",
-                    fontSize: ".875rem",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    borderRadius: "var(--radius-sm)",
-                    display: "flex",
-                    gap: ".75rem",
-                    alignItems: "flex-start",
-                    lineHeight: 1.6,
-                    fontWeight: isSelected ? 600 : 400,
-                  }}
-                >
-                  <span style={{ flexShrink: 0, fontWeight: 700, color: isSelected ? "var(--past)" : "var(--text-3)", minWidth: "1.25rem" }}>
-                    {choice.id.toUpperCase()}
-                  </span>
-                  <span>{choice.text}</span>
-                </button>
-              )
-            })}
-          </div>
-        )}
+        {renderQuestionBody(current)}
 
         {/* ナビゲーションボタン */}
         <div style={{ display: "flex", gap: ".5rem", marginBottom: ".75rem" }}>
@@ -372,7 +443,7 @@ export const ExamClient: FC<Props> = ({ allQuestions }) => {
 
   const areaStats: Record<string, { correct: number; total: number }> = {}
   for (const q of questions) {
-    const area = AREA_LABEL[q.areaId] ?? "その他"
+    const area = getFieldLabel(q) ?? "その他"
     if (!areaStats[area]) areaStats[area] = { correct: 0, total: 0 }
     areaStats[area].total += 1
     if (isQuestionCorrect(q)) areaStats[area].correct += 1
