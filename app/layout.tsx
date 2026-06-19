@@ -8,7 +8,11 @@ const GA_ID = "G-1PYPBQGLTQ"
 const isProd = process.env.NODE_ENV === "production"
 
 const kaisei = Kaisei_Tokumin({ weight: ["400", "700"], subsets: ["latin"] })
-const dotGothic = DotGothic16({ weight: "400", subsets: ["latin"], variable: "--font-pixel" })
+const dotGothic = DotGothic16({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-pixel",
+})
 
 const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
@@ -17,21 +21,22 @@ export const metadata = {
     default: "Lawyer Quest",
     template: "%s | Lawyer Quest",
   },
-  description: "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
+  description:
+    "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
   metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",
     siteName: "Lawyer Quest",
     title: "Lawyer Quest — 行政書士試験対策",
-    description: "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
+    description:
+      "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
     url: BASE_URL,
-    images: [{ url: "/og.svg", width: 1200, height: 630, alt: "Lawyer Quest" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lawyer Quest — 行政書士試験対策",
-    description: "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
-    images: ["/og.svg"],
+    description:
+      "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
   },
 }
 
@@ -40,7 +45,8 @@ const jsonLd = {
   "@type": "WebSite",
   name: "Lawyer Quest",
   url: BASE_URL,
-  description: "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
+  description:
+    "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
   inLanguage: "ja",
   publisher: {
     "@type": "Organization",
@@ -111,12 +117,26 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 flexShrink: 0,
               }}
             >
-              <span style={{ fontSize: "1rem", fontWeight: 700, color: "var(--text-1)", letterSpacing: "-.02em" }}>
+              <span
+                style={{
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  color: "var(--text-1)",
+                  letterSpacing: "-.02em",
+                }}
+              >
                 Lawyer Quest
               </span>
             </Link>
 
-            <div style={{ width: "1px", height: "16px", background: "var(--border-2)", flexShrink: 0 }} />
+            <div
+              style={{
+                width: "1px",
+                height: "16px",
+                background: "var(--border-2)",
+                flexShrink: 0,
+              }}
+            />
 
             <HeaderNav />
           </div>

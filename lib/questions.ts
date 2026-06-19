@@ -26,7 +26,9 @@ export function getQuestionById(id: string): Question | undefined {
 }
 
 export function getQuestionsByIds(ids: string[]): Question[] {
-  return ids.map((id) => allQuestions.find((q) => q.id === id)).filter(Boolean) as Question[]
+  return ids
+    .map((id) => allQuestions.find((q) => q.id === id))
+    .filter(Boolean) as Question[]
 }
 
 const ARTICLE_TAGS: Record<string, string[]> = {
@@ -38,7 +40,13 @@ const ARTICLE_TAGS: Record<string, string[]> = {
   "admin-06-standing": ["原告適格", "取消訴訟", "訴えの利益"],
   "admin-07-guidance": ["行政指導"],
   "admin-08-disclosure": ["情報公開", "個人情報保護法"],
-  "admin-09-enforcement": ["行政強制", "代執行", "即時強制", "行政上の強制執行", "行政上の秩序罰"],
+  "admin-09-enforcement": [
+    "行政強制",
+    "代執行",
+    "即時強制",
+    "行政上の強制執行",
+    "行政上の秩序罰",
+  ],
   "admin-10-compensation": ["国家賠償", "国家賠償法"],
   "admin-11-local-government": ["地方自治", "地方公共団体"],
   "admin-12-administrative-penalty": ["行政罰", "秩序罰", "行政上の秩序罰"],
@@ -48,7 +56,14 @@ const ARTICLE_TAGS: Record<string, string[]> = {
   "admin-16-organization": ["行政組織"],
   "admin-17-planning": ["行政計画"],
   "admin-18-loss-compensation": ["損失補償"],
-  "civil-01-general": ["民法総則", "意思表示", "代理", "時効", "権利能力", "失踪宣告"],
+  "civil-01-general": [
+    "民法総則",
+    "意思表示",
+    "代理",
+    "時効",
+    "権利能力",
+    "失踪宣告",
+  ],
   "civil-02-property": ["物権", "所有権", "担保物権", "占有権"],
   "civil-03-obligations": ["債権総論", "不法行為", "不当利得"],
   "civil-04-family-inheritance": ["親族", "相続", "婚姻", "離婚", "養子縁組"],
@@ -59,19 +74,52 @@ const ARTICLE_TAGS: Record<string, string[]> = {
   "civil-09-agency": ["代理", "無権代理", "表見代理", "復代理"],
   "civil-10-intention": ["錯誤", "詐欺", "強迫", "意思表示", "公序良俗"],
   "civil-11-real-rights": ["物権変動", "登記", "混同"],
-  "civil-12-succession": ["相続", "相続放棄", "限定承認", "法定相続分", "遺産分割"],
-  "const-01-human-rights": ["基本的人権", "私人間効力", "外国人の人権", "法人の人権"],
+  "civil-12-succession": [
+    "相続",
+    "相続放棄",
+    "限定承認",
+    "法定相続分",
+    "遺産分割",
+  ],
+  "const-01-human-rights": [
+    "基本的人権",
+    "私人間効力",
+    "外国人の人権",
+    "法人の人権",
+  ],
   "const-02-freedoms": ["経済的自由", "社会権", "職業選択の自由", "財産権"],
   "const-03-governance": ["国会", "内閣", "裁判所", "統治機構"],
   "const-04-cases": ["判例", "違憲"],
   "const-05-equality": ["14条", "法の下の平等", "平等権", "尊属殺"],
-  "const-06-economic-freedom": ["職業選択の自由", "財産権", "22条", "29条", "損失補償"],
+  "const-06-economic-freedom": [
+    "職業選択の自由",
+    "財産権",
+    "22条",
+    "29条",
+    "損失補償",
+  ],
   "const-07-voting-rights": ["選挙権", "一票の格差", "参政権"],
-  "const-08-social-rights": ["生存権", "25条", "教育を受ける権利", "労働基本権"],
-  "const-09-criminal-procedure": ["31条", "黙秘権", "令状主義", "二重の危険禁止", "人身の自由"],
+  "const-08-social-rights": [
+    "生存権",
+    "25条",
+    "教育を受ける権利",
+    "労働基本権",
+  ],
+  "const-09-criminal-procedure": [
+    "31条",
+    "黙秘権",
+    "令状主義",
+    "二重の危険禁止",
+    "人身の自由",
+  ],
   "const-10-cabinet": ["内閣", "議院内閣制", "69条", "内閣総理大臣"],
   "const-11-diet": ["国会", "衆議院の優越", "会期", "国会議員"],
-  "const-12-judicial-review": ["違憲審査制", "81条", "付随的審査制", "統治行為"],
+  "const-12-judicial-review": [
+    "違憲審査制",
+    "81条",
+    "付随的審査制",
+    "統治行為",
+  ],
 }
 
 type Field = "行政法" | "民法" | "憲法"
@@ -106,7 +154,9 @@ export function buildBalancedMockExam(): Question[] {
     if (field) byField[field].push(q)
   }
 
-  const selected = MOCK_EXAM_FIELD_COUNTS.flatMap(({ field, count }) => shuffle(byField[field]).slice(0, count))
+  const selected = MOCK_EXAM_FIELD_COUNTS.flatMap(({ field, count }) =>
+    shuffle(byField[field]).slice(0, count)
+  )
   return shuffle(selected)
 }
 
@@ -117,11 +167,15 @@ export function getRelatedQuestions(articleId: string, limit = 5): Question[] {
   const prefix = articleId.startsWith("admin-")
     ? "administrative_law"
     : articleId.startsWith("civil-")
-    ? "civil_law"
-    : "constitutional_law"
+      ? "civil_law"
+      : "constitutional_law"
 
   const scored = allQuestions
-    .filter((q) => q.questId === prefix || (q.questId === "past_exam" && q.subject === prefix))
+    .filter(
+      (q) =>
+        q.questId === prefix ||
+        (q.questId === "past_exam" && q.subject === prefix)
+    )
     .map((q) => {
       const qtags = q.tags ?? []
       const score = tags.filter((t) => qtags.includes(t)).length

@@ -10,7 +10,11 @@ export function generateStaticParams() {
   return getAllArticles().map((a) => ({ articleId: a.id }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ articleId: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ articleId: string }>
+}): Promise<Metadata> {
   const { articleId } = await params
   const result = getArticleContent(articleId)
   if (!result) return {}
@@ -33,10 +37,15 @@ const SUBJECT_COLOR: Record<string, string> = {
   constitutional_law: "var(--const)",
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ articleId: string }> }) {
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ articleId: string }>
+}) {
   const { articleId } = await params
   const result = getArticleContent(articleId)
-  if (!result) return <p style={{ color: "var(--error)" }}>記事が見つかりません。</p>
+  if (!result)
+    return <p style={{ color: "var(--error)" }}>記事が見つかりません。</p>
 
   const { meta, html } = result
   const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
@@ -51,28 +60,61 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
       url: `${BASE_URL}/articles/${meta.id}`,
       isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
       about: { "@type": "Thing", name: meta.subjectLabel },
-      publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
+      publisher: {
+        "@type": "Organization",
+        name: "Lawyer Quest",
+        url: BASE_URL,
+      },
     },
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
-        { "@type": "ListItem", position: 2, name: "学習記事", item: `${BASE_URL}/articles` },
-        { "@type": "ListItem", position: 3, name: meta.title, item: `${BASE_URL}/articles/${meta.id}` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "学習記事",
+          item: `${BASE_URL}/articles`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: meta.title,
+          item: `${BASE_URL}/articles/${meta.id}`,
+        },
       ],
     },
   ]
 
   return (
     <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div style={{ marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: ".5rem" }}>
-        <Link href="/articles" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div
+        style={{
+          marginBottom: "1.5rem",
+          display: "flex",
+          alignItems: "center",
+          gap: ".5rem",
+        }}
+      >
+        <Link
+          href="/articles"
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-3)",
+            textDecoration: "none",
+          }}
+        >
           記事
         </Link>
         <span style={{ color: "var(--text-3)", fontSize: ".8125rem" }}>/</span>
-        <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>{meta.subjectLabel}</span>
+        <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>
+          {meta.subjectLabel}
+        </span>
       </div>
 
       <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
@@ -87,7 +129,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
             borderLeft: `2px solid ${color}`,
           }}
         >
-          <p style={{ fontSize: ".75rem", color: "var(--text-3)", fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase", marginBottom: ".875rem" }}>
+          <p
+            style={{
+              fontSize: ".75rem",
+              color: "var(--text-3)",
+              fontWeight: 600,
+              letterSpacing: ".06em",
+              textTransform: "uppercase",
+              marginBottom: ".875rem",
+            }}
+          >
             この記事に関連する問題
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
@@ -108,13 +159,29 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
                   gap: ".5rem",
                 }}
               >
-                <span style={{ flexShrink: 0, color: "var(--text-3)", fontVariantNumeric: "tabular-nums" }}>
+                <span
+                  style={{
+                    flexShrink: 0,
+                    color: "var(--text-3)",
+                    fontVariantNumeric: "tabular-nums",
+                  }}
+                >
                   {"★".repeat(q.difficulty)}
                 </span>
                 <span style={{ flex: 1 }}>
-                  {q.question.length > 70 ? q.question.slice(0, 70) + "…" : q.question}
+                  {q.question.length > 70
+                    ? q.question.slice(0, 70) + "…"
+                    : q.question}
                 </span>
-                <span style={{ flexShrink: 0, color: "var(--text-3)", fontSize: ".6875rem" }}>→</span>
+                <span
+                  style={{
+                    flexShrink: 0,
+                    color: "var(--text-3)",
+                    fontSize: ".6875rem",
+                  }}
+                >
+                  →
+                </span>
               </Link>
             ))}
           </div>
@@ -133,7 +200,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ articl
           flexWrap: "wrap",
         }}
       >
-        <Link href="/articles" style={{ fontSize: ".875rem", color: "var(--text-2)", textDecoration: "none" }}>
+        <Link
+          href="/articles"
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            textDecoration: "none",
+          }}
+        >
           ← 記事一覧
         </Link>
         <Link

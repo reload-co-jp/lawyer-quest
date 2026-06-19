@@ -34,7 +34,12 @@ export const HeaderNav = () => {
         className="header-nav-desktop"
       >
         {NAV_LINKS.map(({ href, label }) => (
-          <Link key={href} href={href} style={linkStyle} onClick={() => setOpen(false)}>
+          <Link
+            key={href}
+            href={href}
+            style={linkStyle}
+            onClick={() => setOpen(false)}
+          >
             {label}
           </Link>
         ))}

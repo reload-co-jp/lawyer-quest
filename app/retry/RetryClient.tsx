@@ -22,12 +22,32 @@ export const RetryClient: FC = () => {
 
   if (questions.length === 0) {
     return (
-      <div style={{ maxWidth: "480px", margin: "4rem auto", textAlign: "center", padding: "0 1rem" }}>
+      <div
+        style={{
+          maxWidth: "480px",
+          margin: "4rem auto",
+          textAlign: "center",
+          padding: "0 1rem",
+        }}
+      >
         <p style={{ fontSize: "2rem", marginBottom: "1rem" }}>🎉</p>
-        <h2 style={{ color: "var(--text-1)", fontWeight: 700, marginBottom: ".5rem", fontSize: "1.125rem" }}>
+        <h2
+          style={{
+            color: "var(--text-1)",
+            fontWeight: 700,
+            marginBottom: ".5rem",
+            fontSize: "1.125rem",
+          }}
+        >
           再挑戦リストは空です
         </h2>
-        <p style={{ color: "var(--text-2)", marginBottom: "2rem", fontSize: ".875rem" }}>
+        <p
+          style={{
+            color: "var(--text-2)",
+            marginBottom: "2rem",
+            fontSize: ".875rem",
+          }}
+        >
           間違えた問題がないか、すべて攻略済みです。
         </p>
         <Link
@@ -60,8 +80,17 @@ export const RetryClient: FC = () => {
           gap: ".625rem",
         }}
       >
-        <div style={{ width: "5px", height: "5px", background: "var(--error)" }} />
-        <p style={{ margin: 0, fontWeight: 600, color: "var(--error)", fontSize: ".875rem" }}>
+        <div
+          style={{ width: "5px", height: "5px", background: "var(--error)" }}
+        />
+        <p
+          style={{
+            margin: 0,
+            fontWeight: 600,
+            color: "var(--error)",
+            fontSize: ".875rem",
+          }}
+        >
           再挑戦クエスト — {questions.length}問
         </p>
       </div>

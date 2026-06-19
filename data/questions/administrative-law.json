@@ -8,13 +8,32 @@
     "subtopic": "審査基準",
     "format": "true_false",
     "question": "行政庁は、申請に対する処分について審査基準を定め、行政上特別の支障がある場合を除き、公にしておかなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第5条第1項は行政庁に審査基準の設定を義務付け、同条第3項は行政上特別の支障がある場合を除き公にしておかなければならないと規定している。",
     "point": "審査基準は「定める義務あり＋原則公表義務あり」。例外は「行政上特別の支障がある場合」のみ。",
     "commonMistake": "処分基準（不利益処分・努力義務）と混同しやすい。審査基準は義務、処分基準は努力義務。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第5条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第5条（審査基準）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第5条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第5条（審査基準）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政手続法", "審査基準", "申請"],
     "legalAsOf": "2026-04-01",
@@ -30,13 +49,32 @@
     "subtopic": "処分基準",
     "format": "true_false",
     "question": "行政庁は、不利益処分をするかどうか又はどのような不利益処分とするかについての処分基準を定めるよう努めなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第12条第1項は、処分基準について「定めるよう努めなければならない」と規定しており、努力義務にとどまる。審査基準（第5条）が設定義務であるのと対照的である。",
     "point": "処分基準 = 努力義務。審査基準 = 義務。この差が試験頻出。",
     "commonMistake": "審査基準と同じく義務と誤解しやすい。処分基準は「努めなければならない」（努力義務）。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第12条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第12条（処分基準）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第12条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第12条（処分基準）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政手続法", "処分基準", "不利益処分"],
     "legalAsOf": "2026-04-01",
@@ -61,8 +99,24 @@
     "answer": "a",
     "explanation": "行政手続法第19条第1項は、聴聞は「行政庁が指名する職員その他政令で定める者が主宰する」と規定している。弁護士資格は要求されておらず、行政庁自身が主宰者を指名する。",
     "point": "聴聞主宰者 = 行政庁が指名する職員 or 政令で定める者。裁判所・弁護士は無関係。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第19条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第19条（聴聞の主宰）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第19条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第19条（聴聞の主宰）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政手続法", "聴聞", "主宰者"],
     "legalAsOf": "2026-04-01",
@@ -78,12 +132,31 @@
     "subtopic": "審査請求期間",
     "format": "true_false",
     "question": "審査請求は、処分があったことを知った日の翌日から起算して3か月以内にしなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政不服審査法第18条第1項は、審査請求の期間を「処分があったことを知った日の翌日から起算して3か月以内」と規定している。",
     "point": "審査請求期間：知った日翌日から3か月 / 処分日翌日から1年のいずれか早い方。",
-    "sources": [{ "type": "law", "title": "行政不服審査法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/426AC0000000068", "lawName": "行政不服審査法", "article": "第18条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政不服審査法 第18条（審査請求期間）", "url": "https://laws.e-gov.go.jp/law/426AC0000000068" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政不服審査法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068",
+        "lawName": "行政不服審査法",
+        "article": "第18条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政不服審査法 第18条（審査請求期間）",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政不服審査法", "審査請求", "出訴期間"],
     "legalAsOf": "2026-04-01",
@@ -99,13 +172,32 @@
     "subtopic": "取消訴訟の出訴期間",
     "format": "true_false",
     "question": "取消訴訟は、処分又は裁決があったことを知った日から6か月以内に提起しなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政事件訴訟法第14条第1項は、取消訴訟の出訴期間を「処分又は裁決があったことを知った日から6か月以内」と規定している。",
     "point": "取消訴訟：知った日から6か月 / 処分日から1年のいずれか早い方。",
     "commonMistake": "審査請求（3か月）と混同しやすい。取消訴訟は6か月。",
-    "sources": [{ "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第14条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政事件訴訟法 第14条（出訴期間）", "url": "https://laws.e-gov.go.jp/law/337AC0000000139" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第14条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法 第14条（出訴期間）",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政事件訴訟法", "取消訴訟", "出訴期間"],
     "legalAsOf": "2026-04-01",
@@ -131,8 +223,24 @@
     "explanation": "行政事件訴訟法第11条第1項は、処分取消訴訟の被告を「処分をした行政庁の所属する国又は公共団体」と規定している。",
     "point": "被告 = 行政庁ではなく「行政庁が所属する国・公共団体」。行政主体が被告。",
     "commonMistake": "処分をした行政庁が被告と誤解しやすい。2004年改正で被告が明確化された。",
-    "sources": [{ "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第11条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政事件訴訟法 第11条（被告適格）", "url": "https://laws.e-gov.go.jp/law/337AC0000000139" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第11条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法 第11条（被告適格）",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政事件訴訟法", "取消訴訟", "被告適格"],
     "legalAsOf": "2026-04-01",
@@ -149,17 +257,42 @@
     "format": "multiple_choice",
     "question": "国家賠償法第1条第1項に基づく損害賠償請求の要件として正しいものはどれか。",
     "choices": [
-      { "id": "a", "text": "公権力の行使にあたる公務員が、職務を行うについて、故意又は過失によって違法に他人に損害を加えたこと" },
-      { "id": "b", "text": "公権力の行使にあたる公務員が、故意によってのみ違法に他人に損害を加えたこと" },
+      {
+        "id": "a",
+        "text": "公権力の行使にあたる公務員が、職務を行うについて、故意又は過失によって違法に他人に損害を加えたこと"
+      },
+      {
+        "id": "b",
+        "text": "公権力の行使にあたる公務員が、故意によってのみ違法に他人に損害を加えたこと"
+      },
       { "id": "c", "text": "公の営造物の設置又は管理に瑕疵があったこと" },
-      { "id": "d", "text": "公権力の行使にかかわるすべての行政活動によって他人に損害が生じたこと" }
+      {
+        "id": "d",
+        "text": "公権力の行使にかかわるすべての行政活動によって他人に損害が生じたこと"
+      }
     ],
     "answer": "a",
     "explanation": "国家賠償法第1条第1項は「公権力の行使に当る公務員が、その職務を行うについて、故意又は過失によって違法に他人に損害を加えたとき」に国又は公共団体が賠償責任を負うと規定する。",
     "point": "1条 = 故意・過失が必要（過失責任）。2条の営造物責任（無過失責任）と区別する。",
     "commonMistake": "2条の無過失責任と混同しやすい。1条は「故意又は過失」が必要。",
-    "sources": [{ "type": "law", "title": "国家賠償法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000125", "lawName": "国家賠償法", "article": "第1条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "国家賠償法 第1条", "url": "https://laws.e-gov.go.jp/law/322AC0000000125" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "国家賠償法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125",
+        "lawName": "国家賠償法",
+        "article": "第1条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "国家賠償法 第1条",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125"
+      }
+    ],
     "difficulty": 3,
     "tags": ["国家賠償法", "1条責任", "過失責任"],
     "legalAsOf": "2026-04-01",
@@ -175,13 +308,32 @@
     "subtopic": "2条責任",
     "format": "true_false",
     "question": "国家賠償法第2条に基づく公の営造物の瑕疵による損害賠償責任は、管理者の故意・過失がなくても成立する無過失責任である。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "国家賠償法第2条第1項は、道路・河川その他の公の営造物の設置又は管理に瑕疵があったために他人に損害が生じたときの賠償責任を定める。故意・過失は要件とされておらず、無過失責任とされている。",
     "point": "2条 = 無過失責任。営造物の設置・管理の「瑕疵」のみで成立。",
     "commonMistake": "1条（故意・過失必要）と2条（無過失責任）の区別が頻出。",
-    "sources": [{ "type": "law", "title": "国家賠償法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000125", "lawName": "国家賠償法", "article": "第2条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "国家賠償法 第2条（営造物の瑕疵）", "url": "https://laws.e-gov.go.jp/law/322AC0000000125" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "国家賠償法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125",
+        "lawName": "国家賠償法",
+        "article": "第2条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "国家賠償法 第2条（営造物の瑕疵）",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125"
+      }
+    ],
     "difficulty": 2,
     "tags": ["国家賠償法", "2条責任", "無過失責任"],
     "legalAsOf": "2026-04-01",
@@ -197,12 +349,31 @@
     "subtopic": "行政指導",
     "format": "true_false",
     "question": "行政指導に携わる者は、その相手方が行政指導に従わなかったことを理由として、不利益な取扱いをしてはならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第32条第2項は、行政指導に従わなかったことを理由とした不利益取扱いを禁止している。行政指導はあくまで任意の協力を求めるものである。",
     "point": "行政指導 = 任意の協力要請。不服従を理由とした不利益取扱い禁止（32条2項）。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第32条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第32条（行政指導の一般原則）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第32条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第32条（行政指導の一般原則）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政手続法", "行政指導"],
     "legalAsOf": "2026-04-01",
@@ -228,8 +399,24 @@
     "explanation": "地方自治法第1条の3は、地方公共団体を普通地方公共団体と特別地方公共団体に分類する。普通地方公共団体は都道府県と市町村。特別地方公共団体は特別区・地方公共団体の組合・財産区等である。",
     "point": "普通地方公共団体 = 都道府県・市町村。特別区・財産区等 = 特別地方公共団体。",
     "commonMistake": "特別区（東京23区）は普通地方公共団体ではなく特別地方公共団体。",
-    "sources": [{ "type": "law", "title": "地方自治法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000067", "lawName": "地方自治法", "article": "第1条の3", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "地方自治法 第1条の3（地方公共団体の種類）", "url": "https://laws.e-gov.go.jp/law/322AC0000000067" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "地方自治法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000067",
+        "lawName": "地方自治法",
+        "article": "第1条の3",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "地方自治法 第1条の3（地方公共団体の種類）",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000067"
+      }
+    ],
     "difficulty": 2,
     "tags": ["地方自治法", "普通地方公共団体"],
     "legalAsOf": "2026-04-01",
@@ -245,12 +432,22 @@
     "subtopic": "行政行為の公定力",
     "format": "true_false",
     "question": "行政行為の公定力とは、行政行為に瑕疵があっても、権限ある機関によって取り消されるまでは有効なものとして扱われる効力をいう。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "公定力とは、行政行為が違法であっても、権限ある機関（行政庁または裁判所）によって取り消されるまでは有効なものとして扱われる効力をいう。ただし、重大かつ明白な瑕疵がある場合は当然無効となる（無効の行政行為）。",
     "point": "公定力 = 取消権限ある機関が取り消すまで有効。重大明白な瑕疵があれば無効（公定力なし）。",
     "commonMistake": "無効の行政行為にも公定力があると誤解しやすい。重大明白な瑕疵がある場合は当然無効。",
-    "sources": [{ "type": "book", "title": "行政法概説", "organization": "法学系参考書", "checkedAt": "2026-06-14" }],
+    "sources": [
+      {
+        "type": "book",
+        "title": "行政法概説",
+        "organization": "法学系参考書",
+        "checkedAt": "2026-06-14"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政法総論", "行政行為", "公定力"],
     "legalAsOf": "2026-04-01",
@@ -266,13 +463,32 @@
     "subtopic": "標準処理期間",
     "format": "true_false",
     "question": "行政庁は、申請が事務所に到達してから処分をするまでに通常要すべき標準的な期間を定めるよう努めなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第6条は、行政庁に対し標準処理期間を定めるよう努める義務（努力義務）を課している。設定した場合には、これを公にしておかなければならない（同条）。",
     "point": "標準処理期間の設定 = 努力義務。設定した場合の公表 = 義務。",
     "commonMistake": "標準処理期間の設定が義務と誤解しやすい。設定は努力義務、公表は設定した場合に義務。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第6条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第6条（標準処理期間）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第6条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第6条（標準処理期間）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政手続法", "標準処理期間"],
     "legalAsOf": "2026-04-01",
@@ -288,12 +504,31 @@
     "subtopic": "申請拒否の理由提示",
     "format": "true_false",
     "question": "行政庁は、申請により求められた許認可等を拒否する処分をする場合は、申請者に対して、同時に、当該処分の理由を示さなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第8条第1項は、申請に対する拒否処分について「申請者に対して、同時に、当該処分の理由を示さなければならない」と規定している。理由を示さずに拒否することは手続違反となる。",
     "point": "申請拒否処分 = 同時に理由提示が必要（8条1項）。書面で申請がなされた場合は書面で（同条2項）。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第8条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第8条（理由の提示）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第8条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第8条（理由の提示）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政手続法", "理由提示", "申請拒否"],
     "legalAsOf": "2026-04-01",
@@ -309,13 +544,32 @@
     "subtopic": "弁明の機会",
     "format": "true_false",
     "question": "弁明の機会の付与において、当事者は原則として書面（弁明書）により弁明を行うが、行政庁が口頭による弁明を認めたときはこの限りでない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第29条第1項は、不利益処分に係る弁明の機会の付与では、当事者は書面（弁明書）を提出することで弁明するのが原則であることを規定する。ただし、同条第2項で行政庁が口頭による弁明を認めた場合の例外を定めている。",
     "point": "弁明の機会 = 原則書面（弁明書）。口頭弁明は行政庁が認めた場合のみ。聴聞（口頭審理が原則）と区別する。",
     "commonMistake": "聴聞（口頭が原則）と弁明の機会（書面が原則）の違いを混同しやすい。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第29条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第29条（弁明の機会の付与）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第29条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第29条（弁明の機会の付与）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政手続法", "弁明の機会", "聴聞"],
     "legalAsOf": "2026-04-01",
@@ -331,12 +585,31 @@
     "subtopic": "審理員制度",
     "format": "true_false",
     "question": "行政不服審査法では審査請求の審理を担当する審理員制度が設けられており、審理員は処分に関与した者を指名することができない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政不服審査法第9条は審理員制度を規定している。審査庁は、審査請求について審理を行うため審理員を指名しなければならないが、処分に関与した者等の指名は排除されている（同条2項）。",
     "point": "審理員 = 処分に関与していない職員から指名。公正な審理の確保が目的。",
-    "sources": [{ "type": "law", "title": "行政不服審査法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/426AC0000000068", "lawName": "行政不服審査法", "article": "第9条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政不服審査法 第9条（審理員）", "url": "https://laws.e-gov.go.jp/law/426AC0000000068" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政不服審査法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068",
+        "lawName": "行政不服審査法",
+        "article": "第9条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政不服審査法 第9条（審理員）",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政不服審査法", "審理員"],
     "legalAsOf": "2026-04-01",
@@ -361,8 +634,24 @@
     "answer": "d",
     "explanation": "行政不服審査法上の裁決には、要件を欠く場合の却下裁決（第45条1項）、理由がない場合の棄却裁決（第45条2項）、理由がある場合の認容裁決（第46条・47条）がある。「中止裁決」という分類は存在しない。",
     "point": "裁決の種類：却下・棄却・認容の3種。「停止」「中止」「延期」は裁決の種類ではない。",
-    "sources": [{ "type": "law", "title": "行政不服審査法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/426AC0000000068", "lawName": "行政不服審査法", "article": "第45条・第46条・第47条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政不服審査法 第45条〜第47条（裁決）", "url": "https://laws.e-gov.go.jp/law/426AC0000000068" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政不服審査法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068",
+        "lawName": "行政不服審査法",
+        "article": "第45条・第46条・第47条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政不服審査法 第45条〜第47条（裁決）",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政不服審査法", "裁決", "却下", "棄却", "認容"],
     "legalAsOf": "2026-04-01",
@@ -378,13 +667,32 @@
     "subtopic": "申請型義務付け訴訟",
     "format": "true_false",
     "question": "申請型義務付け訴訟は、申請拒否処分の取消訴訟又は不作為違法確認訴訟と併合して提起しなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政事件訴訟法第37条の3第3項は、申請型義務付け訴訟は、申請拒否処分取消訴訟又は不作為違法確認訴訟と併合して提起しなければならないと規定している。独立して提起することはできない。",
     "point": "申請型義務付け訴訟 = 取消訴訟 or 不作為違法確認訴訟と必ず併合提起。非申請型（直接型）は単独提起可。",
     "commonMistake": "非申請型（直接型）と申請型で要件が異なる。申請型は必ず他の訴訟と併合が必要。",
-    "sources": [{ "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第37条の3", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政事件訴訟法 第37条の3（義務付け訴訟）", "url": "https://laws.e-gov.go.jp/law/337AC0000000139" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第37条の3",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法 第37条の3（義務付け訴訟）",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139"
+      }
+    ],
     "difficulty": 4,
     "tags": ["行政事件訴訟法", "義務付け訴訟", "申請型"],
     "legalAsOf": "2026-04-01",
@@ -400,12 +708,31 @@
     "subtopic": "執行不停止原則",
     "format": "true_false",
     "question": "取消訴訟の提起は、処分の効力、処分の執行又は手続の続行を停止しない（執行不停止の原則）。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政事件訴訟法第25条第1項は、「処分の取消しの訴えの提起は、処分の効力、処分の執行又は手続の続行を妨げない」と規定し、執行不停止の原則を定めている。ただし、同条第2項以下で執行停止の申立て制度がある。",
     "point": "取消訴訟提起 = 執行不停止が原則（25条1項）。停止したい場合は執行停止の申立て（25条2項）が必要。",
-    "sources": [{ "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第25条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政事件訴訟法 第25条（執行停止）", "url": "https://laws.e-gov.go.jp/law/337AC0000000139" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第25条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法 第25条（執行停止）",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政事件訴訟法", "執行不停止原則", "執行停止"],
     "legalAsOf": "2026-04-01",
@@ -421,13 +748,32 @@
     "subtopic": "求償権",
     "format": "true_false",
     "question": "国または公共団体が国家賠償法第1条に基づき損害を賠償した場合において、公務員に故意又は重大な過失があったときは、国または公共団体はその公務員に対して求償権を有する。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "国家賠償法第1条第2項は、公務員に故意又は重大な過失があった場合に、国又は公共団体が当該公務員に対して求償できると規定する。軽過失の場合は求償できない点に注意。",
     "point": "国賠1条の求償権：故意 or 重大な過失が必要。軽過失では求償不可。",
     "commonMistake": "軽過失でも求償できると誤解しやすい。求償には故意または重大な過失が必要。",
-    "sources": [{ "type": "law", "title": "国家賠償法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000125", "lawName": "国家賠償法", "article": "第1条第2項", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "国家賠償法 第1条第2項（求償権）", "url": "https://laws.e-gov.go.jp/law/322AC0000000125" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "国家賠償法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125",
+        "lawName": "国家賠償法",
+        "article": "第1条第2項",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "国家賠償法 第1条第2項（求償権）",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125"
+      }
+    ],
     "difficulty": 3,
     "tags": ["国家賠償法", "求償権", "故意", "重大な過失"],
     "legalAsOf": "2026-04-01",
@@ -443,12 +789,31 @@
     "subtopic": "議会と長の関係",
     "format": "true_false",
     "question": "地方公共団体の議会が長（知事・市町村長）に対する不信任議決を行った場合、長は10日以内に議会を解散することができる。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "地方自治法第178条第1項は、議会が長の不信任議決をした場合、長は10日以内に議会を解散することができると規定している。解散しない場合は長は失職する（同条3項）。",
     "point": "不信任議決後：10日以内に解散 or 失職（解散しない場合）。国の内閣（69条）と類似した構造。",
-    "sources": [{ "type": "law", "title": "地方自治法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000067", "lawName": "地方自治法", "article": "第178条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "地方自治法 第178条（不信任議決と解散）", "url": "https://laws.e-gov.go.jp/law/322AC0000000067" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "地方自治法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000067",
+        "lawName": "地方自治法",
+        "article": "第178条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "地方自治法 第178条（不信任議決と解散）",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000067"
+      }
+    ],
     "difficulty": 3,
     "tags": ["地方自治法", "不信任議決", "解散"],
     "legalAsOf": "2026-04-01",
@@ -464,13 +829,32 @@
     "subtopic": "不利益処分の理由提示",
     "format": "true_false",
     "question": "行政庁は、不利益処分をする場合には、当該処分と同時に、処分の理由を名宛人に示さなければならない。聴聞を行った場合も同様である。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第14条第1項は、不利益処分に際して同時に理由を示す義務を課している。聴聞を実施した場合であっても、処分時の理由提示義務は免除されない。",
     "point": "不利益処分 = 処分と同時に理由提示が必要（14条1項）。聴聞を経ても理由提示義務は残る。",
     "commonMistake": "聴聞を行えば理由提示が不要と誤解しやすい。聴聞と理由提示はそれぞれ独立した義務。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第14条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第14条（不利益処分の理由提示）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第14条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第14条（不利益処分の理由提示）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政手続法", "不利益処分", "理由提示"],
     "legalAsOf": "2026-04-01",
@@ -486,11 +870,21 @@
     "subtopic": "無効の行政行為",
     "format": "true_false",
     "question": "行政行為に重大かつ明白な瑕疵がある場合は、権限ある機関による取消しを待たずに当然に無効となる。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政行為に重大かつ明白な瑕疵がある場合は当然に無効となり、公定力を有しない。そのため、取消訴訟によらず、無効確認訴訟や当事者訴訟で争うことができ、また行政行為に拘束されず行動することができる。",
     "point": "重大明白な瑕疵 → 当然無効（公定力なし）。単なる違法 → 公定力あり（取消しまで有効）。",
-    "sources": [{ "type": "book", "title": "行政法概説", "organization": "法学系参考書", "checkedAt": "2026-06-14" }],
+    "sources": [
+      {
+        "type": "book",
+        "title": "行政法概説",
+        "organization": "法学系参考書",
+        "checkedAt": "2026-06-14"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政法総論", "行政行為", "無効", "公定力"],
     "legalAsOf": "2026-04-01",
@@ -506,13 +900,32 @@
     "subtopic": "自由選択主義",
     "format": "true_false",
     "question": "行政事件訴訟法は、個別法に別段の定めがある場合を除き、行政不服申立てを経ることなく取消訴訟を提起できるという自由選択主義を採用している。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政事件訴訟法第8条第1項は「処分の取消しの訴えは、当該処分につき法令の規定により審査請求をすることができる場合においても、直ちに処分の取消しの訴えを提起することを妨げない」と規定し、自由選択主義を採用している。",
     "point": "原則 = 自由選択主義（審査請求を先に経なくてよい）。個別法で不服申立前置が定められている場合は例外。",
     "commonMistake": "すべての取消訴訟に不服申立前置が必要と誤解しやすい。現行法は自由選択主義が原則。",
-    "sources": [{ "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第8条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政事件訴訟法 第8条（審査請求前置）", "url": "https://laws.e-gov.go.jp/law/337AC0000000139" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第8条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法 第8条（審査請求前置）",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政事件訴訟法", "自由選択主義", "不服申立前置"],
     "legalAsOf": "2026-04-01",
@@ -528,12 +941,31 @@
     "subtopic": "意見公募手続",
     "format": "true_false",
     "question": "行政庁は、命令等（政令・省令等）を制定しようとする場合、その案及び関連資料を公示して広く意見を求める意見公募手続（パブリックコメント手続）を実施しなければならない。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第39条第1項は、命令等制定機関が命令等を制定しようとする場合は、当該命令等の案及び関連資料を公示し、意見の提出先及び意見の提出のための期間を定めて、広く一般の意見を求めなければならないと規定している。",
     "point": "命令等の制定 = 意見公募手続が必要（39条1項）。意見提出期間は30日以上（同条3項）。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第39条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第39条（意見公募手続）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第39条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第39条（意見公募手続）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政手続法", "意見公募手続", "パブリックコメント"],
     "legalAsOf": "2026-04-01",
@@ -549,12 +981,31 @@
     "subtopic": "行政指導の中止",
     "format": "true_false",
     "question": "行政機関が行政指導をする場合に、その相手方が行政指導に従う意思がない旨を表明したにもかかわらず、当該行政機関が当該行政指導を継続することは、行政手続法上禁止されている。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "行政手続法第33条は、申請の取下げや内容の変更を求める行政指導においては、相手方が従わない意思を明確に表明した場合、当該行政指導を継続してはならないと規定する。",
     "point": "行政指導中止命令（33条）：相手方が不服従の意思表明 → 継続禁止。任意性の担保。",
-    "sources": [{ "type": "law", "title": "行政手続法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/405AC0000000088", "lawName": "行政手続法", "article": "第33条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政手続法 第33条（申請に関連する行政指導）", "url": "https://laws.e-gov.go.jp/law/405AC0000000088" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政手続法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088",
+        "lawName": "行政手続法",
+        "article": "第33条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政手続法 第33条（申請に関連する行政指導）",
+        "url": "https://laws.e-gov.go.jp/law/405AC0000000088"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政手続法", "行政指導", "中止"],
     "legalAsOf": "2026-04-01",
@@ -570,12 +1021,31 @@
     "subtopic": "外国人への適用",
     "format": "true_false",
     "question": "国家賠償法は、外国人が被害者である場合において、相互保証があるときに限り適用される。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "国家賠償法第6条は「この法律は、外国人が被害者である場合には、相互の保証があるときに限り、これを適用する」と規定している。これを相互保証主義という。",
     "point": "外国人への国賠法適用 = 相互保証主義（6条）。相互保証がない国の国民には適用されない。",
-    "sources": [{ "type": "law", "title": "国家賠償法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000125", "lawName": "国家賠償法", "article": "第6条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "国家賠償法 第6条（外国人への適用）", "url": "https://laws.e-gov.go.jp/law/322AC0000000125" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "国家賠償法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125",
+        "lawName": "国家賠償法",
+        "article": "第6条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "国家賠償法 第6条（外国人への適用）",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000125"
+      }
+    ],
     "difficulty": 2,
     "tags": ["国家賠償法", "外国人", "相互保証主義"],
     "legalAsOf": "2026-04-01",
@@ -591,13 +1061,30 @@
     "subtopic": "取消訴訟の処分性",
     "format": "true_false",
     "question": "取消訴訟の対象となる「処分」とは、公権力の主体たる国又は公共団体が行う行為のうち、直接国民の権利義務を形成し又はその範囲を確定することが法律上認められているものをいう（最高裁判所の定義）。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "最高裁判所は「処分性」について「公権力の主体たる国又は公共団体が行う行為のうち、その行為によつて、直接国民の権利義務を形成し又はその範囲を確定することが法律上認められているものをいう」と定義している（最大判昭和39年10月29日）。",
     "point": "処分性 = ①公権力の主体の行為 ②直接 ③権利義務の形成・確定 ④法律上の根拠。4要件を押さえる。",
     "sources": [
-      { "type": "case", "title": "最大判昭和39年10月29日", "organization": "最高裁判所", "decisionDate": "1964-10-29", "checkedAt": "2026-06-14" },
-      { "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第3条", "checkedAt": "2026-06-14" }
+      {
+        "type": "case",
+        "title": "最大判昭和39年10月29日",
+        "organization": "最高裁判所",
+        "decisionDate": "1964-10-29",
+        "checkedAt": "2026-06-14"
+      },
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第3条",
+        "checkedAt": "2026-06-14"
+      }
     ],
     "difficulty": 4,
     "tags": ["行政事件訴訟法", "処分性", "取消訴訟"],
@@ -616,15 +1103,37 @@
     "question": "行政庁の裁量処分について、裁判所の審査が及ぶ範囲として正しいものはどれか。",
     "choices": [
       { "id": "a", "text": "裁量処分には一切裁判所の審査が及ばない" },
-      { "id": "b", "text": "裁量の逸脱・濫用がある場合に限り、裁判所が取り消すことができる" },
+      {
+        "id": "b",
+        "text": "裁量の逸脱・濫用がある場合に限り、裁判所が取り消すことができる"
+      },
       { "id": "c", "text": "裁判所は行政庁の裁量判断を全面的に審査できる" },
-      { "id": "d", "text": "裁量処分の違法審査は最高裁判所のみが行うことができる" }
+      {
+        "id": "d",
+        "text": "裁量処分の違法審査は最高裁判所のみが行うことができる"
+      }
     ],
     "answer": "b",
     "explanation": "行政事件訴訟法第30条は「行政庁の裁量処分については、裁量権の範囲をこえ又はその濫用があつた場合に限り、裁判所は、その処分を取り消すことができる」と規定している。行政裁量の内容自体は原則として司法審査の対象外だが、逸脱・濫用は違法として取り消し得る。",
     "point": "裁量処分の司法審査：裁量の「逸脱・濫用」がある場合のみ取消可能（行訴法30条）。",
-    "sources": [{ "type": "law", "title": "行政事件訴訟法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/337AC0000000139", "lawName": "行政事件訴訟法", "article": "第30条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政事件訴訟法 第30条（裁量処分の取消し）", "url": "https://laws.e-gov.go.jp/law/337AC0000000139" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139",
+        "lawName": "行政事件訴訟法",
+        "article": "第30条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政事件訴訟法 第30条（裁量処分の取消し）",
+        "url": "https://laws.e-gov.go.jp/law/337AC0000000139"
+      }
+    ],
     "difficulty": 3,
     "tags": ["行政法総論", "行政裁量", "司法審査"],
     "legalAsOf": "2026-04-01",
@@ -640,13 +1149,32 @@
     "subtopic": "条例制定権",
     "format": "true_false",
     "question": "地方公共団体は、法令に違反しない限りにおいて、その事務に関し条例を制定することができる。",
-    "choices": [{ "id": "true", "text": "正しい" }, { "id": "false", "text": "誤り" }],
+    "choices": [
+      { "id": "true", "text": "正しい" },
+      { "id": "false", "text": "誤り" }
+    ],
     "answer": "true",
     "explanation": "地方自治法第14条第1項は「普通地方公共団体は、法令に違反しない限りにおいて第二条第二項の事務に関し、条例を制定することができる」と規定している。憲法94条とあわせて、法律の範囲内での条例制定権が認められる。",
     "point": "条例制定権 = 法令の範囲内（地自法14条1項・憲法94条）。上乗せ条例・横出し条例の可否は判例によって判断される。",
     "sources": [
-      { "type": "law", "title": "地方自治法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/322AC0000000067", "lawName": "地方自治法", "article": "第14条", "checkedAt": "2026-06-14" },
-      { "type": "law", "title": "日本国憲法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION", "lawName": "日本国憲法", "article": "第94条", "checkedAt": "2026-06-14" }
+      {
+        "type": "law",
+        "title": "地方自治法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/322AC0000000067",
+        "lawName": "地方自治法",
+        "article": "第14条",
+        "checkedAt": "2026-06-14"
+      },
+      {
+        "type": "law",
+        "title": "日本国憲法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/321CONSTITUTION",
+        "lawName": "日本国憲法",
+        "article": "第94条",
+        "checkedAt": "2026-06-14"
+      }
     ],
     "difficulty": 2,
     "tags": ["地方自治法", "条例制定権"],
@@ -672,8 +1200,24 @@
     "answer": "a",
     "explanation": "行政不服審査法は、第2条で行政庁の「処分」に不服がある者の審査請求を、第3条で行政庁の「不作為」に不服がある者の審査請求を規定している。立法行為・司法行為は対象外である。",
     "point": "審査請求の対象 = 処分（2条）＋ 不作為（3条）。立法行為・司法行為は対象外。",
-    "sources": [{ "type": "law", "title": "行政不服審査法", "organization": "e-Gov法令検索", "url": "https://laws.e-gov.go.jp/law/426AC0000000068", "lawName": "行政不服審査法", "article": "第2条・第3条", "checkedAt": "2026-06-14" }],
-    "lawLinks": [{ "type": "law", "title": "行政不服審査法 第2条・第3条（審査請求の対象）", "url": "https://laws.e-gov.go.jp/law/426AC0000000068" }],
+    "sources": [
+      {
+        "type": "law",
+        "title": "行政不服審査法",
+        "organization": "e-Gov法令検索",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068",
+        "lawName": "行政不服審査法",
+        "article": "第2条・第3条",
+        "checkedAt": "2026-06-14"
+      }
+    ],
+    "lawLinks": [
+      {
+        "type": "law",
+        "title": "行政不服審査法 第2条・第3条（審査請求の対象）",
+        "url": "https://laws.e-gov.go.jp/law/426AC0000000068"
+      }
+    ],
     "difficulty": 2,
     "tags": ["行政不服審査法", "審査請求", "処分", "不作為"],
     "legalAsOf": "2026-04-01",

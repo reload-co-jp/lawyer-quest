@@ -16,12 +16,18 @@ type Props = {
   isRetry?: boolean
 }
 
-export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false }) => {
+export const ChallengeClient: FC<Props> = ({
+  questions,
+  questId,
+  isRetry = false,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [blankAnswers, setBlankAnswers] = useState<Record<string, string>>({})
   const [revealed, setRevealed] = useState(false)
-  const [results, setResults] = useState<{ questionId: string; isCorrect: boolean }[]>([])
+  const [results, setResults] = useState<
+    { questionId: string; isCorrect: boolean }[]
+  >([])
   const [finished, setFinished] = useState(false)
   const [mastered, setMastered] = useState<string[]>([])
 
@@ -40,7 +46,9 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
     const total = results.length
     const pct = total > 0 ? Math.round((correct / total) * 100) : 0
     return (
-      <div style={{ maxWidth: "480px", margin: "3rem auto", padding: "0 1rem" }}>
+      <div
+        style={{ maxWidth: "480px", margin: "3rem auto", padding: "0 1rem" }}
+      >
         <div
           style={{
             background: "var(--surface)",
@@ -51,16 +59,45 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           }}
         >
           <p style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏆</p>
-          <h2 style={{ color: "var(--text-1)", fontWeight: 700, marginBottom: ".5rem", fontSize: "1.125rem" }}>
+          <h2
+            style={{
+              color: "var(--text-1)",
+              fontWeight: 700,
+              marginBottom: ".5rem",
+              fontSize: "1.125rem",
+            }}
+          >
             クエスト完了
           </h2>
-          <p style={{ fontSize: "3rem", fontWeight: 700, color: "var(--accent)", letterSpacing: "-.03em", margin: ".5rem 0 .25rem" }}>
-            {pct}<span style={{ fontSize: "1.25rem" }}>%</span>
+          <p
+            style={{
+              fontSize: "3rem",
+              fontWeight: 700,
+              color: "var(--accent)",
+              letterSpacing: "-.03em",
+              margin: ".5rem 0 .25rem",
+            }}
+          >
+            {pct}
+            <span style={{ fontSize: "1.25rem" }}>%</span>
           </p>
-          <p style={{ fontSize: ".875rem", color: "var(--text-2)", marginBottom: "2rem" }}>
+          <p
+            style={{
+              fontSize: ".875rem",
+              color: "var(--text-2)",
+              marginBottom: "2rem",
+            }}
+          >
             {correct} / {total} 問正解
           </p>
-          <div style={{ display: "flex", gap: ".5rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: ".5rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             <Link
               href="/quests"
               style={{
@@ -113,7 +150,9 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
       questionId: current.id,
       questId: questId === "random" ? current.questId : questId,
       areaId: current.areaId,
-      selectedAnswer: isFillBlank ? JSON.stringify(blankAnswers) : (selectedAnswer as string),
+      selectedAnswer: isFillBlank
+        ? JSON.stringify(blankAnswers)
+        : (selectedAnswer as string),
       isCorrect,
       answeredAt: new Date().toISOString(),
     })
@@ -141,14 +180,31 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
 
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 1rem" }}>
-      <div style={{ marginBottom: "1.25rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div
+        style={{
+          marginBottom: "1.25rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Link
           href={questId === "random" ? "/quests" : `/quests/${questId}`}
-          style={{ fontSize: ".8125rem", color: "var(--text-2)", textDecoration: "none" }}
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            textDecoration: "none",
+          }}
         >
           ← 戻る
         </Link>
-        <span style={{ fontSize: ".8125rem", color: "var(--text-3)", fontVariantNumeric: "tabular-nums" }}>
+        <span
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-3)",
+            fontVariantNumeric: "tabular-nums",
+          }}
+        >
           {currentIndex + 1} / {questions.length}
         </span>
       </div>
@@ -162,7 +218,14 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           overflow: "hidden",
         }}
       >
-        <div style={{ height: "100%", width: `${progress}%`, background: "var(--accent)", borderRadius: "1px" }} />
+        <div
+          style={{
+            height: "100%",
+            width: `${progress}%`,
+            background: "var(--accent)",
+            borderRadius: "1px",
+          }}
+        />
       </div>
 
       <div
@@ -174,7 +237,14 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           marginBottom: "1rem",
         }}
       >
-        <div style={{ display: "flex", gap: ".375rem", flexWrap: "wrap", marginBottom: ".875rem" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: ".375rem",
+            flexWrap: "wrap",
+            marginBottom: ".875rem",
+          }}
+        >
           {area && (
             <span
               style={{
@@ -199,7 +269,8 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
               border: "1px solid var(--border)",
             }}
           >
-            {"★".repeat(current.difficulty)}{"☆".repeat(5 - current.difficulty)}
+            {"★".repeat(current.difficulty)}
+            {"☆".repeat(5 - current.difficulty)}
           </span>
           <span
             style={{
@@ -211,7 +282,11 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
               border: "1px solid var(--border)",
             }}
           >
-            {current.format === "true_false" ? "○×" : current.format === "fill_blank" ? "穴埋め" : "4択"}
+            {current.format === "true_false"
+              ? "○×"
+              : current.format === "fill_blank"
+                ? "穴埋め"
+                : "4択"}
           </span>
           {current.examYear && (
             <span
@@ -229,7 +304,14 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
           )}
         </div>
 
-        <p style={{ fontSize: ".9375rem", color: "var(--text-1)", lineHeight: 1.75, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".9375rem",
+            color: "var(--text-1)",
+            lineHeight: 1.75,
+            margin: 0,
+          }}
+        >
           {current.question}
         </p>
       </div>
@@ -260,8 +342,12 @@ export const ChallengeClient: FC<Props> = ({ questions, questId, isRetry = false
             marginTop: ".875rem",
             width: "100%",
             padding: ".75rem",
-            background: isAnswerComplete ? "var(--accent-btn)" : "var(--surface-2)",
-            border: "1px solid " + (isAnswerComplete ? "var(--accent-btn)" : "var(--border)"),
+            background: isAnswerComplete
+              ? "var(--accent-btn)"
+              : "var(--surface-2)",
+            border:
+              "1px solid " +
+              (isAnswerComplete ? "var(--accent-btn)" : "var(--border)"),
             borderRadius: "var(--radius-sm)",
             color: isAnswerComplete ? "#fff" : "var(--text-3)",
             fontSize: ".9375rem",

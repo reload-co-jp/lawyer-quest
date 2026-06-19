@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -55,7 +57,9 @@ a {
 
 .pixel-btn {
   box-shadow: 3px 3px 0 #000;
-  transition: transform 0.06s ease, box-shadow 0.06s ease;
+  transition:
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
 }
 
 .pixel-btn:hover {

@@ -20,7 +20,10 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
 }
 
-const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const Section: FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children,
+}) => (
   <section style={{ marginBottom: "2rem" }}>
     <h2
       style={{
@@ -40,7 +43,10 @@ const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, chil
   </section>
 )
 
-const Row: FC<{ label: string; value: React.ReactNode }> = ({ label, value }) => (
+const Row: FC<{ label: string; value: React.ReactNode }> = ({
+  label,
+  value,
+}) => (
   <div
     style={{
       display: "flex",
@@ -50,27 +56,75 @@ const Row: FC<{ label: string; value: React.ReactNode }> = ({ label, value }) =>
       alignItems: "flex-start",
     }}
   >
-    <span style={{ fontSize: ".8125rem", color: "var(--text-3)", flexShrink: 0, width: "8rem" }}>{label}</span>
-    <span style={{ fontSize: ".875rem", color: "var(--text-1)", flex: 1, lineHeight: 1.65 }}>{value}</span>
+    <span
+      style={{
+        fontSize: ".8125rem",
+        color: "var(--text-3)",
+        flexShrink: 0,
+        width: "8rem",
+      }}
+    >
+      {label}
+    </span>
+    <span
+      style={{
+        fontSize: ".875rem",
+        color: "var(--text-1)",
+        flex: 1,
+        lineHeight: 1.65,
+      }}
+    >
+      {value}
+    </span>
   </div>
 )
 
 const Page: FC = () => {
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div style={{ marginBottom: "1.75rem" }}>
-        <Link href="/" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
+        <Link
+          href="/"
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-3)",
+            textDecoration: "none",
+          }}
+        >
           ← ホーム
         </Link>
       </div>
 
       <div style={{ marginBottom: "2rem" }}>
-        <h1 style={{ fontSize: "1.375rem", fontWeight: 700, color: "var(--text-1)", letterSpacing: "-.02em", marginBottom: ".375rem" }}>
+        <h1
+          style={{
+            fontSize: "1.375rem",
+            fontWeight: 700,
+            color: "var(--text-1)",
+            letterSpacing: "-.02em",
+            marginBottom: ".375rem",
+          }}
+        >
           行政書士試験 ガイド
         </h1>
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.65,
+          }}
+        >
           行政書士試験の概要・科目・合格基準・申込み方法をまとめた案内ページ。
           情報は例年の傾向に基づくもので、最新情報は必ず公式サイトで確認のこと。
         </p>
@@ -99,10 +153,14 @@ const Page: FC = () => {
             color: "var(--text-2)",
           }}
         >
-          ※ 日程は毎年変動します。必ず公式サイト（行政書士試験研究センター）で確認してください。
+          ※
+          日程は毎年変動します。必ず公式サイト（行政書士試験研究センター）で確認してください。
         </div>
 
-        <Row label="申込受付" value="7月下旬〜8月下旬（郵送またはインターネット）" />
+        <Row
+          label="申込受付"
+          value="7月下旬〜8月下旬（郵送またはインターネット）"
+        />
         <Row label="受験料" value="10,000円" />
         <Row
           label="試験日"
@@ -110,7 +168,9 @@ const Page: FC = () => {
             <>
               11月の第2日曜日
               <br />
-              <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>例：2024年は11月10日（日）</span>
+              <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
+                例：2024年は11月10日（日）
+              </span>
             </>
           }
         />
@@ -143,7 +203,14 @@ const Page: FC = () => {
 
       {/* 試験科目・配点 */}
       <Section title="試験科目・配点">
-        <p style={{ fontSize: ".8125rem", color: "var(--text-2)", marginBottom: "1rem", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            marginBottom: "1rem",
+            lineHeight: 1.65,
+          }}
+        >
           試験は大きく「法令等科目」と「一般知識等科目」の2部構成。
         </p>
 
@@ -166,16 +233,52 @@ const Page: FC = () => {
               alignItems: "center",
             }}
           >
-            <span style={{ fontWeight: 700, fontSize: ".9375rem", color: "var(--accent)" }}>法令等科目</span>
-            <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>46問 ／ 244点満点</span>
+            <span
+              style={{
+                fontWeight: 700,
+                fontSize: ".9375rem",
+                color: "var(--accent)",
+              }}
+            >
+              法令等科目
+            </span>
+            <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>
+              46問 ／ 244点満点
+            </span>
           </div>
 
           {[
-            { subject: "基礎法学", count: "2問", format: "択一式", points: "8点" },
-            { subject: "憲法", count: "5問", format: "択一式3問＋多岐選択式1問＋記述式なし", points: "20点" },
-            { subject: "行政法（行政手続法・行政不服審査法・行政事件訴訟法・国家賠償法・地方自治法）", count: "19問", format: "択一式15問＋多岐選択式2問＋記述式1問", points: "76点＋16点＋20点" },
-            { subject: "民法", count: "9問", format: "択一式7問＋記述式2問", points: "28点＋40点" },
-            { subject: "商法・会社法", count: "5問", format: "択一式", points: "20点" },
+            {
+              subject: "基礎法学",
+              count: "2問",
+              format: "択一式",
+              points: "8点",
+            },
+            {
+              subject: "憲法",
+              count: "5問",
+              format: "択一式3問＋多岐選択式1問＋記述式なし",
+              points: "20点",
+            },
+            {
+              subject:
+                "行政法（行政手続法・行政不服審査法・行政事件訴訟法・国家賠償法・地方自治法）",
+              count: "19問",
+              format: "択一式15問＋多岐選択式2問＋記述式1問",
+              points: "76点＋16点＋20点",
+            },
+            {
+              subject: "民法",
+              count: "9問",
+              format: "択一式7問＋記述式2問",
+              points: "28点＋40点",
+            },
+            {
+              subject: "商法・会社法",
+              count: "5問",
+              format: "択一式",
+              points: "20点",
+            },
           ].map((row) => (
             <div
               key={row.subject}
@@ -189,14 +292,45 @@ const Page: FC = () => {
               }}
             >
               <div>
-                <p style={{ fontSize: ".875rem", color: "var(--text-1)", margin: "0 0 .125rem", fontWeight: 500 }}>
+                <p
+                  style={{
+                    fontSize: ".875rem",
+                    color: "var(--text-1)",
+                    margin: "0 0 .125rem",
+                    fontWeight: 500,
+                  }}
+                >
                   {row.subject}
                 </p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: 0 }}>{row.format}</p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: 0,
+                  }}
+                >
+                  {row.format}
+                </p>
               </div>
               <div style={{ textAlign: "right", flexShrink: 0 }}>
-                <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: 0 }}>{row.count}</p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: 0 }}>{row.points}</p>
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: 0,
+                  }}
+                >
+                  {row.count}
+                </p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: 0,
+                  }}
+                >
+                  {row.points}
+                </p>
               </div>
             </div>
           ))}
@@ -220,14 +354,39 @@ const Page: FC = () => {
               alignItems: "center",
             }}
           >
-            <span style={{ fontWeight: 700, fontSize: ".9375rem", color: "var(--accent)" }}>一般知識等科目</span>
-            <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>14問 ／ 56点満点</span>
+            <span
+              style={{
+                fontWeight: 700,
+                fontSize: ".9375rem",
+                color: "var(--accent)",
+              }}
+            >
+              一般知識等科目
+            </span>
+            <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>
+              14問 ／ 56点満点
+            </span>
           </div>
 
           {[
-            { subject: "政治・経済・社会", count: "7問前後", format: "択一式", points: "約28点" },
-            { subject: "情報通信・個人情報保護", count: "4問前後", format: "択一式", points: "約16点" },
-            { subject: "文章理解", count: "3問", format: "択一式", points: "12点" },
+            {
+              subject: "政治・経済・社会",
+              count: "7問前後",
+              format: "択一式",
+              points: "約28点",
+            },
+            {
+              subject: "情報通信・個人情報保護",
+              count: "4問前後",
+              format: "択一式",
+              points: "約16点",
+            },
+            {
+              subject: "文章理解",
+              count: "3問",
+              format: "択一式",
+              points: "12点",
+            },
           ].map((row) => (
             <div
               key={row.subject}
@@ -241,14 +400,45 @@ const Page: FC = () => {
               }}
             >
               <div>
-                <p style={{ fontSize: ".875rem", color: "var(--text-1)", margin: "0 0 .125rem", fontWeight: 500 }}>
+                <p
+                  style={{
+                    fontSize: ".875rem",
+                    color: "var(--text-1)",
+                    margin: "0 0 .125rem",
+                    fontWeight: 500,
+                  }}
+                >
                   {row.subject}
                 </p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: 0 }}>{row.format}</p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: 0,
+                  }}
+                >
+                  {row.format}
+                </p>
               </div>
               <div style={{ textAlign: "right", flexShrink: 0 }}>
-                <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: 0 }}>{row.count}</p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: 0 }}>{row.points}</p>
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: 0,
+                  }}
+                >
+                  {row.count}
+                </p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: 0,
+                  }}
+                >
+                  {row.points}
+                </p>
               </div>
             </div>
           ))}
@@ -300,13 +490,35 @@ const Page: FC = () => {
                 borderLeft: `2px solid ${item.color}`,
               }}
             >
-              <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: "0 0 .25rem", fontWeight: 600 }}>
+              <p
+                style={{
+                  fontSize: ".75rem",
+                  color: "var(--text-3)",
+                  margin: "0 0 .25rem",
+                  fontWeight: 600,
+                }}
+              >
                 {item.label}
               </p>
-              <p style={{ fontSize: ".9375rem", color: "var(--text-1)", fontWeight: 600, margin: "0 0 .25rem" }}>
+              <p
+                style={{
+                  fontSize: ".9375rem",
+                  color: "var(--text-1)",
+                  fontWeight: 600,
+                  margin: "0 0 .25rem",
+                }}
+              >
                 {item.value}
               </p>
-              <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: 0 }}>{item.note}</p>
+              <p
+                style={{
+                  fontSize: ".75rem",
+                  color: "var(--text-3)",
+                  margin: 0,
+                }}
+              >
+                {item.note}
+              </p>
             </div>
           ))}
         </div>
@@ -323,7 +535,9 @@ const Page: FC = () => {
             lineHeight: 1.65,
           }}
         >
-          <span style={{ color: "var(--warning)", fontWeight: 600 }}>合格率：</span>{" "}
+          <span style={{ color: "var(--warning)", fontWeight: 600 }}>
+            合格率：
+          </span>{" "}
           例年10〜15%前後。記述式の採点次第で大きく変動することがある。
         </div>
       </Section>
@@ -359,7 +573,9 @@ const Page: FC = () => {
               >
                 {item.time}
               </span>
-              <span style={{ fontSize: ".875rem", color: "var(--text-1)" }}>{item.text}</span>
+              <span style={{ fontSize: ".875rem", color: "var(--text-1)" }}>
+                {item.text}
+              </span>
             </div>
           ))}
         </div>
@@ -375,7 +591,14 @@ const Page: FC = () => {
             lineHeight: 1.75,
           }}
         >
-          <p style={{ margin: "0 0 .375rem", color: "var(--text-1)", fontWeight: 600, fontSize: ".875rem" }}>
+          <p
+            style={{
+              margin: "0 0 .375rem",
+              color: "var(--text-1)",
+              fontWeight: 600,
+              fontSize: ".875rem",
+            }}
+          >
             持ち物
           </p>
           <p style={{ margin: 0 }}>・ 受験票（事前に送付される）</p>
@@ -398,9 +621,21 @@ const Page: FC = () => {
           }}
         >
           <p style={{ margin: "0 0 .625rem" }}>
-            試験合格後、<strong style={{ color: "var(--text-1)" }}>各都道府県の行政書士会</strong>に登録することで、行政書士として業務を行うことができる。
+            試験合格後、
+            <strong style={{ color: "var(--text-1)" }}>
+              各都道府県の行政書士会
+            </strong>
+            に登録することで、行政書士として業務を行うことができる。
           </p>
-          <p style={{ margin: "0 0 .375rem", color: "var(--text-1)", fontWeight: 600 }}>主な業務</p>
+          <p
+            style={{
+              margin: "0 0 .375rem",
+              color: "var(--text-1)",
+              fontWeight: 600,
+            }}
+          >
+            主な業務
+          </p>
           <p style={{ margin: 0 }}>・ 官公署への提出書類の作成・提出代行</p>
           <p style={{ margin: 0 }}>・ 権利義務・事実証明に関する書類の作成</p>
           <p style={{ margin: 0 }}>・ 許認可申請（建設業・風俗営業・入管等）</p>
@@ -420,7 +655,14 @@ const Page: FC = () => {
           gap: ".75rem",
         }}
       >
-        <p style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-1)",
+            fontWeight: 600,
+            margin: 0,
+          }}
+        >
           試験対策を始める
         </p>
         <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}>

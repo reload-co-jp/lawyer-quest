@@ -29,8 +29,17 @@ export const RandomChallengeClient: FC = () => {
           gap: ".625rem",
         }}
       >
-        <div style={{ width: "5px", height: "5px", background: "var(--warning)" }} />
-        <p style={{ margin: 0, fontWeight: 600, color: "var(--warning)", fontSize: ".875rem" }}>
+        <div
+          style={{ width: "5px", height: "5px", background: "var(--warning)" }}
+        />
+        <p
+          style={{
+            margin: 0,
+            fontWeight: 600,
+            color: "var(--warning)",
+            fontSize: ".875rem",
+          }}
+        >
           ランダムチャレンジ — 10問
         </p>
       </div>

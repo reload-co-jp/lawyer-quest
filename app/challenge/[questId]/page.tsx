@@ -12,7 +12,11 @@ export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ questId: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ questId: string }>
+}): Promise<Metadata> {
   const { questId } = await params
   const quest = getQuestById(questId as QuestId)
   if (!quest) return {}

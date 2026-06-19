@@ -11,13 +11,26 @@ type Props = {
   revealed: boolean
 }
 
-export const FillBlankAnswer: FC<Props> = ({ blanks, choices, selectedAnswers, onSelect, revealed }) => (
+export const FillBlankAnswer: FC<Props> = ({
+  blanks,
+  choices,
+  selectedAnswers,
+  onSelect,
+  revealed,
+}) => (
   <div style={{ display: "flex", flexDirection: "column", gap: "1.125rem" }}>
     {blanks.map((blank) => {
       const selected = selectedAnswers[blank.id]
       return (
         <div key={blank.id}>
-          <p style={{ fontSize: ".8125rem", fontWeight: 700, color: "var(--text-2)", marginBottom: ".5rem" }}>
+          <p
+            style={{
+              fontSize: ".8125rem",
+              fontWeight: 700,
+              color: "var(--text-2)",
+              marginBottom: ".5rem",
+            }}
+          >
             空欄［ {blank.id} ］
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: ".375rem" }}>

@@ -16,11 +16,15 @@ const jsonLd = {
   headline: "法律初心者向け 行政書士勉強ガイド",
   inLanguage: "ja",
   url: `${BASE_URL}/study-guide`,
-  description: "行政書士試験で学ぶ範囲・勉強する意義・難易度を法律未学習者向けに解説",
+  description:
+    "行政書士試験で学ぶ範囲・勉強する意義・難易度を法律未学習者向けに解説",
   publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
 }
 
-const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const Section: FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children,
+}) => (
   <section style={{ marginBottom: "2rem" }}>
     <h2
       style={{
@@ -41,12 +45,12 @@ const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, chil
 )
 
 const SUBJECT_COLORS: Record<string, string> = {
-  "憲法": "var(--const)",
-  "民法": "var(--civil)",
-  "行政法": "var(--admin)",
+  憲法: "var(--const)",
+  民法: "var(--civil)",
+  行政法: "var(--admin)",
   "商法・会社法": "var(--text-3)",
-  "基礎法学": "var(--text-3)",
-  "一般知識等": "var(--past)",
+  基礎法学: "var(--text-3)",
+  一般知識等: "var(--past)",
 }
 
 const SUBJECTS = [
@@ -90,11 +94,27 @@ const SUBJECTS = [
 
 const Page: FC = () => {
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div style={{ marginBottom: "1.75rem" }}>
-        <Link href="/" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
+        <Link
+          href="/"
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-3)",
+            textDecoration: "none",
+          }}
+        >
           ← ホーム
         </Link>
       </div>
@@ -111,12 +131,22 @@ const Page: FC = () => {
         >
           法律初心者向け 行政書士勉強ガイド
         </h1>
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.65,
+          }}
+        >
           法律を勉強したことがない人向けに、行政書士試験で何を学ぶのか・なぜ学ぶ意味があるのか・どれくらい難しいのかをまとめた。
         </p>
         <p style={{ fontSize: ".8125rem", marginTop: ".5rem" }}>
-          <Link href="/basics" style={{ color: "var(--accent)", textDecoration: "none" }}>
-            条文の読み方や法律用語にまだ馴染みがない場合は、もっと手前から学べる「法律ゼロから入門」へ →
+          <Link
+            href="/basics"
+            style={{ color: "var(--accent)", textDecoration: "none" }}
+          >
+            条文の読み方や法律用語にまだ馴染みがない場合は、もっと手前から学べる「法律ゼロから入門」へ
+            →
           </Link>
         </p>
       </div>
@@ -153,10 +183,26 @@ const Page: FC = () => {
                 borderLeft: "2px solid var(--accent)",
               }}
             >
-              <p style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600, margin: "0 0 .25rem" }}>
+              <p
+                style={{
+                  fontSize: ".875rem",
+                  color: "var(--text-1)",
+                  fontWeight: 600,
+                  margin: "0 0 .25rem",
+                }}
+              >
                 {item.title}
               </p>
-              <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: 0, lineHeight: 1.65 }}>{item.desc}</p>
+              <p
+                style={{
+                  fontSize: ".8125rem",
+                  color: "var(--text-2)",
+                  margin: 0,
+                  lineHeight: 1.65,
+                }}
+              >
+                {item.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -164,12 +210,26 @@ const Page: FC = () => {
 
       {/* 勉強する範囲 */}
       <Section title="勉強する範囲（科目ごとの特徴）">
-        <p style={{ fontSize: ".8125rem", color: "var(--text-2)", marginBottom: "1rem", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            marginBottom: "1rem",
+            lineHeight: 1.65,
+          }}
+        >
           試験は「法令等科目」（憲法・民法・行政法・商法会社法・基礎法学）と「一般知識等科目」の2部構成。
           配点比重がそのまま勉強時間の配分の目安になる。
         </p>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px", border: "1px solid var(--border)" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1px",
+            border: "1px solid var(--border)",
+          }}
+        >
           {SUBJECTS.map((s) => (
             <div
               key={s.name}
@@ -192,13 +252,41 @@ const Page: FC = () => {
                 }}
               />
               <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: ".5rem" }}>
-                  <span style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600 }}>{s.name}</span>
-                  <span style={{ fontSize: ".75rem", color: "var(--text-3)", flexShrink: 0 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "baseline",
+                    gap: ".5rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: ".875rem",
+                      color: "var(--text-1)",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {s.name}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: ".75rem",
+                      color: "var(--text-3)",
+                      flexShrink: 0,
+                    }}
+                  >
                     出題量: {s.weight} ／ 難易度: {s.difficulty}
                   </span>
                 </div>
-                <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: ".25rem 0 0", lineHeight: 1.6 }}>
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: ".25rem 0 0",
+                    lineHeight: 1.6,
+                  }}
+                >
                   {s.desc}
                 </p>
               </div>
@@ -206,7 +294,14 @@ const Page: FC = () => {
           ))}
         </div>
 
-        <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: ".375rem" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: ".375rem",
+          }}
+        >
           <Link
             href="/exam-guide"
             style={{
@@ -234,11 +329,31 @@ const Page: FC = () => {
       <Section title="法律初心者の学習順序（おすすめ）">
         <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
           {[
-            { step: "1", text: "基礎法学・憲法から始める", note: "条文量が少なく、法律用語に慣れるのに最適" },
-            { step: "2", text: "行政法に進む", note: "配点最大。パターンが決まっているので得点が伸びやすい" },
-            { step: "3", text: "民法に取り組む", note: "最も時間がかかる。事例形式の問題演習を繰り返す" },
-            { step: "4", text: "商法・会社法、一般知識等で仕上げ", note: "出題数は少ないが足切り回避のため最低限は対策" },
-            { step: "5", text: "過去問演習で総仕上げ", note: "本番形式で時間配分・解答順序を練習する" },
+            {
+              step: "1",
+              text: "基礎法学・憲法から始める",
+              note: "条文量が少なく、法律用語に慣れるのに最適",
+            },
+            {
+              step: "2",
+              text: "行政法に進む",
+              note: "配点最大。パターンが決まっているので得点が伸びやすい",
+            },
+            {
+              step: "3",
+              text: "民法に取り組む",
+              note: "最も時間がかかる。事例形式の問題演習を繰り返す",
+            },
+            {
+              step: "4",
+              text: "商法・会社法、一般知識等で仕上げ",
+              note: "出題数は少ないが足切り回避のため最低限は対策",
+            },
+            {
+              step: "5",
+              text: "過去問演習で総仕上げ",
+              note: "本番形式で時間配分・解答順序を練習する",
+            },
           ].map((item) => (
             <div
               key={item.step}
@@ -263,8 +378,25 @@ const Page: FC = () => {
                 {item.step}
               </span>
               <div>
-                <p style={{ fontSize: ".875rem", color: "var(--text-1)", margin: 0, fontWeight: 500 }}>{item.text}</p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: ".125rem 0 0" }}>{item.note}</p>
+                <p
+                  style={{
+                    fontSize: ".875rem",
+                    color: "var(--text-1)",
+                    margin: 0,
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.text}
+                </p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: ".125rem 0 0",
+                  }}
+                >
+                  {item.note}
+                </p>
               </div>
             </div>
           ))}
@@ -303,13 +435,36 @@ const Page: FC = () => {
                 borderLeft: `2px solid ${item.color}`,
               }}
             >
-              <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: "0 0 .25rem", fontWeight: 600 }}>
+              <p
+                style={{
+                  fontSize: ".75rem",
+                  color: "var(--text-3)",
+                  margin: "0 0 .25rem",
+                  fontWeight: 600,
+                }}
+              >
                 {item.label}
               </p>
-              <p style={{ fontSize: ".9375rem", color: "var(--text-1)", fontWeight: 600, margin: "0 0 .25rem" }}>
+              <p
+                style={{
+                  fontSize: ".9375rem",
+                  color: "var(--text-1)",
+                  fontWeight: 600,
+                  margin: "0 0 .25rem",
+                }}
+              >
                 {item.value}
               </p>
-              <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: 0, lineHeight: 1.5 }}>{item.note}</p>
+              <p
+                style={{
+                  fontSize: ".75rem",
+                  color: "var(--text-3)",
+                  margin: 0,
+                  lineHeight: 1.5,
+                }}
+              >
+                {item.note}
+              </p>
             </div>
           ))}
         </div>
@@ -343,7 +498,14 @@ const Page: FC = () => {
           gap: ".75rem",
         }}
       >
-        <p style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-1)",
+            fontWeight: 600,
+            margin: 0,
+          }}
+        >
           憲法から学習を始める
         </p>
         <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}>

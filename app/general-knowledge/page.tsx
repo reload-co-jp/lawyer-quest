@@ -16,11 +16,15 @@ const jsonLd = {
   headline: "基礎知識科目 対策ガイド",
   inLanguage: "ja",
   url: `${BASE_URL}/general-knowledge`,
-  description: "行政書士試験「基礎知識」科目の出題範囲・足切り基準・分野別の対策方法",
+  description:
+    "行政書士試験「基礎知識」科目の出題範囲・足切り基準・分野別の対策方法",
   publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
 }
 
-const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const Section: FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children,
+}) => (
   <section style={{ marginBottom: "2rem" }}>
     <h2
       style={{
@@ -65,11 +69,27 @@ const FIELDS = [
 
 const Page: FC = () => {
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div style={{ marginBottom: "1.75rem" }}>
-        <Link href="/" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
+        <Link
+          href="/"
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-3)",
+            textDecoration: "none",
+          }}
+        >
           ← ホーム
         </Link>
       </div>
@@ -86,7 +106,13 @@ const Page: FC = () => {
         >
           基礎知識科目 対策ガイド
         </h1>
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.65,
+          }}
+        >
           法令等科目（憲法・民法・行政法など）とは別枠の「基礎知識」科目について、出題範囲・足切り基準・分野別の対策方法をまとめた。
           具体的な出題数・配点は年度により変動するため、最新情報は必ず公式サイトで確認のこと。
         </p>
@@ -112,7 +138,14 @@ const Page: FC = () => {
 
       {/* 分野別の出題範囲 */}
       <Section title="分野別の出題範囲">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px", border: "1px solid var(--border)" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1px",
+            border: "1px solid var(--border)",
+          }}
+        >
           {FIELDS.map((f) => (
             <div
               key={f.name}
@@ -135,11 +168,41 @@ const Page: FC = () => {
                 }}
               />
               <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: ".5rem" }}>
-                  <span style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600 }}>{f.name}</span>
-                  <span style={{ fontSize: ".75rem", color: "var(--text-3)", flexShrink: 0 }}>出題数: {f.weight}</span>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "baseline",
+                    gap: ".5rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: ".875rem",
+                      color: "var(--text-1)",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {f.name}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: ".75rem",
+                      color: "var(--text-3)",
+                      flexShrink: 0,
+                    }}
+                  >
+                    出題数: {f.weight}
+                  </span>
                 </div>
-                <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: ".25rem 0 0", lineHeight: 1.6 }}>
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: ".25rem 0 0",
+                    lineHeight: 1.6,
+                  }}
+                >
                   {f.desc}
                 </p>
               </div>
@@ -158,16 +221,37 @@ const Page: FC = () => {
             borderLeft: "2px solid var(--warning)",
           }}
         >
-          <p style={{ fontSize: ".9375rem", color: "var(--text-1)", fontWeight: 600, margin: "0 0 .375rem" }}>
+          <p
+            style={{
+              fontSize: ".9375rem",
+              color: "var(--text-1)",
+              fontWeight: 600,
+              margin: "0 0 .375rem",
+            }}
+          >
             14問中6問未満の正解で即不合格
           </p>
-          <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: 0, lineHeight: 1.65 }}>
+          <p
+            style={{
+              fontSize: ".8125rem",
+              color: "var(--text-2)",
+              margin: 0,
+              lineHeight: 1.65,
+            }}
+          >
             法令等科目でどれだけ高得点でも、基礎知識科目が24点未満（6問未満正解）だと総合点に関係なく不合格になる。
             「後回しでいい科目」ではなく、最低限の対策は必須。
           </p>
         </div>
         <div style={{ marginTop: ".75rem" }}>
-          <Link href="/exam-guide" style={{ fontSize: ".8125rem", color: "var(--accent)", textDecoration: "none" }}>
+          <Link
+            href="/exam-guide"
+            style={{
+              fontSize: ".8125rem",
+              color: "var(--accent)",
+              textDecoration: "none",
+            }}
+          >
             合格基準の詳細は試験ガイドへ →
           </Link>
         </div>
@@ -177,10 +261,26 @@ const Page: FC = () => {
       <Section title="対策の優先順位">
         <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
           {[
-            { step: "1", text: "文章理解を確実に取る", note: "出題形式が安定。過去問演習だけで3問とも安定して取れる" },
-            { step: "2", text: "情報通信・個人情報保護を固める", note: "範囲が絞られており、条文知識で得点が安定する" },
-            { step: "3", text: "行政書士法等は行政法学習と並行", note: "行政法の知識が活きるため、別科目として身構えなくてよい" },
-            { step: "4", text: "政治・経済・社会は深追いしない", note: "範囲が広すぎるため、過去問の頻出テーマだけ拾えば十分" },
+            {
+              step: "1",
+              text: "文章理解を確実に取る",
+              note: "出題形式が安定。過去問演習だけで3問とも安定して取れる",
+            },
+            {
+              step: "2",
+              text: "情報通信・個人情報保護を固める",
+              note: "範囲が絞られており、条文知識で得点が安定する",
+            },
+            {
+              step: "3",
+              text: "行政書士法等は行政法学習と並行",
+              note: "行政法の知識が活きるため、別科目として身構えなくてよい",
+            },
+            {
+              step: "4",
+              text: "政治・経済・社会は深追いしない",
+              note: "範囲が広すぎるため、過去問の頻出テーマだけ拾えば十分",
+            },
           ].map((item) => (
             <div
               key={item.step}
@@ -205,8 +305,25 @@ const Page: FC = () => {
                 {item.step}
               </span>
               <div>
-                <p style={{ fontSize: ".875rem", color: "var(--text-1)", margin: 0, fontWeight: 500 }}>{item.text}</p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: ".125rem 0 0" }}>{item.note}</p>
+                <p
+                  style={{
+                    fontSize: ".875rem",
+                    color: "var(--text-1)",
+                    margin: 0,
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.text}
+                </p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: ".125rem 0 0",
+                  }}
+                >
+                  {item.note}
+                </p>
               </div>
             </div>
           ))}
@@ -225,7 +342,14 @@ const Page: FC = () => {
           gap: ".75rem",
         }}
       >
-        <p style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-1)",
+            fontWeight: 600,
+            margin: 0,
+          }}
+        >
           法令等科目の対策も進める
         </p>
         <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}>

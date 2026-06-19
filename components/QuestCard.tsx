@@ -40,13 +40,49 @@ export const QuestCard: FC<Props> = ({
         gap: "1rem",
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          gap: "1rem",
+        }}
+      >
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".25rem" }}>
-            <div style={{ width: "7px", height: "7px", borderRadius: "50%", background: color, flexShrink: 0 }} />
-            <h2 style={{ fontSize: ".9375rem", fontWeight: 600, color: "var(--text-1)" }}>{quest.title}</h2>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: ".5rem",
+              marginBottom: ".25rem",
+            }}
+          >
+            <div
+              style={{
+                width: "7px",
+                height: "7px",
+                borderRadius: "50%",
+                background: color,
+                flexShrink: 0,
+              }}
+            />
+            <h2
+              style={{
+                fontSize: ".9375rem",
+                fontWeight: 600,
+                color: "var(--text-1)",
+              }}
+            >
+              {quest.title}
+            </h2>
           </div>
-          <p style={{ fontSize: ".8125rem", color: "var(--text-2)", paddingLeft: "1.1875rem" }}>
+          <p
+            style={{
+              fontSize: ".8125rem",
+              color: "var(--text-2)",
+              paddingLeft: "1.1875rem",
+            }}
+          >
             {quest.description}
           </p>
         </div>
@@ -65,11 +101,30 @@ export const QuestCard: FC<Props> = ({
         {[
           { label: "攻略率", value: `${completionRate}%`, highlight: true },
           { label: "正答率", value: `${accuracyRate}%`, highlight: false },
-          { label: "回答数", value: `${answeredQuestions}/${totalQuestions}`, highlight: false },
+          {
+            label: "回答数",
+            value: `${answeredQuestions}/${totalQuestions}`,
+            highlight: false,
+          },
         ].map(({ label, value, highlight }) => (
           <div key={label}>
-            <p style={{ fontSize: ".6875rem", color: "var(--text-3)", marginBottom: ".25rem", letterSpacing: ".02em" }}>{label}</p>
-            <p style={{ fontSize: ".9375rem", fontWeight: 700, color: highlight ? color : "var(--text-1)" }}>
+            <p
+              style={{
+                fontSize: ".6875rem",
+                color: "var(--text-3)",
+                marginBottom: ".25rem",
+                letterSpacing: ".02em",
+              }}
+            >
+              {label}
+            </p>
+            <p
+              style={{
+                fontSize: ".9375rem",
+                fontWeight: 700,
+                color: highlight ? color : "var(--text-1)",
+              }}
+            >
               {value}
             </p>
           </div>

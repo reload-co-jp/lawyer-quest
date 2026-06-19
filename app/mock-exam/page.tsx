@@ -5,13 +5,16 @@ import { ExamClient } from "components/ExamClient"
 
 export const metadata: Metadata = {
   title: "模擬テスト | Lawyer Quest",
-  description: "行政法・民法・憲法を本番試験相当の比率で出題する20問の模擬テスト。",
+  description:
+    "行政法・民法・憲法を本番試験相当の比率で出題する20問の模擬テスト。",
 }
 
 const Page: FC = () => {
   const questions = getAllQuestions()
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1.5rem 1rem" }}>
+    <div
+      style={{ maxWidth: "800px", margin: "0 auto", padding: "1.5rem 1rem" }}
+    >
       <ExamClient
         allQuestions={questions}
         examCounts={[20]}

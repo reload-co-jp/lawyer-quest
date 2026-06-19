@@ -11,8 +11,23 @@ type Props = {
   revealed: boolean
 }
 
-export const ChoiceList: FC<Props> = ({ choices, selectedAnswer, correctAnswer, onSelect, revealed }) => (
-  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: ".375rem" }}>
+export const ChoiceList: FC<Props> = ({
+  choices,
+  selectedAnswer,
+  correctAnswer,
+  onSelect,
+  revealed,
+}) => (
+  <ul
+    style={{
+      listStyle: "none",
+      padding: 0,
+      margin: 0,
+      display: "flex",
+      flexDirection: "column",
+      gap: ".375rem",
+    }}
+  >
     {choices.map((choice) => {
       const isSelected = selectedAnswer === choice.id
       const isCorrect = choice.id === correctAnswer
@@ -42,7 +57,12 @@ export const ChoiceList: FC<Props> = ({ choices, selectedAnswer, correctAnswer, 
         labelColor = "var(--accent)"
       }
 
-      const label = choice.id === "true" ? "○" : choice.id === "false" ? "×" : choice.id.toUpperCase()
+      const label =
+        choice.id === "true"
+          ? "○"
+          : choice.id === "false"
+            ? "×"
+            : choice.id.toUpperCase()
 
       return (
         <li key={choice.id}>
@@ -81,7 +101,11 @@ export const ChoiceList: FC<Props> = ({ choices, selectedAnswer, correctAnswer, 
                 marginTop: ".125rem",
               }}
             >
-              {revealed && isCorrect ? "✓" : revealed && isSelected && !isCorrect ? "✗" : label}
+              {revealed && isCorrect
+                ? "✓"
+                : revealed && isSelected && !isCorrect
+                  ? "✗"
+                  : label}
             </span>
             <span>{choice.text}</span>
           </button>

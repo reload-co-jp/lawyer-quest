@@ -12,10 +12,28 @@ const SOURCE_TYPE_LABEL: Record<QuestionSource["type"], string> = {
 
 export const SourceList: FC<{ sources: QuestionSource[] }> = ({ sources }) => (
   <div style={{ marginTop: "1rem" }}>
-    <p style={{ fontSize: ".6875rem", color: "var(--text-3)", marginBottom: ".5rem", fontWeight: 600, letterSpacing: ".06em", textTransform: "uppercase" }}>
+    <p
+      style={{
+        fontSize: ".6875rem",
+        color: "var(--text-3)",
+        marginBottom: ".5rem",
+        fontWeight: 600,
+        letterSpacing: ".06em",
+        textTransform: "uppercase",
+      }}
+    >
       Source
     </p>
-    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "1px" }}>
+    <ul
+      style={{
+        listStyle: "none",
+        padding: 0,
+        margin: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: "1px",
+      }}
+    >
       {sources.map((src, i) => (
         <li
           key={i}
@@ -30,9 +48,18 @@ export const SourceList: FC<{ sources: QuestionSource[] }> = ({ sources }) => (
             [{SOURCE_TYPE_LABEL[src.type]}]
           </span>{" "}
           <span style={{ color: "var(--text-1)" }}>{src.title}</span>
-          {src.article && <span style={{ color: "var(--text-2)" }}> {src.article}</span>}
-          {src.caseName && <span style={{ color: "var(--text-2)" }}> {src.caseName}</span>}
-          {src.decisionDate && <span style={{ color: "var(--text-3)" }}> ({src.decisionDate})</span>}
+          {src.article && (
+            <span style={{ color: "var(--text-2)" }}> {src.article}</span>
+          )}
+          {src.caseName && (
+            <span style={{ color: "var(--text-2)" }}> {src.caseName}</span>
+          )}
+          {src.decisionDate && (
+            <span style={{ color: "var(--text-3)" }}>
+              {" "}
+              ({src.decisionDate})
+            </span>
+          )}
           <br />
           <span style={{ color: "var(--text-3)" }}>
             {src.organization} · {src.checkedAt}
@@ -40,7 +67,12 @@ export const SourceList: FC<{ sources: QuestionSource[] }> = ({ sources }) => (
           {src.url && (
             <>
               {" · "}
-              <a href={src.url} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "underline" }}>
+              <a
+                href={src.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--accent)", textDecoration: "underline" }}
+              >
                 リンク
               </a>
             </>

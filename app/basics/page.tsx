@@ -16,11 +16,15 @@ const jsonLd = {
   headline: "法律ゼロから入門",
   inLanguage: "ja",
   url: `${BASE_URL}/basics`,
-  description: "条文の読み方・法令の種類・要件と効果・裁判所のしくみを法律未経験者向けに解説",
+  description:
+    "条文の読み方・法令の種類・要件と効果・裁判所のしくみを法律未経験者向けに解説",
   publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
 }
 
-const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+const Section: FC<{ title: string; children: React.ReactNode }> = ({
+  title,
+  children,
+}) => (
   <section style={{ marginBottom: "2rem" }}>
     <h2
       style={{
@@ -40,7 +44,11 @@ const Section: FC<{ title: string; children: React.ReactNode }> = ({ title, chil
   </section>
 )
 
-const Card: FC<{ title: string; desc: React.ReactNode; color?: string }> = ({ title, desc, color }) => (
+const Card: FC<{ title: string; desc: React.ReactNode; color?: string }> = ({
+  title,
+  desc,
+  color,
+}) => (
   <div
     style={{
       padding: ".875rem 1rem",
@@ -49,16 +57,43 @@ const Card: FC<{ title: string; desc: React.ReactNode; color?: string }> = ({ ti
       borderLeft: `2px solid ${color ?? "var(--accent)"}`,
     }}
   >
-    <p style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600, margin: "0 0 .25rem" }}>{title}</p>
-    <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: 0, lineHeight: 1.65 }}>{desc}</p>
+    <p
+      style={{
+        fontSize: ".875rem",
+        color: "var(--text-1)",
+        fontWeight: 600,
+        margin: "0 0 .25rem",
+      }}
+    >
+      {title}
+    </p>
+    <p
+      style={{
+        fontSize: ".8125rem",
+        color: "var(--text-2)",
+        margin: 0,
+        lineHeight: 1.65,
+      }}
+    >
+      {desc}
+    </p>
   </div>
 )
 
 const LAW_HIERARCHY = [
   { name: "憲法", desc: "国の最高法規。これに反する法律・命令は無効。" },
-  { name: "法律", desc: "国会が制定。「〜法」「〜法律」（民法・行政手続法など）。" },
-  { name: "政令・省令", desc: "内閣（政令）・各省大臣（省令）が、法律の委任を受けて定める細則。" },
-  { name: "条例", desc: "地方議会が制定。その都道府県・市町村の中だけで通用する。" },
+  {
+    name: "法律",
+    desc: "国会が制定。「〜法」「〜法律」（民法・行政手続法など）。",
+  },
+  {
+    name: "政令・省令",
+    desc: "内閣（政令）・各省大臣（省令）が、法律の委任を受けて定める細則。",
+  },
+  {
+    name: "条例",
+    desc: "地方議会が制定。その都道府県・市町村の中だけで通用する。",
+  },
 ]
 
 const TERMS = [
@@ -85,18 +120,42 @@ const TERMS = [
 ]
 
 const COURT_STEPS = [
-  { step: "1", text: "簡易裁判所 / 地方裁判所", note: "原則はここから始まる（第一審）" },
+  {
+    step: "1",
+    text: "簡易裁判所 / 地方裁判所",
+    note: "原則はここから始まる（第一審）",
+  },
   { step: "2", text: "高等裁判所", note: "第一審の判断に不服があれば控訴" },
-  { step: "3", text: "最高裁判所", note: "さらに不服があれば上告。判断は原則ここで確定" },
+  {
+    step: "3",
+    text: "最高裁判所",
+    note: "さらに不服があれば上告。判断は原則ここで確定",
+  },
 ]
 
 const Page: FC = () => {
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div style={{ marginBottom: "1.75rem" }}>
-        <Link href="/" style={{ fontSize: ".8125rem", color: "var(--text-3)", textDecoration: "none" }}>
+        <Link
+          href="/"
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-3)",
+            textDecoration: "none",
+          }}
+        >
           ← ホーム
         </Link>
       </div>
@@ -113,7 +172,13 @@ const Page: FC = () => {
         >
           法律ゼロから入門
         </h1>
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.65,
+          }}
+        >
           「条」「項」「みなす」といった言葉に馴染みがない人向けの準備ページ。
           ここを読んでから憲法・基礎法学に進むと条文がぐっと読みやすくなる。
         </p>
@@ -129,10 +194,24 @@ const Page: FC = () => {
 
       {/* 法令の種類 */}
       <Section title="法令の種類（強さの順）">
-        <p style={{ fontSize: ".8125rem", color: "var(--text-2)", marginBottom: "1rem", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            marginBottom: "1rem",
+            lineHeight: 1.65,
+          }}
+        >
           法令には上下関係がある。上位のルールに矛盾する下位のルールは無効になる。
         </p>
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px", border: "1px solid var(--border)" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1px",
+            border: "1px solid var(--border)",
+          }}
+        >
           {LAW_HIERARCHY.map((item, i) => (
             <div
               key={item.name}
@@ -157,8 +236,24 @@ const Page: FC = () => {
                 {i + 1}
               </span>
               <div>
-                <p style={{ fontSize: ".875rem", color: "var(--text-1)", margin: 0, fontWeight: 600 }}>{item.name}</p>
-                <p style={{ fontSize: ".8125rem", color: "var(--text-2)", margin: ".125rem 0 0", lineHeight: 1.6 }}>
+                <p
+                  style={{
+                    fontSize: ".875rem",
+                    color: "var(--text-1)",
+                    margin: 0,
+                    fontWeight: 600,
+                  }}
+                >
+                  {item.name}
+                </p>
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: ".125rem 0 0",
+                    lineHeight: 1.6,
+                  }}
+                >
                   {item.desc}
                 </p>
               </div>
@@ -182,13 +277,22 @@ const Page: FC = () => {
           }}
         >
           {/* eslint-disable no-irregular-whitespace -- 条文の全角スペースは正式な表記 */}
-          第3条　成年に達しない者が法律行為をするには、その法定代理人の同意を得なければならない。<br />
-          　２　前項の規定に反する法律行為は、取り消すことができる。<br />
-          　　一　日常生活に関する行為<br />
+          第3条　成年に達しない者が法律行為をするには、その法定代理人の同意を得なければならない。
+          <br />
+          　２　前項の規定に反する法律行為は、取り消すことができる。
+          <br />
+          　　一　日常生活に関する行為
+          <br />
           　　二　法定代理人が許した範囲内の行為
           {/* eslint-enable no-irregular-whitespace */}
         </div>
-        <p style={{ fontSize: ".8125rem", color: "var(--text-2)", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            lineHeight: 1.65,
+          }}
+        >
           条文は「条」→「項」→「号」の順に細かくなる。最初の項には番号を振らないことが多く（第1項扱い）、
           2番目以降は「２」「３」と算用数字で続く。号は「一」「二」と漢数字で列挙される。
         </p>
@@ -196,7 +300,9 @@ const Page: FC = () => {
 
       {/* 法律用語 */}
       <Section title="最低限おさえる法律用語">
-        <div style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}
+        >
           {TERMS.map((t) => (
             <Card key={t.term} title={t.term} desc={t.desc} />
           ))}
@@ -205,7 +311,14 @@ const Page: FC = () => {
 
       {/* 裁判所のしくみ */}
       <Section title="裁判所のしくみ（三審制）">
-        <p style={{ fontSize: ".8125rem", color: "var(--text-2)", marginBottom: "1rem", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            marginBottom: "1rem",
+            lineHeight: 1.65,
+          }}
+        >
           1つの事件につき、原則3回まで審理を受けられる。行政法・民法の判例問題はこの三審制を前提に出題される。
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
@@ -233,8 +346,25 @@ const Page: FC = () => {
                 {item.step}
               </span>
               <div>
-                <p style={{ fontSize: ".875rem", color: "var(--text-1)", margin: 0, fontWeight: 500 }}>{item.text}</p>
-                <p style={{ fontSize: ".75rem", color: "var(--text-3)", margin: ".125rem 0 0" }}>{item.note}</p>
+                <p
+                  style={{
+                    fontSize: ".875rem",
+                    color: "var(--text-1)",
+                    margin: 0,
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.text}
+                </p>
+                <p
+                  style={{
+                    fontSize: ".75rem",
+                    color: "var(--text-3)",
+                    margin: ".125rem 0 0",
+                  }}
+                >
+                  {item.note}
+                </p>
               </div>
             </div>
           ))}
@@ -268,7 +398,14 @@ const Page: FC = () => {
           gap: ".75rem",
         }}
       >
-        <p style={{ fontSize: ".875rem", color: "var(--text-1)", fontWeight: 600, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-1)",
+            fontWeight: 600,
+            margin: 0,
+          }}
+        >
           ここまで読めたら準備完了
         </p>
         <div style={{ display: "flex", gap: ".5rem", flexWrap: "wrap" }}>

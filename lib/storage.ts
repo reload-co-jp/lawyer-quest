@@ -29,7 +29,9 @@ export function getWrongQuestions(): WrongQuestion[] {
   }
 }
 
-export function saveWrongQuestion(entry: Omit<WrongQuestion, "wrongCount" | "lastWrongAt">): void {
+export function saveWrongQuestion(
+  entry: Omit<WrongQuestion, "wrongCount" | "lastWrongAt">
+): void {
   if (!isClient) return
   const wrongs = getWrongQuestions()
   const idx = wrongs.findIndex((w) => w.questionId === entry.questionId)
@@ -37,7 +39,11 @@ export function saveWrongQuestion(entry: Omit<WrongQuestion, "wrongCount" | "las
     wrongs[idx].wrongCount += 1
     wrongs[idx].lastWrongAt = new Date().toISOString()
   } else {
-    wrongs.push({ ...entry, wrongCount: 1, lastWrongAt: new Date().toISOString() })
+    wrongs.push({
+      ...entry,
+      wrongCount: 1,
+      lastWrongAt: new Date().toISOString(),
+    })
   }
   localStorage.setItem(STORAGE_KEYS.wrongQuestions, JSON.stringify(wrongs))
 }
@@ -96,7 +102,9 @@ function updateUserProgress(history: AnswerHistory): void {
     qp.accuracyRate =
       qp.answeredQuestions > 0 ? qp.correctAnswers / qp.answeredQuestions : 0
     qp.completionRate =
-      qp.totalQuestions > 0 ? Math.min(qp.answeredQuestions / qp.totalQuestions, 1) : 0
+      qp.totalQuestions > 0
+        ? Math.min(qp.answeredQuestions / qp.totalQuestions, 1)
+        : 0
   }
 
   const wrongIds = getWrongQuestions().map((w) => w.questionId)

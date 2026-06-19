@@ -42,17 +42,17 @@ MVPの `SPEC.md` では、DBなし・認証なし・JSON管理の簡易版を定
 
 Lawyer Questでは、ユーザーの学習行動を以下のように再定義する。
 
-| 通常の学習サイト | Lawyer Quest |
-|---|---|
-| 科目 | クエスト |
-| 分野 | エリア |
-| 問題 | チャレンジ |
-| 復習 | 再挑戦クエスト |
-| 進捗 | 攻略率 |
-| 学習履歴 | クエストログ |
-| 条文集 | 条文ツリー |
-| 判例集 | 判例図鑑 |
-| 模試 | ボス戦 / 模試ダンジョン |
+| 通常の学習サイト | Lawyer Quest            |
+| ---------------- | ----------------------- |
+| 科目             | クエスト                |
+| 分野             | エリア                  |
+| 問題             | チャレンジ              |
+| 復習             | 再挑戦クエスト          |
+| 進捗             | 攻略率                  |
+| 学習履歴         | クエストログ            |
+| 条文集           | 条文ツリー              |
+| 判例集           | 判例図鑑                |
+| 模試             | ボス戦 / 模試ダンジョン |
 
 ---
 
@@ -136,14 +136,7 @@ Lawyer Quest
 export type Source = {
   id: string
 
-  type:
-    | "law"
-    | "case"
-    | "exam"
-    | "government"
-    | "book"
-    | "article"
-    | "original"
+  type: "law" | "case" | "exam" | "government" | "book" | "article" | "original"
 
   title: string
   organization: string
@@ -444,11 +437,7 @@ export type PastExamQuestion = {
 
   subject: Subject
   topic: string
-  format:
-    | "true_false"
-    | "multiple_choice"
-    | "written"
-    | "reading"
+  format: "true_false" | "multiple_choice" | "written" | "reading"
 
   questionText: string
   choices?: Choice[]
@@ -492,11 +481,7 @@ export type Question = {
   topic: string
   subtopic?: string
 
-  format:
-    | "true_false"
-    | "multiple_choice"
-    | "fill_blank"
-    | "written"
+  format: "true_false" | "multiple_choice" | "fill_blank" | "written"
 
   question: string
   choices?: Choice[]
@@ -517,12 +502,7 @@ export type Question = {
   legalAsOf?: string
   examYear?: number
 
-  status:
-    | "draft"
-    | "reviewing"
-    | "published"
-    | "needs_review"
-    | "archived"
+  status: "draft" | "reviewing" | "published" | "needs_review" | "archived"
 
   createdBy?: string
   reviewedBy?: string
@@ -542,10 +522,7 @@ export type QuestionReview = {
   questionId: string
 
   reviewerId: string
-  status:
-    | "approved"
-    | "rejected"
-    | "needs_fix"
+  status: "approved" | "rejected" | "needs_fix"
 
   comment?: string
 
@@ -603,12 +580,7 @@ export type UserQuestionStatus = {
   userId: string
   questionId: string
 
-  status:
-    | "unseen"
-    | "learning"
-    | "wrong"
-    | "reviewing"
-    | "mastered"
+  status: "unseen" | "learning" | "wrong" | "reviewing" | "mastered"
 
   wrongCount: number
   correctCount: number
@@ -639,10 +611,7 @@ export type UserQuestProgress = {
   completionRate: number
   accuracyRate: number
 
-  status:
-    | "not_started"
-    | "in_progress"
-    | "cleared"
+  status: "not_started" | "in_progress" | "cleared"
 
   lastPlayedAt?: string
 
