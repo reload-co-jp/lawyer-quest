@@ -2,8 +2,7 @@ import type { FC } from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getAllQuests } from "lib/quests"
-
-const BASE_URL = "https://lawyer-quest.reload.co.jp"
+import { BASE_URL, buildMetadata } from "lib/seo"
 
 export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
@@ -19,16 +18,11 @@ export async function generateMetadata({
     getAllQuests() as { id: string; title: string; description: string }[]
   ).find((q) => q.id === questId)
   if (!quest) return {}
-  return {
+  return buildMetadata({
     title: quest.title,
     description: `行政書士試験対策 — ${quest.title}。${quest.description}`,
-    alternates: { canonical: `${BASE_URL}/quests/${quest.id}` },
-    openGraph: {
-      title: `${quest.title} | Lawyer Quest`,
-      description: `行政書士試験対策 — ${quest.title}。${quest.description}`,
-      url: `${BASE_URL}/quests/${quest.id}`,
-    },
-  }
+    path: `/quests/${quest.id}`,
+  })
 }
 
 import Link from "next/link"

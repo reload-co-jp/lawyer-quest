@@ -1,22 +1,14 @@
 import type { FC } from "react"
 import type { Metadata } from "next"
 import { getAllQuests } from "lib/quests"
+import { buildMetadata } from "lib/seo"
 
-const BASE_URL = "https://lawyer-quest.reload.co.jp"
-const TITLE = "クエスト一覧"
-const DESCRIPTION =
-  "行政書士試験対策クエスト。行政法・民法・憲法・過去問の4科目から演習問題に挑戦。"
-
-export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
-  alternates: { canonical: `${BASE_URL}/quests` },
-  openGraph: {
-    title: `${TITLE} | Lawyer Quest`,
-    description: DESCRIPTION,
-    url: `${BASE_URL}/quests`,
-  },
-}
+export const metadata: Metadata = buildMetadata({
+  title: "クエスト一覧",
+  description:
+    "行政書士試験対策クエスト。行政法・民法・憲法・過去問の4科目から演習問題に挑戦。",
+  path: "/quests",
+})
 import { getQuestionsByQuestId } from "lib/questions"
 import { QuestCard } from "components/QuestCard"
 

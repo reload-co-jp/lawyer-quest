@@ -2,19 +2,23 @@ import Link from "next/link"
 import Script from "next/script"
 import { Kaisei_Tokumin, DotGothic16 } from "next/font/google"
 import { HeaderNav } from "components/HeaderNav"
+import { BASE_URL } from "lib/seo"
 import "./reset.css"
 
 const GA_ID = "G-1PYPBQGLTQ"
 const isProd = process.env.NODE_ENV === "production"
 
-const kaisei = Kaisei_Tokumin({ weight: ["400", "700"], subsets: ["latin"] })
+const kaisei = Kaisei_Tokumin({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  preload: false,
+})
 const dotGothic = DotGothic16({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-pixel",
+  preload: false,
 })
-
-const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 export const metadata = {
   title: {

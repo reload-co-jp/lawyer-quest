@@ -2,9 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { getAllArticles, getArticleContent } from "lib/articles"
 import { getRelatedQuestions } from "lib/questions"
+import { BASE_URL, buildMetadata } from "lib/seo"
 import "../prose.css"
-
-const BASE_URL = "https://lawyer-quest.reload.co.jp"
 
 export function generateStaticParams() {
   return getAllArticles().map((a) => ({ articleId: a.id }))
@@ -19,16 +18,14 @@ export async function generateMetadata({
   const result = getArticleContent(articleId)
   if (!result) return {}
   const { meta } = result
-  return {
+  const description = meta.excerpt
+    ? `${meta.excerpt}｜行政書士試験対策・${meta.subjectLabel}`
+    : `行政書士試験対策 — ${meta.subjectLabel}「${meta.title}」。条文・判例解説付き。`
+  return buildMetadata({
     title: meta.title,
-    description: `行政書士試験対策 — ${meta.subjectLabel}「${meta.title}」。条文・判例解説付き。`,
-    alternates: { canonical: `${BASE_URL}/articles/${meta.id}` },
-    openGraph: {
-      title: `${meta.title} | Lawyer Quest`,
-      description: `行政書士試験対策 — ${meta.subjectLabel}「${meta.title}」。条文・判例解説付き。`,
-      url: `${BASE_URL}/articles/${meta.id}`,
-    },
-  }
+    description,
+    path: `/articles/${meta.id}`,
+  })
 }
 
 const SUBJECT_COLOR: Record<string, string> = {
@@ -56,7 +53,9 @@ export default async function ArticlePage({
       "@context": "https://schema.org",
       "@type": "Article",
       headline: meta.title,
+      description: meta.excerpt || undefined,
       inLanguage: "ja",
+      dateModified: meta.lastModified,
       url: `${BASE_URL}/articles/${meta.id}`,
       isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
       about: { "@type": "Thing", name: meta.subjectLabel },

@@ -6,8 +6,7 @@ import { getQuestionById, getAllQuestions } from "lib/questions"
 import { getAreaById, getQuestById } from "lib/quests"
 import { SourceList } from "components/SourceList"
 import { LawLinkList } from "components/LawLinkList"
-
-const BASE_URL = "https://lawyer-quest.reload.co.jp"
+import { BASE_URL, buildMetadata } from "lib/seo"
 
 export function generateStaticParams() {
   return getAllQuestions().map((q) => ({ questionId: q.id }))
@@ -26,16 +25,11 @@ export async function generateMetadata({
     question.question.length > 60
       ? question.question.slice(0, 60) + "…"
       : question.question
-  return {
+  return buildMetadata({
     title,
     description: `行政書士試験${quest ? ` ${quest.title}` : ""}の演習問題。解説・判例引用付き。`,
-    alternates: { canonical: `${BASE_URL}/questions/${question.id}` },
-    openGraph: {
-      title: `${title} | Lawyer Quest`,
-      description: `行政書士試験${quest ? ` ${quest.title}` : ""}の演習問題。解説・判例引用付き。`,
-      url: `${BASE_URL}/questions/${question.id}`,
-    },
-  }
+    path: `/questions/${question.id}`,
+  })
 }
 
 const SUBJECT_COLOR: Record<string, string> = {
@@ -67,6 +61,7 @@ const Page: FC<Props> = async ({ params }) => {
       inLanguage: "ja",
       url: `${BASE_URL}/questions/${question.id}`,
       educationalLevel: "professional",
+      dateModified: question.updatedAt,
       about: quest ? { "@type": "Thing", name: quest.title } : undefined,
       hasPart: {
         "@type": "Question",

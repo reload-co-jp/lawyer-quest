@@ -121,17 +121,18 @@ const Page: FC = () => {
               marginBottom: ".75rem",
             }}
           >
-            <p
+            <h2
               style={{
                 fontSize: ".6875rem",
                 color: "var(--text-3)",
                 fontWeight: 600,
                 letterSpacing: ".06em",
                 textTransform: "uppercase",
+                margin: 0,
               }}
             >
               学習記事
-            </p>
+            </h2>
             <Link
               href="/articles"
               style={{
@@ -200,7 +201,7 @@ const Page: FC = () => {
         </div>
 
         <div style={{ marginBottom: "2rem" }}>
-          <p
+          <h2
             style={{
               fontSize: ".6875rem",
               color: "var(--text-3)",
@@ -211,7 +212,7 @@ const Page: FC = () => {
             }}
           >
             演習
-          </p>
+          </h2>
           <div
             style={{
               display: "flex",
@@ -387,7 +388,7 @@ const Page: FC = () => {
         </div>
 
         <div>
-          <p
+          <h2
             style={{
               fontSize: ".6875rem",
               color: "var(--text-3)",
@@ -398,7 +399,7 @@ const Page: FC = () => {
             }}
           >
             学習ガイド
-          </p>
+          </h2>
           <div
             style={{
               display: "flex",

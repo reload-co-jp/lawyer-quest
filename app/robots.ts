@@ -1,8 +1,7 @@
 export const dynamic = "force-static"
 
 import type { MetadataRoute } from "next"
-
-const BASE_URL = "https://lawyer-quest.reload.co.jp"
+import { BASE_URL } from "lib/seo"
 
 export default function robots(): MetadataRoute.Robots {
   return {
