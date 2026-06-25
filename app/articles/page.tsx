@@ -5,7 +5,7 @@ import {
   type ArticleMeta,
   type ArticleSubject,
 } from "lib/articles"
-import { buildMetadata } from "lib/seo"
+import { BASE_URL, buildMetadata } from "lib/seo"
 
 export const metadata: Metadata = buildMetadata({
   title: "学習記事",
@@ -23,6 +23,22 @@ const SUBJECT_CONFIG: Record<ArticleSubject, { label: string; color: string }> =
 
 export default function ArticlesPage() {
   const articles = getAllArticles()
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "行政書士試験 学習記事",
+    description:
+      "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。",
+    url: `${BASE_URL}/articles`,
+    inLanguage: "ja",
+    numberOfItems: articles.length,
+    itemListElement: articles.map((article, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: article.title,
+      url: `${BASE_URL}/articles/${article.id}`,
+    })),
+  }
 
   const grouped: Record<ArticleSubject, ArticleMeta[]> = {
     administrative_law: [],
@@ -33,6 +49,10 @@ export default function ArticlesPage() {
 
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div style={{ marginBottom: "2rem" }}>
         <h1
           style={{

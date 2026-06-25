@@ -1,8 +1,9 @@
 import Link from "next/link"
 import Script from "next/script"
+import type { Metadata } from "next"
 import { Kaisei_Tokumin, DotGothic16 } from "next/font/google"
 import { HeaderNav } from "components/HeaderNav"
-import { BASE_URL } from "lib/seo"
+import { BASE_URL, DEFAULT_DESCRIPTION, OG_IMAGE, SITE_NAME } from "lib/seo"
 import "./reset.css"
 
 const GA_ID = "G-1PYPBQGLTQ"
@@ -20,48 +21,65 @@ const dotGothic = DotGothic16({
   preload: false,
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
-    default: "Lawyer Quest",
-    template: "%s | Lawyer Quest",
+    default: `${SITE_NAME} - 行政書士試験対策`,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
+  description: DEFAULT_DESCRIPTION,
   metadataBase: new URL(BASE_URL),
   alternates: { canonical: BASE_URL },
+  applicationName: SITE_NAME,
+  manifest: "/manifest.webmanifest",
+  keywords: [
+    "行政書士",
+    "行政書士試験",
+    "行政書士試験対策",
+    "行政法",
+    "民法",
+    "憲法",
+    "過去問",
+    "模擬試験",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
-    siteName: "Lawyer Quest",
+    siteName: SITE_NAME,
+    locale: "ja_JP",
     title: "Lawyer Quest — 行政書士試験対策",
-    description:
-      "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
+    description: DEFAULT_DESCRIPTION,
     url: BASE_URL,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lawyer Quest — 行政書士試験対策",
-    description:
-      "法律を、冒険のように攻略する。行政法・民法・憲法の要点を問題演習で定着させる学習サイト。",
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE],
   },
 }
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Lawyer Quest",
+  name: SITE_NAME,
   url: BASE_URL,
-  description:
-    "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。",
+  description: DEFAULT_DESCRIPTION,
   inLanguage: "ja",
   publisher: {
     "@type": "Organization",
-    name: "Lawyer Quest",
+    name: SITE_NAME,
     url: BASE_URL,
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${BASE_URL}/articles`,
-    "query-input": "required name=search_term_string",
   },
 }
 
