@@ -2,10 +2,11 @@ import type { Metadata } from "next"
 
 export const BASE_URL = "https://lawyer-quest.reload.co.jp"
 export const SITE_NAME = "Lawyer Quest"
+export const SITE_TITLE = `${SITE_NAME} - 行政書士試験対策`
 export const DEFAULT_DESCRIPTION =
   "法律を、冒険のように攻略する。行政書士試験対策サイト。行政法・民法・憲法の要点を問題演習で定着。"
 
-const DEFAULT_KEYWORDS = [
+export const DEFAULT_KEYWORDS = [
   "行政書士",
   "行政書士試験",
   "行政書士試験対策",
@@ -16,8 +17,13 @@ const DEFAULT_KEYWORDS = [
   "模擬試験",
 ]
 
+export function absoluteUrl(path = "/"): string {
+  if (path === "/") return BASE_URL
+  return `${BASE_URL}${path.startsWith("/") ? path : `/${path}`}`
+}
+
 export const OG_IMAGE = {
-  url: `${BASE_URL}/opengraph-image.png`,
+  url: absoluteUrl("/opengraph-image.png"),
   width: 1200,
   height: 630,
   alt: `${SITE_NAME} - 行政書士試験対策`,
@@ -32,12 +38,15 @@ export function buildMetadata({
   description: string
   path: string
 }): Metadata {
-  const url = `${BASE_URL}${path}`
+  const url = absoluteUrl(path)
   const socialTitle = `${title} | ${SITE_NAME}`
   return {
     title,
     description,
     keywords: DEFAULT_KEYWORDS,
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    category: "education",
     alternates: { canonical: url },
     robots: {
       index: true,
@@ -64,6 +73,27 @@ export function buildMetadata({
       title: socialTitle,
       description,
       images: [OG_IMAGE],
+    },
+  }
+}
+
+export function buildNoIndexMetadata({
+  title,
+  path,
+}: {
+  title: string
+  path: string
+}): Metadata {
+  return {
+    title,
+    alternates: { canonical: absoluteUrl(path) },
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: {
+        index: false,
+        follow: false,
+      },
     },
   }
 }

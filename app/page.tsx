@@ -1,7 +1,16 @@
 import type { FC } from "react"
+import type { Metadata } from "next"
 import Link from "next/link"
 import { getAllQuests } from "lib/quests"
 import { getAllArticles } from "lib/articles"
+import { buildMetadata } from "lib/seo"
+
+export const metadata: Metadata = buildMetadata({
+  title: "行政書士試験対策",
+  description:
+    "行政書士試験対策サイト。行政法・民法・憲法の要点を、クエスト形式の問題演習と学習記事で定着。",
+  path: "/",
+})
 
 const SUBJECT_VAR: Record<string, string> = {
   administrative_law: "var(--admin)",

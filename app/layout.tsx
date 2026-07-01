@@ -3,7 +3,14 @@ import Script from "next/script"
 import type { Metadata } from "next"
 import { Kaisei_Tokumin, DotGothic16 } from "next/font/google"
 import { HeaderNav } from "components/HeaderNav"
-import { BASE_URL, DEFAULT_DESCRIPTION, OG_IMAGE, SITE_NAME } from "lib/seo"
+import {
+  BASE_URL,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_KEYWORDS,
+  OG_IMAGE,
+  SITE_NAME,
+  SITE_TITLE,
+} from "lib/seo"
 import "./reset.css"
 
 const GA_ID = "G-1PYPBQGLTQ"
@@ -23,7 +30,7 @@ const dotGothic = DotGothic16({
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} - 行政書士試験対策`,
+    default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
@@ -31,16 +38,19 @@ export const metadata: Metadata = {
   alternates: { canonical: BASE_URL },
   applicationName: SITE_NAME,
   manifest: "/manifest.webmanifest",
-  keywords: [
-    "行政書士",
-    "行政書士試験",
-    "行政書士試験対策",
-    "行政法",
-    "民法",
-    "憲法",
-    "過去問",
-    "模擬試験",
-  ],
+  keywords: DEFAULT_KEYWORDS,
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "education",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
+  formatDetection: {
+    telephone: false,
+    address: false,
+    email: false,
+  },
   robots: {
     index: true,
     follow: true,
