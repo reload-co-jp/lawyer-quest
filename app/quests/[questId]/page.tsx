@@ -2,7 +2,8 @@ import type { FC } from "react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getAllQuests } from "lib/quests"
-import { BASE_URL, buildMetadata } from "lib/seo"
+import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
+import { BreadcrumbNav } from "components/BreadcrumbNav"
 
 export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
@@ -48,6 +49,12 @@ const Page: FC<Props> = async ({ params }) => {
   const questions = getQuestionsByQuestId(quest.id)
   const color = SUBJECT_COLOR[quest.id] ?? "var(--accent)"
 
+  const breadcrumbItems = [
+    { name: "ホーム", path: "/" },
+    { name: "クエスト一覧", path: "/quests" },
+    { name: quest.title, path: `/quests/${quest.id}` },
+  ]
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -66,25 +73,7 @@ const Page: FC<Props> = async ({ params }) => {
         url: BASE_URL,
       },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "クエスト一覧",
-          item: `${BASE_URL}/quests`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: quest.title,
-          item: `${BASE_URL}/quests/${quest.id}`,
-        },
-      ],
-    },
+    buildBreadcrumbJsonLd(breadcrumbItems),
   ]
 
   return (
@@ -93,29 +82,7 @@ const Page: FC<Props> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div
-        style={{
-          marginBottom: "1.5rem",
-          display: "flex",
-          alignItems: "center",
-          gap: ".5rem",
-        }}
-      >
-        <Link
-          href="/quests"
-          style={{
-            fontSize: ".8125rem",
-            color: "var(--text-3)",
-            textDecoration: "none",
-          }}
-        >
-          クエスト
-        </Link>
-        <span style={{ color: "var(--text-3)", fontSize: ".8125rem" }}>/</span>
-        <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>
-          {quest.title}
-        </span>
-      </div>
+      <BreadcrumbNav items={breadcrumbItems} />
 
       <div style={{ marginBottom: "2rem" }}>
         <div

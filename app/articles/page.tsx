@@ -5,7 +5,8 @@ import {
   type ArticleMeta,
   type ArticleSubject,
 } from "lib/articles"
-import { BASE_URL, buildMetadata } from "lib/seo"
+import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
+import { BreadcrumbNav } from "components/BreadcrumbNav"
 
 export const metadata: Metadata = buildMetadata({
   title: "学習記事",
@@ -13,6 +14,11 @@ export const metadata: Metadata = buildMetadata({
     "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。条文・判例引用付き。",
   path: "/articles",
 })
+
+const breadcrumbItems = [
+  { name: "ホーム", path: "/" },
+  { name: "学習記事", path: "/articles" },
+]
 
 const SUBJECT_CONFIG: Record<ArticleSubject, { label: string; color: string }> =
   {
@@ -23,22 +29,25 @@ const SUBJECT_CONFIG: Record<ArticleSubject, { label: string; color: string }> =
 
 export default function ArticlesPage() {
   const articles = getAllArticles()
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "行政書士試験 学習記事",
-    description:
-      "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。",
-    url: `${BASE_URL}/articles`,
-    inLanguage: "ja",
-    numberOfItems: articles.length,
-    itemListElement: articles.map((article, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: article.title,
-      url: `${BASE_URL}/articles/${article.id}`,
-    })),
-  }
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "行政書士試験 学習記事",
+      description:
+        "行政書士試験の主要科目（行政法・民法・憲法）を体系的に整理した解説記事。",
+      url: `${BASE_URL}/articles`,
+      inLanguage: "ja",
+      numberOfItems: articles.length,
+      itemListElement: articles.map((article, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: article.title,
+        url: `${BASE_URL}/articles/${article.id}`,
+      })),
+    },
+    buildBreadcrumbJsonLd(breadcrumbItems),
+  ]
 
   const grouped: Record<ArticleSubject, ArticleMeta[]> = {
     administrative_law: [],
@@ -53,6 +62,7 @@ export default function ArticlesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbNav items={breadcrumbItems} />
       <div style={{ marginBottom: "2rem" }}>
         <h1
           style={{

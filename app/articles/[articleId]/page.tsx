@@ -2,7 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { getAllArticles, getArticleContent } from "lib/articles"
 import { getRelatedQuestions } from "lib/questions"
-import { BASE_URL, buildMetadata } from "lib/seo"
+import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
+import { BreadcrumbNav } from "components/BreadcrumbNav"
 import "../prose.css"
 
 export function generateStaticParams() {
@@ -48,6 +49,12 @@ export default async function ArticlePage({
   const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
   const relatedQuestions = getRelatedQuestions(articleId)
 
+  const breadcrumbItems = [
+    { name: "ホーム", path: "/" },
+    { name: "学習記事", path: "/articles" },
+    { name: meta.title, path: `/articles/${meta.id}` },
+  ]
+
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -65,25 +72,7 @@ export default async function ArticlePage({
         url: BASE_URL,
       },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "学習記事",
-          item: `${BASE_URL}/articles`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: meta.title,
-          item: `${BASE_URL}/articles/${meta.id}`,
-        },
-      ],
-    },
+    buildBreadcrumbJsonLd(breadcrumbItems),
   ]
 
   return (
@@ -92,29 +81,7 @@ export default async function ArticlePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div
-        style={{
-          marginBottom: "1.5rem",
-          display: "flex",
-          alignItems: "center",
-          gap: ".5rem",
-        }}
-      >
-        <Link
-          href="/articles"
-          style={{
-            fontSize: ".8125rem",
-            color: "var(--text-3)",
-            textDecoration: "none",
-          }}
-        >
-          記事
-        </Link>
-        <span style={{ color: "var(--text-3)", fontSize: ".8125rem" }}>/</span>
-        <span style={{ fontSize: ".8125rem", color: "var(--text-2)" }}>
-          {meta.subjectLabel}
-        </span>
-      </div>
+      <BreadcrumbNav items={breadcrumbItems} />
 
       <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
 

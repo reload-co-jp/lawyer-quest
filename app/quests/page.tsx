@@ -1,7 +1,8 @@
 import type { FC } from "react"
 import type { Metadata } from "next"
 import { getAllQuests } from "lib/quests"
-import { BASE_URL, buildMetadata } from "lib/seo"
+import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
+import { BreadcrumbNav } from "components/BreadcrumbNav"
 
 export const metadata: Metadata = buildMetadata({
   title: "クエスト一覧",
@@ -12,24 +13,32 @@ export const metadata: Metadata = buildMetadata({
 import { getQuestionsByQuestId } from "lib/questions"
 import { QuestCard } from "components/QuestCard"
 
+const breadcrumbItems = [
+  { name: "ホーム", path: "/" },
+  { name: "クエスト一覧", path: "/quests" },
+]
+
 const Page: FC = () => {
   const quests = getAllQuests()
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "行政書士試験対策クエスト",
-    description:
-      "行政法・民法・憲法・過去問の4科目から演習問題に挑戦できる学習クエスト。",
-    url: `${BASE_URL}/quests`,
-    inLanguage: "ja",
-    numberOfItems: quests.length,
-    itemListElement: quests.map((quest, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: quest.title,
-      url: `${BASE_URL}/quests/${quest.id}`,
-    })),
-  }
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "行政書士試験対策クエスト",
+      description:
+        "行政法・民法・憲法・過去問の4科目から演習問題に挑戦できる学習クエスト。",
+      url: `${BASE_URL}/quests`,
+      inLanguage: "ja",
+      numberOfItems: quests.length,
+      itemListElement: quests.map((quest, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: quest.title,
+        url: `${BASE_URL}/quests/${quest.id}`,
+      })),
+    },
+    buildBreadcrumbJsonLd(breadcrumbItems),
+  ]
 
   return (
     <div style={{ maxWidth: "680px", margin: "0 auto" }}>
@@ -37,6 +46,7 @@ const Page: FC = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbNav items={breadcrumbItems} />
       <h1
         style={{
           fontSize: "1.25rem",

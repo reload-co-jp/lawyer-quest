@@ -1,7 +1,8 @@
 import type { FC } from "react"
 import type { Metadata } from "next"
 import Link from "next/link"
-import { BASE_URL, buildMetadata } from "lib/seo"
+import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
+import { BreadcrumbNav } from "components/BreadcrumbNav"
 
 export const metadata: Metadata = buildMetadata({
   title: "基礎知識科目 対策ガイド",
@@ -10,16 +11,28 @@ export const metadata: Metadata = buildMetadata({
   path: "/general-knowledge",
 })
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "基礎知識科目 対策ガイド",
-  inLanguage: "ja",
-  url: `${BASE_URL}/general-knowledge`,
-  description:
-    "行政書士試験「基礎知識」科目の出題範囲・足切り基準・分野別の対策方法",
-  publisher: { "@type": "Organization", name: "Lawyer Quest", url: BASE_URL },
-}
+const breadcrumbItems = [
+  { name: "ホーム", path: "/" },
+  { name: "基礎知識科目 対策ガイド", path: "/general-knowledge" },
+]
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "基礎知識科目 対策ガイド",
+    inLanguage: "ja",
+    url: `${BASE_URL}/general-knowledge`,
+    description:
+      "行政書士試験「基礎知識」科目の出題範囲・足切り基準・分野別の対策方法",
+    publisher: {
+      "@type": "Organization",
+      name: "Lawyer Quest",
+      url: BASE_URL,
+    },
+  },
+  buildBreadcrumbJsonLd(breadcrumbItems),
+]
 
 const Section: FC<{ title: string; children: React.ReactNode }> = ({
   title,
@@ -81,18 +94,7 @@ const Page: FC = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div style={{ marginBottom: "1.75rem" }}>
-        <Link
-          href="/"
-          style={{
-            fontSize: ".8125rem",
-            color: "var(--text-3)",
-            textDecoration: "none",
-          }}
-        >
-          ← ホーム
-        </Link>
-      </div>
+      <BreadcrumbNav items={breadcrumbItems} />
 
       <div style={{ marginBottom: "2rem" }}>
         <h1

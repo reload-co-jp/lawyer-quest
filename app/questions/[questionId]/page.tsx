@@ -6,7 +6,8 @@ import { getQuestionById, getAllQuestions } from "lib/questions"
 import { getAreaById, getQuestById } from "lib/quests"
 import { SourceList } from "components/SourceList"
 import { LawLinkList } from "components/LawLinkList"
-import { BASE_URL, buildMetadata } from "lib/seo"
+import { BreadcrumbNav } from "components/BreadcrumbNav"
+import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
 
 export function generateStaticParams() {
   return getAllQuestions().map((q) => ({ questionId: q.id }))
@@ -25,9 +26,13 @@ export async function generateMetadata({
     question.question.length > 60
       ? question.question.slice(0, 60) + "…"
       : question.question
+  const explanationSnippet =
+    question.explanation.length > 80
+      ? question.explanation.slice(0, 80) + "…"
+      : question.explanation
   return buildMetadata({
     title,
-    description: `行政書士試験${quest ? ` ${quest.title}` : ""}の演習問題。解説・判例引用付き。`,
+    description: `${explanationSnippet}｜行政書士試験${quest ? ` ${quest.title}` : ""}の演習問題`,
     path: `/questions/${question.id}`,
   })
 }
@@ -53,6 +58,11 @@ const Page: FC<Props> = async ({ params }) => {
     : "var(--accent)"
 
   const correctChoice = question.choices.find((c) => c.id === question.answer)
+  const breadcrumbItems = [
+    { name: "ホーム", path: "/" },
+    ...(quest ? [{ name: quest.title, path: `/quests/${quest.id}` }] : []),
+    { name: "問題", path: `/questions/${question.id}` },
+  ]
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -76,29 +86,7 @@ const Page: FC<Props> = async ({ params }) => {
       },
       isPartOf: { "@type": "WebSite", name: "Lawyer Quest", url: BASE_URL },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "ホーム", item: BASE_URL },
-        ...(quest
-          ? [
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: quest.title,
-                item: `${BASE_URL}/quests/${quest.id}`,
-              },
-            ]
-          : []),
-        {
-          "@type": "ListItem",
-          position: quest ? 3 : 2,
-          name: "問題",
-          item: `${BASE_URL}/questions/${question.id}`,
-        },
-      ],
-    },
+    buildBreadcrumbJsonLd(breadcrumbItems),
   ]
 
   return (
@@ -107,6 +95,8 @@ const Page: FC<Props> = async ({ params }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbNav items={breadcrumbItems} />
+
       <div style={{ marginBottom: "1.25rem" }}>
         <Link
           href="/wrong"
