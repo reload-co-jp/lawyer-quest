@@ -19,6 +19,18 @@ export function getTermById(id: string): GlossaryTerm | undefined {
   return allTerms.find((t) => t.id === id)
 }
 
+export function getAdjacentTerms(term: GlossaryTerm): {
+  prev?: GlossaryTerm
+  next?: GlossaryTerm
+} {
+  const siblings = getTermsByField(term.field)
+  const index = siblings.findIndex((t) => t.id === term.id)
+  return {
+    prev: index > 0 ? siblings[index - 1] : undefined,
+    next: index >= 0 && index < siblings.length - 1 ? siblings[index + 1] : undefined,
+  }
+}
+
 export function getRelatedQuestionsForTerm(
   term: GlossaryTerm,
   limit = 3

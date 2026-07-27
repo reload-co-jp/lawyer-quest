@@ -2,6 +2,7 @@ export const dynamic = "force-static"
 
 import type { MetadataRoute } from "next"
 import { getAllArticles } from "lib/articles"
+import { getAllTerms } from "lib/glossary"
 import { getAllQuests } from "lib/quests"
 import { getAllQuestions, getQuestionsByQuestId } from "lib/questions"
 import { BASE_URL } from "lib/seo"
@@ -34,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: q.updatedAt,
     changeFrequency: "monthly" as const,
     priority: 0.5,
+  }))
+
+  const glossaryTerms = getAllTerms().map((t) => ({
+    url: `${BASE_URL}/glossary/${t.id}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }))
 
   return [
@@ -112,5 +120,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...quests,
     ...articles,
     ...questions,
+    ...glossaryTerms,
   ]
 }

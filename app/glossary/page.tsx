@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { GLOSSARY_FIELDS, getRelatedQuestionsForTerm, getTermsByField } from "lib/glossary"
+import { GLOSSARY_FIELDS, getTermsByField } from "lib/glossary"
 import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
 import { BreadcrumbNav } from "components/BreadcrumbNav"
 import type { GlossaryField } from "types/glossary"
@@ -44,6 +44,7 @@ export default function GlossaryPage() {
           name: t.term,
           description: t.description,
           inDefinedTermSet: `${BASE_URL}/glossary`,
+          url: `${BASE_URL}/glossary/${t.id}`,
           citation: t.source,
         }))
       ),
@@ -120,90 +121,55 @@ export default function GlossaryPage() {
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}>
-            {terms.map((term) => {
-              const related = getRelatedQuestionsForTerm(term)
-              return (
+            {terms.map((term) => (
+              <Link
+                key={term.id}
+                href={`/glossary/${term.id}`}
+                style={{
+                  display: "block",
+                  padding: ".875rem 1rem",
+                  background: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderLeft: `2px solid ${FIELD_COLOR[field]}`,
+                  textDecoration: "none",
+                }}
+              >
                 <div
-                  key={term.id}
                   style={{
-                    padding: ".875rem 1rem",
-                    background: "var(--surface)",
-                    border: "1px solid var(--border)",
-                    borderLeft: `2px solid ${FIELD_COLOR[field]}`,
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: ".5rem",
+                    flexWrap: "wrap",
                   }}
                 >
-                  <div
+                  <h3
                     style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      gap: ".5rem",
-                      flexWrap: "wrap",
+                      fontSize: ".9375rem",
+                      fontWeight: 600,
+                      color: "var(--text-1)",
+                      margin: 0,
                     }}
                   >
-                    <h3
-                      style={{
-                        fontSize: ".9375rem",
-                        fontWeight: 600,
-                        color: "var(--text-1)",
-                        margin: 0,
-                      }}
-                    >
-                      {term.term}
-                    </h3>
-                    {term.reading && (
-                      <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
-                        {term.reading}
-                      </span>
-                    )}
-                  </div>
-                  <p
-                    style={{
-                      fontSize: ".8125rem",
-                      color: "var(--text-2)",
-                      margin: ".375rem 0 0",
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    {term.description}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: ".6875rem",
-                      color: "var(--text-3)",
-                      margin: ".375rem 0 0",
-                    }}
-                  >
-                    根拠: {term.source}
-                  </p>
-
-                  {related.length > 0 && (
-                    <div
-                      style={{
-                        marginTop: ".625rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: ".25rem",
-                      }}
-                    >
-                      {related.map((q) => (
-                        <Link
-                          key={q.id}
-                          href={`/questions/${q.id}`}
-                          style={{
-                            fontSize: ".75rem",
-                            color: "var(--accent)",
-                            textDecoration: "none",
-                          }}
-                        >
-                          関連問題: {q.topic}
-                          {q.subtopic ? `（${q.subtopic}）` : ""} →
-                        </Link>
-                      ))}
-                    </div>
+                    {term.term}
+                  </h3>
+                  {term.reading && (
+                    <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
+                      {term.reading}
+                    </span>
                   )}
                 </div>
-              )
-            })}
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: ".375rem 0 0",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {term.description}
+                </p>
+              </Link>
+            ))}
           </div>
         </section>
       ))}
