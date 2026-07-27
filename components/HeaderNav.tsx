@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { href: "/basics", label: "ゼロから入門" },
   { href: "/study-guide", label: "勉強ガイド" },
   { href: "/articles", label: "記事" },
+  { href: "/glossary", label: "用語集" },
   { href: "/quests", label: "クエスト" },
   { href: "/challenge/random", label: "ランダム" },
   { href: "/mock-exam", label: "模擬テスト" },
