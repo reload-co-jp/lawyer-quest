@@ -1,4 +1,10 @@
-import type { AnswerHistory, WrongQuestion, UserProgress } from "types/progress"
+import type {
+  AnswerHistory,
+  WrongQuestion,
+  UserProgress,
+  Bookmark,
+  BookmarkType,
+} from "types/progress"
 import type { QuestId } from "types/quest"
 import { STORAGE_KEYS } from "types/progress"
 
@@ -111,6 +117,45 @@ function updateUserProgress(history: AnswerHistory): void {
   progress.wrongQuestionIds = wrongIds
 
   saveUserProgress(progress)
+}
+
+export function getBookmarks(): Bookmark[] {
+  if (!isClient) return []
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEYS.bookmarks) ?? "[]")
+  } catch {
+    return []
+  }
+}
+
+export function isBookmarked(type: BookmarkType, id: string): boolean {
+  return getBookmarks().some((b) => b.type === type && b.id === id)
+}
+
+export function addBookmark(bookmark: Omit<Bookmark, "bookmarkedAt">): void {
+  if (!isClient) return
+  const bookmarks = getBookmarks()
+  if (bookmarks.some((b) => b.type === bookmark.type && b.id === bookmark.id))
+    return
+  bookmarks.push({ ...bookmark, bookmarkedAt: new Date().toISOString() })
+  localStorage.setItem(STORAGE_KEYS.bookmarks, JSON.stringify(bookmarks))
+}
+
+export function removeBookmark(type: BookmarkType, id: string): void {
+  if (!isClient) return
+  const bookmarks = getBookmarks().filter(
+    (b) => !(b.type === type && b.id === id)
+  )
+  localStorage.setItem(STORAGE_KEYS.bookmarks, JSON.stringify(bookmarks))
+}
+
+export function toggleBookmark(bookmark: Omit<Bookmark, "bookmarkedAt">): boolean {
+  if (isBookmarked(bookmark.type, bookmark.id)) {
+    removeBookmark(bookmark.type, bookmark.id)
+    return false
+  }
+  addBookmark(bookmark)
+  return true
 }
 
 function createEmptyProgress(): UserProgress {

@@ -4,6 +4,7 @@ import { getAllArticles, getArticleContent } from "lib/articles"
 import { getRelatedQuestions } from "lib/questions"
 import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
 import { BreadcrumbNav } from "components/BreadcrumbNav"
+import { BookmarkButton } from "components/BookmarkButton"
 import "../prose.css"
 
 export function generateStaticParams() {
@@ -82,6 +83,15 @@ export default async function ArticlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <BreadcrumbNav items={breadcrumbItems} />
+
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: ".75rem" }}>
+        <BookmarkButton
+          type="article"
+          id={meta.id}
+          title={meta.title}
+          path={`/articles/${meta.id}`}
+        />
+      </div>
 
       <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
 

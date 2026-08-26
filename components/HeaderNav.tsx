@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/challenge/random", label: "ランダム" },
   { href: "/mock-exam", label: "模擬テスト" },
   { href: "/retry", label: "再挑戦" },
+  { href: "/bookmarks", label: "栞" },
   { href: "/progress", label: "攻略率" },
 ]
 

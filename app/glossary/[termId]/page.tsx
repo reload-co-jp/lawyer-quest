@@ -8,6 +8,7 @@ import {
 } from "lib/glossary"
 import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
 import { BreadcrumbNav } from "components/BreadcrumbNav"
+import { BookmarkButton } from "components/BookmarkButton"
 import type { GlossaryField } from "types/glossary"
 import type { QuestId } from "types/quest"
 
@@ -113,23 +114,39 @@ export default async function GlossaryTermPage({
         </span>
       </div>
 
-      <div style={{ marginBottom: "1.5rem" }}>
-        <h1
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: 700,
-            color: "var(--text-1)",
-            letterSpacing: "-.02em",
-            marginBottom: ".25rem",
-          }}
-        >
-          {term.term}
-        </h1>
-        {term.reading && (
-          <p style={{ fontSize: ".8125rem", color: "var(--text-3)", margin: 0 }}>
-            {term.reading}
-          </p>
-        )}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          gap: "1rem",
+          marginBottom: "1.5rem",
+        }}
+      >
+        <div>
+          <h1
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 700,
+              color: "var(--text-1)",
+              letterSpacing: "-.02em",
+              marginBottom: ".25rem",
+            }}
+          >
+            {term.term}
+          </h1>
+          {term.reading && (
+            <p style={{ fontSize: ".8125rem", color: "var(--text-3)", margin: 0 }}>
+              {term.reading}
+            </p>
+          )}
+        </div>
+        <BookmarkButton
+          type="glossary"
+          id={term.id}
+          title={term.term}
+          path={`/glossary/${term.id}`}
+        />
       </div>
 
       <div

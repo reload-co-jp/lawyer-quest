@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { getAllQuests } from "lib/quests"
 import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
 import { BreadcrumbNav } from "components/BreadcrumbNav"
+import { BookmarkButton } from "components/BookmarkButton"
 
 export function generateStaticParams() {
   return getAllQuests().map((q) => ({ questId: q.id }))
@@ -89,28 +90,37 @@ const Page: FC<Props> = async ({ params }) => {
           style={{
             display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
             gap: ".5rem",
             marginBottom: ".375rem",
           }}
         >
-          <div
-            style={{
-              width: "7px",
-              height: "7px",
-              borderRadius: "50%",
-              background: color,
-            }}
+          <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
+            <div
+              style={{
+                width: "7px",
+                height: "7px",
+                borderRadius: "50%",
+                background: color,
+              }}
+            />
+            <h1
+              style={{
+                fontSize: "1.25rem",
+                fontWeight: 700,
+                color: "var(--text-1)",
+                letterSpacing: "-.02em",
+              }}
+            >
+              {quest.title}
+            </h1>
+          </div>
+          <BookmarkButton
+            type="quest"
+            id={quest.id}
+            title={quest.title}
+            path={`/quests/${quest.id}`}
           />
-          <h1
-            style={{
-              fontSize: "1.25rem",
-              fontWeight: 700,
-              color: "var(--text-1)",
-              letterSpacing: "-.02em",
-            }}
-          >
-            {quest.title}
-          </h1>
         </div>
         <p
           style={{

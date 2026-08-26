@@ -38,8 +38,19 @@ export type UserProgress = {
   lastPlayedAt?: string
 }
 
+export type BookmarkType = "glossary" | "article" | "quest" | "question"
+
+export type Bookmark = {
+  type: BookmarkType
+  id: string
+  title: string
+  path: string
+  bookmarkedAt: string
+}
+
 export const STORAGE_KEYS = {
   answerHistory: "lawyer_quest_answer_history",
   userProgress: "lawyer_quest_user_progress",
   wrongQuestions: "lawyer_quest_wrong_questions",
+  bookmarks: "lawyer_quest_bookmarks",
 } as const

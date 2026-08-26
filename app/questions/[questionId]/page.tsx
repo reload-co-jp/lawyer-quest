@@ -7,6 +7,7 @@ import { getAreaById, getQuestById } from "lib/quests"
 import { SourceList } from "components/SourceList"
 import { LawLinkList } from "components/LawLinkList"
 import { BreadcrumbNav } from "components/BreadcrumbNav"
+import { BookmarkButton } from "components/BookmarkButton"
 import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
 
 export function generateStaticParams() {
@@ -97,7 +98,14 @@ const Page: FC<Props> = async ({ params }) => {
       />
       <BreadcrumbNav items={breadcrumbItems} />
 
-      <div style={{ marginBottom: "1.25rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "1.25rem",
+        }}
+      >
         <Link
           href="/wrong"
           style={{
@@ -108,6 +116,12 @@ const Page: FC<Props> = async ({ params }) => {
         >
           ← 戻る
         </Link>
+        <BookmarkButton
+          type="question"
+          id={question.id}
+          title={question.question}
+          path={`/questions/${question.id}`}
+        />
       </div>
 
       <div
