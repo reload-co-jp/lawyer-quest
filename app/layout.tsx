@@ -196,7 +196,13 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           }}
         >
           <p style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
-            Lawyer Quest — 行政書士試験対策。法律相談ではありません。
+            Lawyer Quest — 行政書士試験対策。法律相談ではありません。{" "}
+            <Link
+              href="/about"
+              style={{ color: "var(--text-3)", textDecoration: "underline" }}
+            >
+              運営者情報
+            </Link>
           </p>
         </footer>
       </body>
