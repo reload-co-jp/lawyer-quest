@@ -79,6 +79,26 @@ function extractExcerpt(content: string): string {
   return ""
 }
 
+function stripMarkdown(content: string): string {
+  return content
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/^>.*$/gm, " ")
+    .replace(/^#{1,6}\s*/gm, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/\|/g, " ")
+    .replace(/^-{3,}$/gm, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+}
+
+export function getArticleSearchText(id: string): string {
+  const filePath = path.join(ARTICLES_DIR, `${id}.md`)
+  if (!fs.existsSync(filePath)) return ""
+  return stripMarkdown(fs.readFileSync(filePath, "utf-8"))
+}
+
 export function getAllArticles(): ArticleMeta[] {
   const files = fs
     .readdirSync(ARTICLES_DIR)
