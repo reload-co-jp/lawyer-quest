@@ -31,6 +31,18 @@ export function getAdjacentTerms(term: GlossaryTerm): {
   }
 }
 
+export function getSimilarTerms(
+  term: GlossaryTerm
+): { term: GlossaryTerm; diff: string }[] {
+  if (!term.related) return []
+  return term.related
+    .map((r) => {
+      const t = getTermById(r.id)
+      return t ? { term: t, diff: r.diff } : undefined
+    })
+    .filter((v): v is { term: GlossaryTerm; diff: string } => v !== undefined)
+}
+
 export function getRelatedQuestionsForTerm(
   term: GlossaryTerm,
   limit = 3

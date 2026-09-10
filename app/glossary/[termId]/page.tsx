@@ -4,6 +4,7 @@ import {
   getAdjacentTerms,
   getAllTerms,
   getRelatedQuestionsForTerm,
+  getSimilarTerms,
   getTermById,
 } from "lib/glossary"
 import { BASE_URL, buildBreadcrumbJsonLd, buildMetadata } from "lib/seo"
@@ -54,6 +55,7 @@ export default async function GlossaryTermPage({
 
   const color = FIELD_COLOR[term.field]
   const related = getRelatedQuestionsForTerm(term, 5)
+  const similarTerms = getSimilarTerms(term)
   const { prev, next } = getAdjacentTerms(term)
 
   const breadcrumbItems = [
@@ -180,6 +182,57 @@ export default async function GlossaryTermPage({
           根拠: {term.source}
         </p>
       </div>
+
+      {similarTerms.length > 0 && (
+        <div style={{ marginBottom: "2rem" }}>
+          <p
+            style={{
+              fontSize: ".75rem",
+              color: "var(--text-3)",
+              fontWeight: 600,
+              letterSpacing: ".06em",
+              textTransform: "uppercase",
+              marginBottom: ".75rem",
+            }}
+          >
+            類似用語との違い
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+            {similarTerms.map(({ term: t, diff }) => (
+              <div
+                key={t.id}
+                style={{
+                  padding: ".75rem",
+                  background: "var(--surface-2)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <Link
+                  href={`/glossary/${t.id}`}
+                  style={{
+                    fontSize: ".8125rem",
+                    fontWeight: 600,
+                    color: "var(--text-1)",
+                    textDecoration: "none",
+                  }}
+                >
+                  {t.term} →
+                </Link>
+                <p
+                  style={{
+                    fontSize: ".8125rem",
+                    color: "var(--text-2)",
+                    margin: ".375rem 0 0",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {diff}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {related.length > 0 && (
         <div style={{ marginBottom: "2rem" }}>

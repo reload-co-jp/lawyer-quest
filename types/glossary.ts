@@ -1,5 +1,10 @@
 export type GlossaryField = "憲法" | "民法" | "行政法"
 
+export type GlossaryRelatedTerm = {
+  id: string
+  diff: string
+}
+
 export type GlossaryTerm = {
   id: string
   term: string
@@ -8,4 +13,5 @@ export type GlossaryTerm = {
   description: string
   tags: string[]
   source: string
+  related?: GlossaryRelatedTerm[]
 }
