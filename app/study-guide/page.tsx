@@ -516,7 +516,7 @@ const Page: FC = () => {
             style={{
               padding: ".5rem .875rem",
               background: "var(--accent-btn)",
-              color: "#fff",
+              color: "var(--on-accent)",
               textDecoration: "none",
               fontSize: ".875rem",
               fontWeight: 600,

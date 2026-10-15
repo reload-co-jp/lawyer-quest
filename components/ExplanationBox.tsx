@@ -24,10 +24,8 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
       <div
         style={{
           padding: "1rem",
-          background: isCorrect
-            ? "rgba(74,222,128,0.05)"
-            : "rgba(248,113,113,0.05)",
-          border: `1px solid ${isCorrect ? "rgba(74,222,128,0.2)" : "rgba(248,113,113,0.2)"}`,
+          background: isCorrect ? "var(--success-soft)" : "var(--error-soft)",
+          border: `1px solid ${isCorrect ? "var(--success-line)" : "var(--error-line)"}`,
           borderRadius: "var(--radius)",
           display: "flex",
           alignItems: "center",
@@ -89,7 +87,7 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
       >
         <p
           style={{
-            fontSize: ".75rem",
+            fontSize: ".8125rem",
             fontWeight: 600,
             color: "var(--text-3)",
             marginBottom: ".5rem",
@@ -101,9 +99,9 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
         </p>
         <p
           style={{
-            fontSize: ".875rem",
+            fontSize: ".9375rem",
             color: "var(--text-1)",
-            lineHeight: 1.75,
+            lineHeight: 1.85,
             margin: 0,
           }}
         >
@@ -123,7 +121,7 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
         >
           <p
             style={{
-              fontSize: ".75rem",
+              fontSize: ".8125rem",
               fontWeight: 600,
               color: "var(--warning)",
               marginBottom: ".375rem",
@@ -135,10 +133,10 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
           </p>
           <p
             style={{
-              fontSize: ".875rem",
+              fontSize: ".9375rem",
               color: "var(--text-1)",
               margin: 0,
-              lineHeight: 1.7,
+              lineHeight: 1.85,
             }}
           >
             {question.point}
@@ -158,7 +156,7 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
         >
           <p
             style={{
-              fontSize: ".75rem",
+              fontSize: ".8125rem",
               fontWeight: 600,
               color: "var(--error)",
               marginBottom: ".375rem",
@@ -170,10 +168,10 @@ export const ExplanationBox: FC<Props> = ({ question, isCorrect }) => {
           </p>
           <p
             style={{
-              fontSize: ".875rem",
+              fontSize: ".9375rem",
               color: "var(--text-1)",
               margin: 0,
-              lineHeight: 1.7,
+              lineHeight: 1.85,
             }}
           >
             {question.commonMistake}

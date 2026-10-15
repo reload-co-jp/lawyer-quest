@@ -44,19 +44,19 @@ export const FillBlankAnswer: FC<Props> = ({
 
               if (revealed) {
                 if (isCorrect) {
-                  bg = "rgba(74, 222, 128, 0.08)"
-                  border = "rgba(74, 222, 128, 0.4)"
+                  bg = "var(--success-soft)"
+                  border = "var(--success-line)"
                   color = "var(--success)"
                 } else if (isSelected && !isCorrect) {
-                  bg = "rgba(248, 113, 113, 0.08)"
-                  border = "rgba(248, 113, 113, 0.4)"
+                  bg = "var(--error-soft)"
+                  border = "var(--error-line)"
                   color = "var(--error)"
                 } else {
                   color = "var(--text-3)"
                 }
               } else if (isSelected) {
-                bg = "rgba(94, 106, 210, 0.1)"
-                border = "rgba(94, 106, 210, 0.6)"
+                bg = "var(--accent-soft)"
+                border = "var(--accent-line)"
                 color = "var(--accent)"
               }
 

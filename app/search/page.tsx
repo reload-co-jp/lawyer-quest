@@ -20,7 +20,13 @@ export default function SearchPage() {
   const jsonLd = buildBreadcrumbJsonLd(breadcrumbItems)
 
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -40,7 +46,13 @@ export default function SearchPage() {
         >
           検索
         </h1>
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.65 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.65,
+          }}
+        >
           用語集・記事・演習問題をまとめて検索する。
         </p>
       </div>

@@ -116,9 +116,11 @@ export function getAllArticles(): ArticleMeta[] {
   })
 }
 
-export function getArticleContent(
-  id: string
-): { meta: ArticleMeta; html: string } | null {
+export function getArticleContent(id: string): {
+  meta: ArticleMeta
+  html: string
+  toc: { id: string; text: string }[]
+} | null {
   const filePath = path.join(ARTICLES_DIR, `${id}.md`)
   if (!fs.existsSync(filePath)) return null
   const content = fs.readFileSync(filePath, "utf-8")
@@ -135,6 +137,14 @@ export function getArticleContent(
     excerpt,
     lastModified,
   }
-  const html = marked(content) as string
-  return { meta, html }
+  const toc: { id: string; text: string }[] = []
+  const html = (marked(content) as string).replace(
+    /<h2>(.*?)<\/h2>/g,
+    (_, inner: string) => {
+      const id = `sec-${toc.length + 1}`
+      toc.push({ id, text: inner.replace(/<[^>]+>/g, "") })
+      return `<h2 id="${id}">${inner}</h2>`
+    }
+  )
+  return { meta, html, toc }
 }

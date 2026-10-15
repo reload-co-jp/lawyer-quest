@@ -22,8 +22,10 @@ export const RandomChallengeClient: FC = () => {
         style={{
           padding: ".625rem 1rem",
           background: "var(--surface)",
-          borderBottom: "1px solid rgba(251,191,36,0.2)",
-          marginBottom: "1.5rem",
+          border: "1px solid var(--warning-line)",
+          borderRadius: "var(--radius-sm)",
+          maxWidth: "720px",
+          margin: "0 auto 1.5rem",
           display: "flex",
           alignItems: "center",
           gap: ".625rem",

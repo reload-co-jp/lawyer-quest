@@ -1,6 +1,7 @@
 import type { FC } from "react"
 import Link from "next/link"
 import type { Quest } from "types/quest"
+import type { QuestLearning } from "lib/stats"
 
 const SUBJECT_COLOR: Record<string, string> = {
   administrative_law: "var(--admin)",
@@ -9,166 +10,97 @@ const SUBJECT_COLOR: Record<string, string> = {
   past_exam: "var(--past)",
 }
 
+const STATUS = {
+  not_started: { label: "未着手", icon: "○", className: "badge" },
+  in_progress: { label: "進行中", icon: "◐", className: "badge badge-warning" },
+  completed: { label: "完了", icon: "✓", className: "badge badge-success" },
+} as const
+
 type Props = {
   quest: Quest
-  completionRate?: number
-  accuracyRate?: number
-  answeredQuestions?: number
-  totalQuestions?: number
-  lastPlayedAt?: string
+  total: number
+  /** undefined until client-side progress is loaded */
+  learning?: QuestLearning
 }
 
-export const QuestCard: FC<Props> = ({
-  quest,
-  completionRate = 0,
-  accuracyRate = 0,
-  answeredQuestions = 0,
-  totalQuestions = 0,
-  lastPlayedAt,
-}) => {
+export const QuestCard: FC<Props> = ({ quest, total, learning }) => {
   const color = SUBJECT_COLOR[quest.id] ?? "var(--accent)"
+  const status = learning ? STATUS[learning.status] : null
 
   return (
-    <div
+    <article
+      className="card"
       style={{
-        background: "var(--surface)",
-        border: "1px solid var(--border)",
-        borderRadius: "var(--radius)",
-        padding: "1.125rem 1.25rem",
         display: "flex",
         flexDirection: "column",
-        gap: "1rem",
+        gap: ".875rem",
+        borderTop: `3px solid ${color}`,
       }}
     >
       <div
         style={{
           display: "flex",
-          alignItems: "flex-start",
           justifyContent: "space-between",
-          gap: "1rem",
+          gap: ".75rem",
+          alignItems: "flex-start",
         }}
       >
-        <div>
-          <div
+        <h3 style={{ fontSize: "1.0625rem", fontWeight: 700 }}>
+          <Link href={`/quests/${quest.id}`} style={{ textDecoration: "none" }}>
+            {quest.title}
+          </Link>
+        </h3>
+        {status && (
+          <span className={status.className}>
+            <span aria-hidden>{status.icon}</span>
+            {status.label}
+          </span>
+        )}
+      </div>
+      <p style={{ fontSize: ".875rem", color: "var(--text-2)", flex: 1 }}>
+        {quest.description}
+      </p>
+
+      <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: ".8125rem",
+            color: "var(--text-2)",
+            marginBottom: ".375rem",
+          }}
+        >
+          <span>攻略率 {learning ? `${learning.completionRate}%` : "—"}</span>
+          <span>
+            {learning?.attempted ?? 0} / {total}問
+            {learning && learning.answers > 0 && (
+              <> · 正答率 {learning.accuracyRate}%</>
+            )}
+          </span>
+        </div>
+        <div className="bar" aria-hidden>
+          <span
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: ".5rem",
-              marginBottom: ".25rem",
+              width: `${learning?.completionRate ?? 0}%`,
+              background: color,
             }}
-          >
-            <div
-              style={{
-                width: "7px",
-                height: "7px",
-                borderRadius: "50%",
-                background: color,
-                flexShrink: 0,
-              }}
-            />
-            <h2
-              style={{
-                fontSize: ".9375rem",
-                fontWeight: 600,
-                color: "var(--text-1)",
-              }}
-            >
-              {quest.title}
-            </h2>
-          </div>
-          <p
-            style={{
-              fontSize: ".8125rem",
-              color: "var(--text-2)",
-              paddingLeft: "1.1875rem",
-            }}
-          >
-            {quest.description}
-          </p>
+          />
         </div>
       </div>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: ".75rem",
-          padding: ".875rem",
-          background: "var(--surface-2)",
-          borderRadius: "var(--radius-sm)",
-        }}
-      >
-        {[
-          { label: "攻略率", value: `${completionRate}%`, highlight: true },
-          { label: "正答率", value: `${accuracyRate}%`, highlight: false },
-          {
-            label: "回答数",
-            value: `${answeredQuestions}/${totalQuestions}`,
-            highlight: false,
-          },
-        ].map(({ label, value, highlight }) => (
-          <div key={label}>
-            <p
-              style={{
-                fontSize: ".6875rem",
-                color: "var(--text-3)",
-                marginBottom: ".25rem",
-                letterSpacing: ".02em",
-              }}
-            >
-              {label}
-            </p>
-            <p
-              style={{
-                fontSize: ".9375rem",
-                fontWeight: 700,
-                color: highlight ? color : "var(--text-1)",
-              }}
-            >
-              {value}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {lastPlayedAt && (
-        <p style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
-          最終学習: {new Date(lastPlayedAt).toLocaleString("ja-JP")}
-        </p>
-      )}
-
       <div style={{ display: "flex", gap: ".5rem" }}>
         <Link
-          href={`/quests/${quest.id}`}
-          style={{
-            padding: ".4375rem .875rem",
-            background: "transparent",
-            border: "1px solid var(--border-2)",
-            borderRadius: "var(--radius-sm)",
-            color: "var(--text-2)",
-            fontSize: ".8125rem",
-            textDecoration: "none",
-            fontWeight: 500,
-          }}
+          href={`/challenge/${quest.id}`}
+          className="btn btn-primary"
+          style={{ flex: 1 }}
         >
+          ▶ 挑戦する
+        </Link>
+        <Link href={`/quests/${quest.id}`} className="btn btn-secondary">
           詳細
         </Link>
-        <Link
-          href={`/challenge/${quest.id}`}
-          style={{
-            padding: ".4375rem .875rem",
-            background: "var(--accent-btn)",
-            border: "none",
-            borderRadius: "var(--radius-sm)",
-            color: "#fff",
-            fontSize: ".8125rem",
-            textDecoration: "none",
-            fontWeight: 600,
-          }}
-        >
-          チャレンジ開始 →
-        </Link>
       </div>
-    </div>
+    </article>
   )
 }

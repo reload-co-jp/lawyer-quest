@@ -20,14 +20,17 @@ export const BookmarksClient: FC = () => {
     setBookmarks(
       getBookmarks().sort(
         (a, b) =>
-          new Date(b.bookmarkedAt).getTime() - new Date(a.bookmarkedAt).getTime()
+          new Date(b.bookmarkedAt).getTime() -
+          new Date(a.bookmarkedAt).getTime()
       )
     )
   }, [])
 
   const handleRemove = (type: BookmarkType, id: string) => {
     removeBookmark(type, id)
-    setBookmarks((prev) => prev.filter((b) => !(b.type === type && b.id === id)))
+    setBookmarks((prev) =>
+      prev.filter((b) => !(b.type === type && b.id === id))
+    )
   }
 
   return (
@@ -115,7 +118,7 @@ export const BookmarksClient: FC = () => {
                   style={{
                     padding: ".3rem .625rem",
                     background: "transparent",
-                    border: "1px solid rgba(248,113,113,0.3)",
+                    border: "1px solid var(--error-line)",
                     color: "var(--error)",
                     fontSize: ".75rem",
                     cursor: "pointer",

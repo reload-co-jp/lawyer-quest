@@ -226,7 +226,7 @@ const Page: FC<Props> = async ({ params }) => {
             padding: ".625rem 1.25rem",
             background: "var(--accent-btn)",
             borderRadius: "var(--radius-sm)",
-            color: "#fff",
+            color: "var(--on-accent)",
             textDecoration: "none",
             fontWeight: 600,
             fontSize: ".9375rem",

@@ -138,7 +138,7 @@ export const ExamClient: FC<Props> = ({
                   background: "var(--surface-2)",
                   borderRadius: "99px",
                   color: "var(--past)",
-                  border: "1px solid rgba(217,119,6,0.3)",
+                  border: "1px solid var(--warning-line)",
                 }}
               >
                 {getFieldLabel(q)}
@@ -217,7 +217,7 @@ export const ExamClient: FC<Props> = ({
                   style={{
                     padding: ".75rem 1rem",
                     background: isSelected
-                      ? "rgba(217,119,6,0.12)"
+                      ? "var(--warning-line)"
                       : "var(--surface)",
                     border: `1px solid ${isSelected ? "var(--past)" : "var(--border)"}`,
                     color: isSelected ? "var(--past)" : "var(--text-1)",
@@ -319,7 +319,7 @@ export const ExamClient: FC<Props> = ({
                     background:
                       count === n ? "var(--past)" : "var(--surface-2)",
                     border: `1px solid ${count === n ? "var(--past)" : "var(--border)"}`,
-                    color: count === n ? "#fff" : "var(--text-2)",
+                    color: count === n ? "var(--on-accent)" : "var(--text-2)",
                     fontSize: "1rem",
                     fontWeight: 700,
                     cursor: "pointer",
@@ -371,7 +371,7 @@ export const ExamClient: FC<Props> = ({
             padding: ".875rem",
             background: "var(--past)",
             border: "none",
-            color: "#fff",
+            color: "var(--on-accent)",
             fontSize: "1rem",
             fontWeight: 700,
             cursor: "pointer",
@@ -439,7 +439,7 @@ export const ExamClient: FC<Props> = ({
             padding: ".875rem",
             background: allAnswered ? "var(--past)" : "var(--surface-2)",
             border: `1px solid ${allAnswered ? "var(--past)" : "var(--border)"}`,
-            color: allAnswered ? "#fff" : "var(--text-3)",
+            color: allAnswered ? "var(--on-accent)" : "var(--text-3)",
             fontSize: ".9375rem",
             fontWeight: 700,
             cursor: allAnswered ? "pointer" : "not-allowed",
@@ -519,11 +519,11 @@ export const ExamClient: FC<Props> = ({
                   background: isCurrent
                     ? "var(--past)"
                     : answered
-                      ? "rgba(217,119,6,0.2)"
+                      ? "var(--warning-line)"
                       : "var(--surface-2)",
-                  border: `1px solid ${isCurrent ? "var(--past)" : answered ? "rgba(217,119,6,0.4)" : "var(--border)"}`,
+                  border: `1px solid ${isCurrent ? "var(--past)" : answered ? "var(--warning-line)" : "var(--border)"}`,
                   color: isCurrent
-                    ? "#fff"
+                    ? "var(--on-accent)"
                     : answered
                       ? "var(--past)"
                       : "var(--text-3)",
@@ -592,7 +592,7 @@ export const ExamClient: FC<Props> = ({
             padding: ".875rem",
             background: allAnswered ? "var(--past)" : "var(--surface-2)",
             border: `1px solid ${allAnswered ? "var(--past)" : "var(--border)"}`,
-            color: allAnswered ? "#fff" : "var(--text-3)",
+            color: allAnswered ? "var(--on-accent)" : "var(--text-3)",
             fontSize: ".9375rem",
             fontWeight: 700,
             cursor: allAnswered ? "pointer" : "not-allowed",
@@ -782,7 +782,7 @@ export const ExamClient: FC<Props> = ({
               key={q.id}
               style={{
                 background: "var(--surface)",
-                border: `1px solid ${isCorrect ? "rgba(74,222,128,0.2)" : "rgba(239,68,68,0.2)"}`,
+                border: `1px solid ${isCorrect ? "var(--success-line)" : "var(--error-line)"}`,
                 borderLeft: `2px solid ${isCorrect ? "var(--success)" : "var(--error)"}`,
               }}
             >
@@ -877,11 +877,11 @@ export const ExamClient: FC<Props> = ({
                               padding: ".5rem .75rem",
                               marginBottom: "3px",
                               background: isAnswer
-                                ? "rgba(74,222,128,0.06)"
+                                ? "var(--success-soft)"
                                 : isSelected
-                                  ? "rgba(239,68,68,0.06)"
+                                  ? "var(--error-soft)"
                                   : "var(--surface-2)",
-                              border: `1px solid ${isAnswer ? "rgba(74,222,128,0.25)" : isSelected ? "rgba(239,68,68,0.25)" : "var(--border)"}`,
+                              border: `1px solid ${isAnswer ? "var(--success-line)" : isSelected ? "var(--error-line)" : "var(--border)"}`,
                               fontSize: ".8125rem",
                               color: isAnswer
                                 ? "var(--success)"
@@ -1016,7 +1016,7 @@ export const ExamClient: FC<Props> = ({
             flex: 1,
             padding: ".75rem",
             background: "var(--accent-btn)",
-            color: "#fff",
+            color: "var(--on-accent)",
             fontSize: ".875rem",
             fontWeight: 600,
             textDecoration: "none",

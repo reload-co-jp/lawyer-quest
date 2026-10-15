@@ -186,3 +186,9 @@ export function getRelatedQuestions(articleId: string, limit = 5): Question[] {
 
   return scored.slice(0, limit).map(({ q }) => q)
 }
+
+export function getQuestTotals(): Record<QuestId, number> {
+  const totals = {} as Record<QuestId, number>
+  for (const q of allQuestions) totals[q.questId] = (totals[q.questId] ?? 0) + 1
+  return totals
+}

@@ -55,7 +55,7 @@ export const RetryClient: FC = () => {
           style={{
             padding: ".5rem 1.125rem",
             background: "var(--accent-btn)",
-            color: "#fff",
+            color: "var(--on-accent)",
             textDecoration: "none",
             fontWeight: 600,
             fontSize: ".875rem",
@@ -73,7 +73,7 @@ export const RetryClient: FC = () => {
         style={{
           padding: ".625rem 1rem",
           background: "var(--surface)",
-          borderBottom: "1px solid rgba(248,113,113,0.2)",
+          borderBottom: "1px solid var(--error-line)",
           marginBottom: "1.5rem",
           display: "flex",
           alignItems: "center",

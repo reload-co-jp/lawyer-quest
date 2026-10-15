@@ -1,115 +1,102 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-const NAV_LINKS = [
-  { href: "/search", label: "検索" },
-  { href: "/basics", label: "ゼロから入門" },
-  { href: "/study-guide", label: "勉強ガイド" },
-  { href: "/articles", label: "記事" },
-  { href: "/glossary", label: "用語集" },
+const PRIMARY_LINKS = [
   { href: "/quests", label: "クエスト" },
-  { href: "/challenge/random", label: "ランダム" },
-  { href: "/mock-exam", label: "模擬テスト" },
-  { href: "/retry", label: "再挑戦" },
+  { href: "/articles", label: "学習記事" },
+  { href: "/glossary", label: "用語集" },
   { href: "/bookmarks", label: "栞" },
-  { href: "/progress", label: "攻略率" },
+  { href: "/progress", label: "学習状況" },
 ]
 
-const linkStyle = {
-  padding: ".3rem .625rem",
-  fontSize: ".8125rem",
-  color: "var(--text-2)",
-  textDecoration: "none",
-  fontWeight: 500,
-  letterSpacing: "-.01em",
-} as const
+const MORE_LINKS = [
+  { href: "/challenge/random", label: "ランダム演習" },
+  { href: "/mock-exam", label: "模擬テスト" },
+  { href: "/retry", label: "再挑戦" },
+  { href: "/wrong", label: "間違えた問題" },
+  { href: "/basics", label: "ゼロから入門" },
+  { href: "/study-guide", label: "勉強ガイド" },
+  { href: "/exam-guide", label: "試験ガイド" },
+  { href: "/general-knowledge", label: "基礎知識科目" },
+]
+
+const isActive = (pathname: string, href: string) =>
+  pathname === href || pathname.startsWith(`${href}/`)
 
 export const HeaderNav = () => {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const moreRef = useRef<HTMLDetailsElement>(null)
+
+  // close menus on navigation
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- ページ遷移時にメニューを閉じる
+    setOpen(false)
+    moreRef.current?.removeAttribute("open")
+  }, [pathname])
+
+  const link = (href: string, label: string, className: string) => (
+    <Link
+      key={href}
+      href={href}
+      className={className}
+      aria-current={isActive(pathname, href) ? "page" : undefined}
+    >
+      {label}
+    </Link>
+  )
 
   return (
     <>
-      {/* desktop nav */}
-      <nav
-        style={{ display: "flex", alignItems: "center", gap: ".25rem" }}
-        className="header-nav-desktop"
-      >
-        {NAV_LINKS.map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            style={linkStyle}
-            onClick={() => setOpen(false)}
-          >
-            {label}
-          </Link>
-        ))}
+      <nav className="nav-desktop" aria-label="メインメニュー">
+        <Link
+          href="/search"
+          className="nav-search"
+          aria-current={isActive(pathname, "/search") ? "page" : undefined}
+        >
+          <span aria-hidden>⌕</span> 検索
+        </Link>
+        {PRIMARY_LINKS.map(({ href, label }) => link(href, label, "nav-link"))}
+        <details className="nav-more" ref={moreRef}>
+          <summary className="nav-link">その他 ▾</summary>
+          <div className="nav-more-menu">
+            {MORE_LINKS.map(({ href, label }) =>
+              link(href, label, "nav-menu-link")
+            )}
+          </div>
+        </details>
       </nav>
 
-      {/* mobile hamburger */}
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="header-nav-burger"
-        aria-label="メニュー"
-        style={{
-          background: "none",
-          border: "1px solid var(--border-2)",
-          padding: ".3rem .5rem",
-          cursor: "pointer",
-          color: "var(--text-2)",
-          fontSize: ".8125rem",
-          lineHeight: 1,
-          display: "none",
-        }}
-      >
-        {open ? "✕" : "☰"}
-      </button>
-
-      {/* mobile dropdown */}
-      {open && (
-        <div
-          className="header-nav-dropdown"
-          style={{
-            position: "fixed",
-            top: "44px",
-            left: 0,
-            right: 0,
-            background: "rgba(10,10,10,0.97)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            borderBottom: "1px solid var(--border)",
-            zIndex: 49,
-            padding: ".5rem 0",
-          }}
+      <div className="nav-mobile">
+        <Link href="/search" className="nav-icon-btn" aria-label="検索">
+          ⌕
+        </Link>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="nav-icon-btn"
+          aria-label={open ? "メニューを閉じる" : "メニューを開く"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          {NAV_LINKS.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              style={{
-                display: "block",
-                padding: ".75rem 1.25rem",
-                fontSize: ".9375rem",
-                color: "var(--text-1)",
-                textDecoration: "none",
-                borderBottom: "1px solid var(--border)",
-              }}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-      )}
+          {open ? "✕" : "☰"}
+        </button>
+      </div>
 
-      <style>{`
-        @media (max-width: 600px) {
-          .header-nav-desktop { display: none !important; }
-          .header-nav-burger { display: block !important; }
-        }
-      `}</style>
+      {open && (
+        <nav id="mobile-menu" className="nav-drawer" aria-label="メニュー">
+          <p className="nav-drawer-label">メイン</p>
+          {PRIMARY_LINKS.map(({ href, label }) =>
+            link(href, label, "nav-menu-link")
+          )}
+          <p className="nav-drawer-label">演習・ガイド</p>
+          {MORE_LINKS.map(({ href, label }) =>
+            link(href, label, "nav-menu-link")
+          )}
+        </nav>
+      )}
     </>
   )
 }

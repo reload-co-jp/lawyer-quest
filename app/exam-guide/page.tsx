@@ -228,7 +228,7 @@ const Page: FC = () => {
           <div
             style={{
               padding: ".625rem 1rem",
-              background: "rgba(0,184,204,0.08)",
+              background: "var(--accent-soft)",
               borderBottom: "1px solid var(--border)",
               display: "flex",
               justifyContent: "space-between",
@@ -349,7 +349,7 @@ const Page: FC = () => {
           <div
             style={{
               padding: ".625rem 1rem",
-              background: "rgba(0,184,204,0.08)",
+              background: "var(--accent-soft)",
               borderBottom: "1px solid var(--border)",
               display: "flex",
               justifyContent: "space-between",
@@ -673,7 +673,7 @@ const Page: FC = () => {
             style={{
               padding: ".5rem .875rem",
               background: "var(--accent-btn)",
-              color: "#fff",
+              color: "var(--on-accent)",
               textDecoration: "none",
               fontSize: ".875rem",
               fontWeight: 600,

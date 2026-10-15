@@ -10,8 +10,8 @@ export const metadata: Metadata = buildMetadata({
     "行政書士試験対策クエスト。行政法・民法・憲法・過去問の4科目から演習問題に挑戦。",
   path: "/quests",
 })
-import { getQuestionsByQuestId } from "lib/questions"
-import { QuestCard } from "components/QuestCard"
+import { getQuestTotals } from "lib/questions"
+import { QuestList } from "components/Dashboard"
 
 const breadcrumbItems = [
   { name: "ホーム", path: "/" },
@@ -41,7 +41,7 @@ const Page: FC = () => {
   ]
 
   return (
-    <div style={{ maxWidth: "680px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "960px", margin: "0 auto" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -58,15 +58,7 @@ const Page: FC = () => {
       >
         クエスト一覧
       </h1>
-      <div style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}>
-        {quests.map((quest) => (
-          <QuestCard
-            key={quest.id}
-            quest={quest}
-            totalQuestions={getQuestionsByQuestId(quest.id).length}
-          />
-        ))}
-      </div>
+      <QuestList totals={getQuestTotals()} />
     </div>
   )
 }

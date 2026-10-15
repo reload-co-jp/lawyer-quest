@@ -53,7 +53,7 @@ export const WrongClient: FC = () => {
             style={{
               padding: ".4375rem .875rem",
               background: "var(--accent-btn)",
-              color: "#fff",
+              color: "var(--on-accent)",
               textDecoration: "none",
               fontWeight: 600,
               fontSize: ".8125rem",
@@ -177,7 +177,7 @@ export const WrongClient: FC = () => {
                       style={{
                         padding: ".3rem .625rem",
                         background: "transparent",
-                        border: "1px solid rgba(74,222,128,0.3)",
+                        border: "1px solid var(--success-line)",
                         color: "var(--success)",
                         fontSize: ".75rem",
                         cursor: "pointer",

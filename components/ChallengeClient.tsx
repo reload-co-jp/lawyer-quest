@@ -1,14 +1,20 @@
 "use client"
 
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import Link from "next/link"
 import type { Question } from "types/question"
 import type { QuestId } from "types/quest"
 import { ChoiceList } from "components/ChoiceList"
 import { FillBlankAnswer } from "components/FillBlankAnswer"
 import { ExplanationBox } from "components/ExplanationBox"
-import { recordAnswer, removeWrongQuestion } from "lib/storage"
-import { getAreaById } from "lib/quests"
+import { BookmarkButton } from "components/BookmarkButton"
+import {
+  getAnswerHistory,
+  recordAnswer,
+  removeWrongQuestion,
+} from "lib/storage"
+import { getAreaById, getQuestById } from "lib/quests"
+import { XP_CORRECT, XP_WRONG } from "lib/stats"
 
 type Props = {
   questions: Question[]
@@ -16,79 +22,84 @@ type Props = {
   isRetry?: boolean
 }
 
+type AnswerState = {
+  selected: string | null
+  blanks: Record<string, string>
+  revealed: boolean
+  isCorrect: boolean
+}
+
+const EMPTY: AnswerState = {
+  selected: null,
+  blanks: {},
+  revealed: false,
+  isCorrect: false,
+}
+
+const FORMAT_LABEL = { true_false: "○×", fill_blank: "穴埋め" } as const
+
 export const ChallengeClient: FC<Props> = ({
   questions,
   questId,
   isRetry = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
-  const [blankAnswers, setBlankAnswers] = useState<Record<string, string>>({})
-  const [revealed, setRevealed] = useState(false)
-  const [results, setResults] = useState<
-    { questionId: string; isCorrect: boolean }[]
-  >([])
+  const [answers, setAnswers] = useState<AnswerState[]>([])
   const [finished, setFinished] = useState(false)
   const [mastered, setMastered] = useState<string[]>([])
 
+  // ?resume=1 → start at the first question never answered before
+  useEffect(() => {
+    if (!new URLSearchParams(window.location.search).has("resume")) return
+    const done = new Set(getAnswerHistory().map((h) => h.questionId))
+    const idx = questions.findIndex((q) => !done.has(q.id))
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- URL/localStorage読込はクライアント専用
+    if (idx > 0) setCurrentIndex(idx)
+  }, [questions])
+
   const current = questions[currentIndex]
-  const area = current ? getAreaById(current.areaId) : null
-  const isFillBlank = current?.format === "fill_blank"
-  const isAnswerComplete = isFillBlank
-    ? (current?.blanks?.every((b) => blankAnswers[b.id]) ?? false)
-    : !!selectedAnswer
-  const isCorrect = isFillBlank
-    ? (current?.blanks?.every((b) => blankAnswers[b.id] === b.answer) ?? false)
-    : selectedAnswer === current?.answer
+  const state = answers[currentIndex] ?? EMPTY
+  const results = answers.filter((a) => a?.revealed)
 
   if (!current || finished) {
     const correct = results.filter((r) => r.isCorrect).length
     const total = results.length
     const pct = total > 0 ? Math.round((correct / total) * 100) : 0
+    const xp = correct * XP_CORRECT + (total - correct) * XP_WRONG
+    const cleared = total === questions.length
     return (
-      <div
-        style={{ maxWidth: "480px", margin: "3rem auto", padding: "0 1rem" }}
-      >
+      <div style={{ maxWidth: "480px", margin: "2rem auto" }}>
         <div
-          style={{
-            background: "var(--surface)",
-            border: "1px solid var(--border)",
-            borderRadius: "var(--radius-lg)",
-            padding: "2rem",
-            textAlign: "center",
-          }}
+          className="card pop-in"
+          style={{ padding: "2rem", textAlign: "center" }}
         >
-          <p style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏆</p>
+          <p aria-hidden style={{ fontSize: "2.5rem" }}>
+            {cleared ? "🏆" : "📘"}
+          </p>
           <h2
-            style={{
-              color: "var(--text-1)",
-              fontWeight: 700,
-              marginBottom: ".5rem",
-              fontSize: "1.125rem",
-            }}
+            className="pixel"
+            style={{ fontSize: "1.25rem", margin: ".5rem 0" }}
           >
-            クエスト完了
+            {cleared ? "QUEST CLEAR!" : "演習終了"}
           </h2>
           <p
             style={{
               fontSize: "3rem",
               fontWeight: 700,
               color: "var(--accent)",
-              letterSpacing: "-.03em",
-              margin: ".5rem 0 .25rem",
             }}
           >
             {pct}
             <span style={{ fontSize: "1.25rem" }}>%</span>
           </p>
-          <p
-            style={{
-              fontSize: ".875rem",
-              color: "var(--text-2)",
-              marginBottom: "2rem",
-            }}
-          >
+          <p className="muted">
             {correct} / {total} 問正解
+          </p>
+          <p
+            className="badge badge-warning"
+            style={{ margin: "1rem 0 1.5rem" }}
+          >
+            +{xp} XP 獲得
           </p>
           <div
             style={{
@@ -98,76 +109,67 @@ export const ChallengeClient: FC<Props> = ({
               flexWrap: "wrap",
             }}
           >
-            <Link
-              href="/quests"
-              style={{
-                padding: ".5rem 1rem",
-                background: "transparent",
-                border: "1px solid var(--border-2)",
-                borderRadius: "var(--radius-sm)",
-                color: "var(--text-2)",
-                textDecoration: "none",
-                fontSize: ".875rem",
-                fontWeight: 500,
-              }}
-            >
-              クエスト一覧
-            </Link>
-            <Link
-              href="/progress"
-              style={{
-                padding: ".5rem 1rem",
-                background: "var(--accent-btn)",
-                borderRadius: "var(--radius-sm)",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: ".875rem",
-                fontWeight: 600,
-              }}
-            >
-              攻略率を確認 →
+            {correct < total && (
+              <Link href="/retry" className="btn btn-secondary">
+                間違えた問題に再挑戦
+              </Link>
+            )}
+            <Link href="/progress" className="btn btn-primary">
+              学習状況を確認 →
             </Link>
           </div>
+          <Link
+            href="/quests"
+            className="btn btn-ghost"
+            style={{ marginTop: ".5rem" }}
+          >
+            クエスト一覧へ
+          </Link>
         </div>
       </div>
     )
   }
 
-  const handleSelect = (choiceId: string) => {
-    if (revealed) return
-    setSelectedAnswer(choiceId)
-  }
+  const area = getAreaById(current.areaId)
+  const quest = getQuestById(current.questId)
+  const isFillBlank = current.format === "fill_blank"
+  const isAnswerComplete = isFillBlank
+    ? (current.blanks?.every((b) => state.blanks[b.id]) ?? false)
+    : !!state.selected
 
-  const handleBlankSelect = (blankId: string, choiceId: string) => {
-    if (revealed) return
-    setBlankAnswers((prev) => ({ ...prev, [blankId]: choiceId }))
-  }
+  const update = (patch: Partial<AnswerState>) =>
+    setAnswers((prev) => {
+      const next = [...prev]
+      next[currentIndex] = { ...state, ...patch }
+      return next
+    })
 
   const handleReveal = () => {
-    if (!isAnswerComplete || revealed) return
-    setRevealed(true)
+    if (!isAnswerComplete || state.revealed) return
+    const isCorrect = isFillBlank
+      ? (current.blanks?.every((b) => state.blanks[b.id] === b.answer) ?? false)
+      : state.selected === current.answer
+    update({ revealed: true, isCorrect })
     recordAnswer({
       questionId: current.id,
       questId: questId === "random" ? current.questId : questId,
       areaId: current.areaId,
       selectedAnswer: isFillBlank
-        ? JSON.stringify(blankAnswers)
-        : (selectedAnswer as string),
+        ? JSON.stringify(state.blanks)
+        : (state.selected as string),
       isCorrect,
       answeredAt: new Date().toISOString(),
     })
-    setResults((prev) => [...prev, { questionId: current.id, isCorrect }])
+  }
+
+  const go = (i: number) => {
+    setCurrentIndex(i)
+    window.scrollTo({ top: 0 })
   }
 
   const handleNext = () => {
-    if (currentIndex + 1 >= questions.length) {
-      setFinished(true)
-    } else {
-      setCurrentIndex((i) => i + 1)
-      setSelectedAnswer(null)
-      setBlankAnswers({})
-      setRevealed(false)
-    }
+    if (currentIndex + 1 >= questions.length) setFinished(true)
+    else go(currentIndex + 1)
   }
 
   const handleMastered = () => {
@@ -176,231 +178,184 @@ export const ChallengeClient: FC<Props> = ({
     handleNext()
   }
 
-  const progress = ((currentIndex + 1) / questions.length) * 100
+  const remaining = questions.length - results.length
+  const progress = (results.length / questions.length) * 100
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 1rem" }}>
+    <div style={{ maxWidth: "720px", margin: "0 auto" }}>
       <div
         style={{
-          marginBottom: "1.25rem",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          gap: "1rem",
+          marginBottom: ".625rem",
         }}
       >
         <Link
           href={questId === "random" ? "/quests" : `/quests/${questId}`}
+          className="btn btn-ghost"
           style={{
-            fontSize: ".8125rem",
-            color: "var(--text-2)",
-            textDecoration: "none",
+            minHeight: "36px",
+            padding: ".25rem .5rem",
+            fontSize: ".875rem",
           }}
         >
-          ← 戻る
+          ← 中断して戻る
         </Link>
         <span
           style={{
-            fontSize: ".8125rem",
-            color: "var(--text-3)",
+            fontSize: ".875rem",
+            color: "var(--text-2)",
             fontVariantNumeric: "tabular-nums",
           }}
         >
-          {currentIndex + 1} / {questions.length}
+          問題 <b style={{ color: "var(--text-1)" }}>{currentIndex + 1}</b> /{" "}
+          {questions.length}
+          {"　"}残り {remaining}問
         </span>
       </div>
 
       <div
-        style={{
-          height: "2px",
-          background: "var(--border)",
-          borderRadius: "1px",
-          marginBottom: "1.5rem",
-          overflow: "hidden",
-        }}
+        className="bar"
+        role="progressbar"
+        aria-label="解答済みの問題数"
+        aria-valuemin={0}
+        aria-valuemax={questions.length}
+        aria-valuenow={results.length}
+        style={{ marginBottom: "1.25rem" }}
       >
-        <div
-          style={{
-            height: "100%",
-            width: `${progress}%`,
-            background: "var(--accent)",
-            borderRadius: "1px",
-          }}
-        />
+        <span style={{ width: `${progress}%` }} />
       </div>
 
-      <div
+      <section
+        className="card"
+        aria-label="問題"
         style={{
-          background: "var(--surface)",
-          border: "1px solid var(--border)",
-          borderRadius: "var(--radius)",
-          padding: "1.25rem",
+          padding: "clamp(1.125rem, 3vw, 1.75rem)",
           marginBottom: "1rem",
         }}
       >
         <div
           style={{
             display: "flex",
-            gap: ".375rem",
-            flexWrap: "wrap",
-            marginBottom: ".875rem",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: ".75rem",
+            marginBottom: "1rem",
           }}
         >
-          {area && (
-            <span
-              style={{
-                fontSize: ".6875rem",
-                padding: ".2rem .5rem",
-                background: "var(--surface-2)",
-                borderRadius: "99px",
-                color: "var(--text-2)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              {area.title}
+          <div style={{ display: "flex", gap: ".375rem", flexWrap: "wrap" }}>
+            {quest && (
+              <span className="badge">
+                {quest.title.replace("クエスト", "")}
+              </span>
+            )}
+            {area && <span className="badge">{area.title}</span>}
+            <span className="badge">
+              {FORMAT_LABEL[current.format as keyof typeof FORMAT_LABEL] ??
+                "4択"}
             </span>
-          )}
-          <span
-            style={{
-              fontSize: ".6875rem",
-              padding: ".2rem .5rem",
-              background: "var(--surface-2)",
-              borderRadius: "99px",
-              color: "var(--text-2)",
-              border: "1px solid var(--border)",
-            }}
-          >
-            {"★".repeat(current.difficulty)}
-            {"☆".repeat(5 - current.difficulty)}
-          </span>
-          <span
-            style={{
-              fontSize: ".6875rem",
-              padding: ".2rem .5rem",
-              background: "var(--surface-2)",
-              borderRadius: "99px",
-              color: "var(--text-2)",
-              border: "1px solid var(--border)",
-            }}
-          >
-            {current.format === "true_false"
-              ? "○×"
-              : current.format === "fill_blank"
-                ? "穴埋め"
-                : "4択"}
-          </span>
-          {current.examYear && (
             <span
-              style={{
-                fontSize: ".6875rem",
-                padding: ".2rem .5rem",
-                background: "var(--surface-2)",
-                borderRadius: "99px",
-                color: "var(--text-2)",
-                border: "1px solid var(--border)",
-              }}
+              className="badge"
+              aria-label={`難易度 ${current.difficulty} / 5`}
             >
-              {current.examYear}年度
+              {"★".repeat(current.difficulty)}
+              {"☆".repeat(5 - current.difficulty)}
             </span>
-          )}
+            {current.examYear && (
+              <span className="badge">{current.examYear}年度</span>
+            )}
+          </div>
+          <BookmarkButton
+            type="question"
+            id={current.id}
+            title={current.question.slice(0, 40)}
+            path={`/questions/${current.id}`}
+          />
         </div>
 
         <p
           style={{
-            fontSize: ".9375rem",
-            color: "var(--text-1)",
-            lineHeight: 1.75,
-            margin: 0,
+            fontSize: "1.0625rem",
+            lineHeight: 1.9,
+            whiteSpace: "pre-wrap",
           }}
         >
           {current.question}
         </p>
-      </div>
+      </section>
 
       {isFillBlank ? (
         <FillBlankAnswer
           blanks={current.blanks ?? []}
           choices={current.choices}
-          selectedAnswers={blankAnswers}
-          onSelect={handleBlankSelect}
-          revealed={revealed}
+          selectedAnswers={state.blanks}
+          onSelect={(blankId, choiceId) =>
+            !state.revealed &&
+            update({ blanks: { ...state.blanks, [blankId]: choiceId } })
+          }
+          revealed={state.revealed}
         />
       ) : (
         <ChoiceList
           choices={current.choices}
-          selectedAnswer={selectedAnswer}
+          selectedAnswer={state.selected}
           correctAnswer={current.answer}
-          onSelect={handleSelect}
-          revealed={revealed}
+          onSelect={(choiceId) =>
+            !state.revealed && update({ selected: choiceId })
+          }
+          revealed={state.revealed}
         />
       )}
 
-      {!revealed && (
+      {!state.revealed ? (
         <button
           onClick={handleReveal}
           disabled={!isAnswerComplete}
-          style={{
-            marginTop: ".875rem",
-            width: "100%",
-            padding: ".75rem",
-            background: isAnswerComplete
-              ? "var(--accent-btn)"
-              : "var(--surface-2)",
-            border:
-              "1px solid " +
-              (isAnswerComplete ? "var(--accent-btn)" : "var(--border)"),
-            borderRadius: "var(--radius-sm)",
-            color: isAnswerComplete ? "#fff" : "var(--text-3)",
-            fontSize: ".9375rem",
-            fontWeight: 600,
-            cursor: isAnswerComplete ? "pointer" : "not-allowed",
-            letterSpacing: "-.01em",
-          }}
+          className="btn btn-primary"
+          style={{ marginTop: "1rem", width: "100%" }}
         >
-          解答する
+          {isAnswerComplete ? "解答する" : "選択肢を選んでください"}
         </button>
+      ) : (
+        <ExplanationBox question={current} isCorrect={state.isCorrect} />
       )}
 
-      {revealed && <ExplanationBox question={current} isCorrect={isCorrect} />}
-
-      {revealed && (
-        <div style={{ marginTop: ".875rem", display: "flex", gap: ".5rem" }}>
-          {isRetry && !mastered.includes(current.id) && (
-            <button
-              onClick={handleMastered}
-              style={{
-                flex: 1,
-                padding: ".75rem",
-                background: "transparent",
-                border: "1px solid rgba(74,222,128,0.3)",
-                borderRadius: "var(--radius-sm)",
-                color: "var(--success)",
-                fontSize: ".8125rem",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
-            >
-              ✓ 攻略済み
-            </button>
-          )}
+      <div
+        style={{
+          marginTop: "1rem",
+          display: "flex",
+          gap: ".5rem",
+          flexWrap: "wrap",
+        }}
+      >
+        <button
+          onClick={() => go(currentIndex - 1)}
+          disabled={currentIndex === 0}
+          className="btn btn-ghost"
+        >
+          ← 前の問題
+        </button>
+        {state.revealed && isRetry && !mastered.includes(current.id) && (
+          <button
+            onClick={handleMastered}
+            className="btn btn-secondary"
+            style={{ color: "var(--success)", flex: 1 }}
+          >
+            ✓ 攻略済みにする
+          </button>
+        )}
+        {state.revealed && (
           <button
             onClick={handleNext}
-            style={{
-              flex: 2,
-              padding: ".75rem",
-              background: "var(--accent-btn)",
-              border: "none",
-              borderRadius: "var(--radius-sm)",
-              color: "#fff",
-              fontSize: ".9375rem",
-              fontWeight: 600,
-              cursor: "pointer",
-              letterSpacing: "-.01em",
-            }}
+            className="btn btn-primary"
+            style={{ flex: 2 }}
           >
             {currentIndex + 1 >= questions.length ? "結果を見る" : "次の問題 →"}
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

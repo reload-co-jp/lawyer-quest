@@ -46,7 +46,7 @@ export default async function ArticlePage({
   if (!result)
     return <p style={{ color: "var(--error)" }}>記事が見つかりません。</p>
 
-  const { meta, html } = result
+  const { meta, html, toc } = result
   const color = SUBJECT_COLOR[meta.subject] ?? "var(--accent)"
   const relatedQuestions = getRelatedQuestions(articleId)
 
@@ -84,7 +84,13 @@ export default async function ArticlePage({
       />
       <BreadcrumbNav items={breadcrumbItems} />
 
-      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: ".75rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: ".75rem",
+        }}
+      >
         <BookmarkButton
           type="article"
           id={meta.id}
@@ -92,6 +98,43 @@ export default async function ArticlePage({
           path={`/articles/${meta.id}`}
         />
       </div>
+
+      {toc.length > 1 && (
+        <nav
+          aria-label="目次"
+          className="card"
+          style={{ marginBottom: "2rem", background: "var(--surface)" }}
+        >
+          <p
+            style={{
+              fontSize: ".8125rem",
+              color: "var(--text-2)",
+              marginBottom: ".5rem",
+            }}
+          >
+            目次
+          </p>
+          <ol
+            style={{
+              paddingLeft: "1.25rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: ".25rem",
+            }}
+          >
+            {toc.map((t) => (
+              <li key={t.id}>
+                <a
+                  href={`#${t.id}`}
+                  style={{ color: "var(--accent)", textDecoration: "none" }}
+                >
+                  {t.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
 
       <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
 
@@ -192,7 +235,7 @@ export default async function ArticlePage({
             padding: ".4375rem .875rem",
             background: "var(--accent-btn)",
             borderRadius: "var(--radius-sm)",
-            color: "#fff",
+            color: "var(--on-accent)",
             fontSize: ".8125rem",
             fontWeight: 600,
             textDecoration: "none",

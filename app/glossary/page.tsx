@@ -53,7 +53,13 @@ export default function GlossaryPage() {
   ]
 
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
+    <div
+      style={{
+        maxWidth: "720px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -120,7 +126,9 @@ export default function GlossaryPage() {
             </span>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}
+          >
             {terms.map((term) => (
               <Link
                 key={term.id}
@@ -153,7 +161,9 @@ export default function GlossaryPage() {
                     {term.term}
                   </h3>
                   {term.reading && (
-                    <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
+                    <span
+                      style={{ fontSize: ".75rem", color: "var(--text-3)" }}
+                    >
                       {term.reading}
                     </span>
                   )}
@@ -201,7 +211,7 @@ export default function GlossaryPage() {
             style={{
               padding: ".5rem .875rem",
               background: "var(--accent-btn)",
-              color: "#fff",
+              color: "var(--on-accent)",
               textDecoration: "none",
               fontSize: ".875rem",
               fontWeight: 600,

@@ -240,8 +240,8 @@ const Page: FC<Props> = async ({ params }) => {
                     key={blank.id}
                     style={{
                       padding: ".625rem .875rem",
-                      background: "rgba(74,222,128,0.06)",
-                      border: "1px solid rgba(74,222,128,0.25)",
+                      background: "var(--success-soft)",
+                      border: "1px solid var(--success-line)",
                       fontSize: ".875rem",
                       color: "var(--success)",
                       display: "flex",
@@ -272,9 +272,9 @@ const Page: FC<Props> = async ({ params }) => {
                     padding: ".625rem .875rem",
                     background:
                       choice.id === question.answer
-                        ? "rgba(74,222,128,0.06)"
+                        ? "var(--success-soft)"
                         : "var(--surface-2)",
-                    border: `1px solid ${choice.id === question.answer ? "rgba(74,222,128,0.25)" : "var(--border)"}`,
+                    border: `1px solid ${choice.id === question.answer ? "var(--success-line)" : "var(--border)"}`,
                     fontSize: ".875rem",
                     color:
                       choice.id === question.answer

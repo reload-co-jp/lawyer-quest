@@ -51,7 +51,8 @@ export default async function GlossaryTermPage({
 }) {
   const { termId } = await params
   const term = getTermById(termId)
-  if (!term) return <p style={{ color: "var(--error)" }}>用語が見つかりません。</p>
+  if (!term)
+    return <p style={{ color: "var(--error)" }}>用語が見つかりません。</p>
 
   const color = FIELD_COLOR[term.field]
   const related = getRelatedQuestionsForTerm(term, 5)
@@ -79,7 +80,13 @@ export default async function GlossaryTermPage({
   ]
 
   return (
-    <div style={{ maxWidth: "680px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
+    <div
+      style={{
+        maxWidth: "680px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -138,7 +145,13 @@ export default async function GlossaryTermPage({
             {term.term}
           </h1>
           {term.reading && (
-            <p style={{ fontSize: ".8125rem", color: "var(--text-3)", margin: 0 }}>
+            <p
+              style={{
+                fontSize: ".8125rem",
+                color: "var(--text-3)",
+                margin: 0,
+              }}
+            >
               {term.reading}
             </p>
           )}
@@ -276,10 +289,16 @@ export default async function GlossaryTermPage({
                   {"★".repeat(q.difficulty)}
                 </span>
                 <span style={{ flex: 1 }}>
-                  {q.question.length > 70 ? q.question.slice(0, 70) + "…" : q.question}
+                  {q.question.length > 70
+                    ? q.question.slice(0, 70) + "…"
+                    : q.question}
                 </span>
                 <span
-                  style={{ flexShrink: 0, color: "var(--text-3)", fontSize: ".6875rem" }}
+                  style={{
+                    flexShrink: 0,
+                    color: "var(--text-3)",
+                    fontSize: ".6875rem",
+                  }}
                 >
                   →
                 </span>
@@ -333,7 +352,11 @@ export default async function GlossaryTermPage({
       >
         <Link
           href="/glossary"
-          style={{ fontSize: ".875rem", color: "var(--text-2)", textDecoration: "none" }}
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            textDecoration: "none",
+          }}
         >
           ← 用語集一覧
         </Link>
@@ -343,7 +366,7 @@ export default async function GlossaryTermPage({
             padding: ".4375rem .875rem",
             background: "var(--accent-btn)",
             borderRadius: "var(--radius-sm)",
-            color: "#fff",
+            color: "var(--on-accent)",
             fontSize: ".8125rem",
             fontWeight: 600,
             textDecoration: "none",

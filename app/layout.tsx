@@ -115,92 +115,26 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             `}</Script>
           </>
         )}
-        <header
-          style={{
-            position: "sticky",
-            top: 0,
-            zIndex: 50,
-            height: "44px",
-            backgroundColor: "rgba(10,10,10,0.85)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            borderBottom: "1px solid var(--border)",
-            display: "flex",
-            alignItems: "center",
-            padding: "0 1.25rem",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: "1100px",
-              width: "100%",
-              margin: "0 auto",
-              display: "flex",
-              alignItems: "center",
-              gap: "2rem",
-            }}
-          >
-            <Link
-              href="/"
-              style={{
-                textDecoration: "none",
-                display: "flex",
-                alignItems: "center",
-                gap: ".375rem",
-                flexShrink: 0,
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  color: "var(--text-1)",
-                  letterSpacing: "-.02em",
-                }}
-              >
-                Lawyer Quest
-              </span>
+        <a href="#main" className="skip-link">
+          本文へスキップ
+        </a>
+        <header className="site-header">
+          <div className="site-header-inner">
+            <Link href="/" className="site-logo">
+              Lawyer <span>Quest</span>
             </Link>
-
-            <div
-              style={{
-                width: "1px",
-                height: "16px",
-                background: "var(--border-2)",
-                flexShrink: 0,
-              }}
-            />
-
             <HeaderNav />
           </div>
         </header>
 
-        <main
-          style={{
-            minHeight: "calc(100dvh - 44px - 48px)",
-            padding: "2rem 1.25rem",
-            maxWidth: "1100px",
-            margin: "0 auto",
-          }}
-        >
+        <main id="main" className="site-main">
           {children}
         </main>
 
-        <footer
-          style={{
-            height: "48px",
-            borderTop: "1px solid var(--border)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <p style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
+        <footer className="site-footer">
+          <p>
             Lawyer Quest — 行政書士試験対策。法律相談ではありません。{" "}
-            <Link
-              href="/about"
-              style={{ color: "var(--text-3)", textDecoration: "underline" }}
-            >
+            <Link href="/about" style={{ color: "var(--text-2)" }}>
               運営者情報
             </Link>
           </p>

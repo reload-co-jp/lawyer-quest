@@ -1,7 +1,8 @@
 .prose {
   color: var(--text-1);
-  line-height: 1.75;
-  font-size: 0.9375rem;
+  line-height: 1.9;
+  font-size: 1rem;
+  max-width: 42em;
 }
 
 .prose h1 {
@@ -15,20 +16,22 @@
 }
 
 .prose h2 {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-1);
-  margin: 2rem 0 0.625rem;
-  padding-left: 0.625rem;
-  border-left: 2px solid var(--accent);
+  margin: 2.75rem 0 0.875rem;
+  padding: 0.25rem 0 0.25rem 0.75rem;
+  border-left: 3px solid var(--accent);
+  scroll-margin-top: 72px;
   letter-spacing: -0.01em;
 }
 
 .prose h3 {
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: 1.0625rem;
+  font-weight: 700;
   color: var(--text-1);
-  margin: 1.5rem 0 0.5rem;
+  margin: 2rem 0 0.625rem;
+  scroll-margin-top: 72px;
 }
 
 .prose h4 {
@@ -39,7 +42,7 @@
 }
 
 .prose p {
-  margin: 0.625rem 0;
+  margin: 0.875rem 0;
   color: var(--text-1);
 }
 
@@ -51,7 +54,8 @@
 
 .prose strong {
   color: var(--text-1);
-  font-weight: 600;
+  font-weight: 700;
+  background: linear-gradient(transparent 62%, var(--warning-soft) 62%);
 }
 
 .prose ul,
@@ -69,10 +73,10 @@
   margin: 1rem 0;
   padding: 0.875rem 1rem;
   background: var(--surface-2);
-  border-left: 2px solid var(--border-2);
-  border-radius: 0;
-  color: var(--text-2);
-  font-size: 0.875rem;
+  border-left: 3px solid var(--accent-line);
+  border-radius: var(--radius-sm);
+  color: var(--text-1);
+  font-size: 0.9375rem;
 }
 
 .prose blockquote p {
@@ -84,6 +88,8 @@
 }
 
 .prose table {
+  display: block;
+  overflow-x: auto;
   width: 100%;
   border-collapse: collapse;
   margin: 0.875rem 0;
@@ -110,7 +116,7 @@
 }
 
 .prose tr:nth-child(even) td {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface);
 }
 
 .prose pre {

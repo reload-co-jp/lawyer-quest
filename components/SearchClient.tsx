@@ -38,7 +38,9 @@ function extractSnippet(text: string, terms: string[], max = 90): string {
     .find((i) => i >= 0)
   const start = hitIndex && hitIndex > 20 ? hitIndex - 20 : 0
   const snippet = text.slice(start, start + max)
-  return (start > 0 ? "…" : "") + snippet + (start + max < text.length ? "…" : "")
+  return (
+    (start > 0 ? "…" : "") + snippet + (start + max < text.length ? "…" : "")
+  )
 }
 
 export const SearchClient: FC<{ index: SearchItem[] }> = ({ index }) => {
@@ -88,10 +90,18 @@ export const SearchClient: FC<{ index: SearchItem[] }> = ({ index }) => {
 
       {results.length > 0 && (
         <>
-          <p style={{ fontSize: ".75rem", color: "var(--text-3)", marginBottom: ".875rem" }}>
+          <p
+            style={{
+              fontSize: ".75rem",
+              color: "var(--text-3)",
+              marginBottom: ".875rem",
+            }}
+          >
             {results.length}件
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}
+          >
             {results.map(({ item, terms }) => (
               <Link
                 key={item.id}
@@ -105,7 +115,14 @@ export const SearchClient: FC<{ index: SearchItem[] }> = ({ index }) => {
                   textDecoration: "none",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: ".5rem", marginBottom: ".375rem" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: ".5rem",
+                    marginBottom: ".375rem",
+                  }}
+                >
                   <span
                     style={{
                       fontSize: ".6875rem",
@@ -117,7 +134,9 @@ export const SearchClient: FC<{ index: SearchItem[] }> = ({ index }) => {
                     {TYPE_LABEL[item.type]}
                   </span>
                   {item.subtitle && (
-                    <span style={{ fontSize: ".75rem", color: "var(--text-3)" }}>
+                    <span
+                      style={{ fontSize: ".75rem", color: "var(--text-3)" }}
+                    >
                       {item.subtitle}
                     </span>
                   )}

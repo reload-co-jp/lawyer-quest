@@ -25,7 +25,7 @@ export const ChoiceList: FC<Props> = ({
       margin: 0,
       display: "flex",
       flexDirection: "column",
-      gap: ".375rem",
+      gap: ".625rem",
     }}
   >
     {choices.map((choice) => {
@@ -39,21 +39,21 @@ export const ChoiceList: FC<Props> = ({
 
       if (revealed) {
         if (isCorrect) {
-          bg = "rgba(74, 222, 128, 0.06)"
-          border = "rgba(74, 222, 128, 0.3)"
+          bg = "var(--success-soft)"
+          border = "var(--success-line)"
           color = "var(--success)"
           labelColor = "var(--success)"
         } else if (isSelected && !isCorrect) {
-          bg = "rgba(248, 113, 113, 0.06)"
-          border = "rgba(248, 113, 113, 0.3)"
+          bg = "var(--error-soft)"
+          border = "var(--error-line)"
           color = "var(--error)"
           labelColor = "var(--error)"
         } else {
           color = "var(--text-3)"
         }
       } else if (isSelected) {
-        bg = "rgba(94, 106, 210, 0.08)"
-        border = "rgba(94, 106, 210, 0.5)"
+        bg = "var(--accent-soft)"
+        border = "var(--accent-line)"
         labelColor = "var(--accent)"
       }
 
@@ -69,15 +69,17 @@ export const ChoiceList: FC<Props> = ({
           <button
             onClick={() => !revealed && onSelect(choice.id)}
             disabled={revealed}
+            aria-pressed={!revealed ? isSelected : undefined}
             style={{
               width: "100%",
               textAlign: "left",
-              padding: ".75rem 1rem",
+              padding: ".875rem 1rem",
+              minHeight: "52px",
               background: bg,
-              border: `1px solid ${border}`,
-              borderRadius: "var(--radius-sm)",
+              border: `${isSelected || (revealed && isCorrect) ? 2 : 1}px solid ${border}`,
+              borderRadius: "var(--radius)",
               color,
-              fontSize: ".9375rem",
+              fontSize: "1rem",
               cursor: revealed ? "default" : "pointer",
               lineHeight: 1.6,
               display: "flex",
@@ -107,7 +109,21 @@ export const ChoiceList: FC<Props> = ({
                   ? "✗"
                   : label}
             </span>
-            <span>{choice.text}</span>
+            <span style={{ flex: 1 }}>{choice.text}</span>
+            {(revealed ? isCorrect || isSelected : isSelected) && (
+              <span
+                className={
+                  revealed
+                    ? isCorrect
+                      ? "badge badge-success"
+                      : "badge badge-error"
+                    : "badge"
+                }
+                style={{ alignSelf: "center" }}
+              >
+                {revealed ? (isCorrect ? "正解" : "あなたの解答") : "選択中"}
+              </span>
+            )}
           </button>
         </li>
       )

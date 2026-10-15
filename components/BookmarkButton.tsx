@@ -33,7 +33,7 @@ export const BookmarkButton: FC<Props> = ({ type, id, title, path }) => {
         alignItems: "center",
         gap: ".25rem",
         padding: ".3rem .625rem",
-        background: bookmarked ? "rgba(250,204,21,0.1)" : "transparent",
+        background: bookmarked ? "var(--warning-soft)" : "transparent",
         border: `1px solid ${bookmarked ? "var(--warning)" : "var(--border-2)"}`,
         color: bookmarked ? "var(--warning)" : "var(--text-2)",
         fontSize: ".75rem",

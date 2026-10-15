@@ -57,7 +57,13 @@ const Section: FC<{ title: string; children: React.ReactNode }> = ({
 
 const Page: FC = () => {
   return (
-    <div style={{ maxWidth: "680px", margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
+    <div
+      style={{
+        maxWidth: "680px",
+        margin: "0 auto",
+        padding: "1.5rem 1rem 3rem",
+      }}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -78,7 +84,14 @@ const Page: FC = () => {
       </h1>
 
       <Section title="運営者">
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.75, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.75,
+            margin: 0,
+          }}
+        >
           Lawyer Questは
           <a
             href="https://reload.co.jp"
@@ -93,7 +106,9 @@ const Page: FC = () => {
       </Section>
 
       <Section title="コンテンツ方針">
-        <div style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: ".75rem" }}
+        >
           {[
             {
               title: "参照ソース必須",
@@ -164,16 +179,32 @@ const Page: FC = () => {
               lineHeight: 1.8,
             }}
           >
-            <li>Lawyer Questは行政書士試験対策の学習サービスであり、法律相談・法的助言を提供するものではない。</li>
-            <li>個別の法的判断が必要な場合は、弁護士・行政書士などの専門家に相談すること。</li>
-            <li>模擬試験・攻略率などの表示は学習の目安であり、本試験の合否を保証するものではない。</li>
-            <li>掲載内容の正確性には配慮しているが、最新の法改正等により内容が実情と異なる場合がある。重要な判断の際は公式情報を確認すること。</li>
+            <li>
+              Lawyer
+              Questは行政書士試験対策の学習サービスであり、法律相談・法的助言を提供するものではない。
+            </li>
+            <li>
+              個別の法的判断が必要な場合は、弁護士・行政書士などの専門家に相談すること。
+            </li>
+            <li>
+              模擬試験・攻略率などの表示は学習の目安であり、本試験の合否を保証するものではない。
+            </li>
+            <li>
+              掲載内容の正確性には配慮しているが、最新の法改正等により内容が実情と異なる場合がある。重要な判断の際は公式情報を確認すること。
+            </li>
           </ul>
         </div>
       </Section>
 
       <Section title="お問い合わせ">
-        <p style={{ fontSize: ".875rem", color: "var(--text-2)", lineHeight: 1.75, margin: 0 }}>
+        <p
+          style={{
+            fontSize: ".875rem",
+            color: "var(--text-2)",
+            lineHeight: 1.75,
+            margin: 0,
+          }}
+        >
           サイトに関するお問い合わせは
           <a
             href="https://reload.co.jp"
